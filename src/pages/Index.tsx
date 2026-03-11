@@ -47,18 +47,33 @@ const YACHT_TYPES = [
 ];
 
 const ROUTE_STOPS = [
-  { name: "Фетхие / Мармарис", desc: "Старт из одной из красивейших марин Средиземноморья", icon: "⚓" },
-  { name: "Олюдениз", desc: "Знаменитая лагуна с бирюзовой водой и белым песком", icon: "🏖" },
-  { name: "Бухта Бабочек", desc: "Уединённая бухта, доступная только с моря", icon: "🦋" },
-  { name: "Остров Св. Николая", desc: "Руины древнего ликийского города прямо у кромки воды", icon: "🏛" },
-  { name: "Бухта Гемилер", desc: "Живописная якорная стоянка среди скал и оливков", icon: "⛰" },
-  { name: "Дикие бухты", desc: "Тихие стоянки вдали от туристических маршрутов", icon: "🌊" },
+  { name: "Фетхие / Мармарис", desc: "Старт из одной из красивейших марин Средиземноморья", icon: "⚓", img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/24f432de-4321-4ff7-a666-355f5ec5d770.jpg" },
+  { name: "Олюдениз", desc: "Знаменитая лагуна с бирюзовой водой и белым песком", icon: "🏖", img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/46a224ed-0c9e-465f-a97b-20fa3dbcc619.jpg" },
+  { name: "Бухта Бабочек", desc: "Уединённая бухта, доступная только с моря", icon: "🦋", img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/625de156-82ca-46d3-8609-47ac6e59c7f2.jpg" },
+  { name: "Остров Св. Николая", desc: "Руины древнего ликийского города прямо у кромки воды", icon: "🏛", img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/24f432de-4321-4ff7-a666-355f5ec5d770.jpg" },
+  { name: "Бухта Гемилер", desc: "Живописная якорная стоянка среди скал и оливков", icon: "⛰", img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/625de156-82ca-46d3-8609-47ac6e59c7f2.jpg" },
+  { name: "Дикие бухты", desc: "Тихие стоянки вдали от туристических маршрутов", icon: "🌊", img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/cf38f7d5-0f77-4a83-888a-20fcd95c8f7c.jpg" },
 ];
 
 const DAY_SCHEDULE = [
-  { time: "Утро", emoji: "🌅", text: "Завтрак на палубе и купание в бухте. Первый кофе под звуки моря." },
-  { time: "День", emoji: "⛵", text: "Переход под парусом 3–6 часов. Остановки для купания в открытом море." },
-  { time: "Вечер", emoji: "🍽", text: "Якорь в тихой бухте или швартовка у пирса локального ресторана." },
+  {
+    time: "Утро",
+    emoji: "🌅",
+    text: "Завтрак на палубе и купание в бухте. Первый кофе под звуки моря.",
+    img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/46a224ed-0c9e-465f-a97b-20fa3dbcc619.jpg",
+  },
+  {
+    time: "День",
+    emoji: "⛵",
+    text: "Переход под парусом 3–6 часов. Остановки для купания в открытом море.",
+    img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/24f432de-4321-4ff7-a666-355f5ec5d770.jpg",
+  },
+  {
+    time: "Вечер",
+    emoji: "🍽",
+    text: "Якорь в тихой бухте или швартовка у пирса локального ресторана.",
+    img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/cf38f7d5-0f77-4a83-888a-20fcd95c8f7c.jpg",
+  },
 ];
 
 const SPECIAL_WEEKS = [
@@ -256,10 +271,10 @@ export default function Index() {
                   { icon: "⛵", title: "Под парусом", desc: "3–6 часов хода в день с остановками" },
                   { icon: "🍋", title: "У ресторана", desc: "Ужины у маленьких заведений прямо у воды" },
                 ].map((item) => (
-                  <div key={item.title} className="glass rounded-2xl p-5 card-hover">
+                  <div key={item.title} className="rounded-2xl p-5 card-hover" style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.12)" }}>
                     <div className="text-2xl mb-3">{item.icon}</div>
-                    <div className="font-semibold mb-1 text-sm" style={{ color: "var(--text-primary)" }}>{item.title}</div>
-                    <div className="text-xs leading-relaxed" style={{ color: "var(--text-muted)" }}>{item.desc}</div>
+                    <div className="font-semibold mb-1 text-sm" style={{ color: "#fff" }}>{item.title}</div>
+                    <div className="text-xs leading-relaxed" style={{ color: "rgba(255,255,255,0.65)" }}>{item.desc}</div>
                   </div>
                 ))}
               </div>
@@ -277,10 +292,16 @@ export default function Index() {
           </h2>
           <div className="grid md:grid-cols-3 gap-6">
             {DAY_SCHEDULE.map((item, i) => (
-              <div key={item.time} className={`glass rounded-2xl p-8 card-hover reveal delay-${(i + 1) * 100}`}>
-                <div style={{ fontSize: "2.5rem" }} className="mb-4">{item.emoji}</div>
-                <div className="text-xs tracking-widest uppercase mb-3" style={{ color: "var(--teal)" }}>{item.time}</div>
-                <p className="text-sm leading-relaxed" style={{ color: "var(--text-secondary)" }}>{item.text}</p>
+              <div key={item.time} className={`rounded-2xl overflow-hidden card-hover reveal delay-${(i + 1) * 100}`}
+                style={{ border: "1px solid rgba(38,201,195,0.12)" }}>
+                <div className="relative h-52 overflow-hidden">
+                  <img src={item.img} alt={item.time} className="w-full h-full object-cover" />
+                  <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(6,15,30,0.85) 0%, rgba(6,15,30,0.1) 60%)" }} />
+                  <div className="absolute bottom-4 left-5 text-xs tracking-widest uppercase font-semibold" style={{ color: "var(--teal)" }}>{item.time}</div>
+                </div>
+                <div className="p-6" style={{ background: "rgba(13,32,64,0.7)", backdropFilter: "blur(12px)" }}>
+                  <p className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.8)" }}>{item.text}</p>
+                </div>
               </div>
             ))}
           </div>
@@ -312,13 +333,18 @@ export default function Index() {
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
             {ROUTE_STOPS.map((stop, i) => (
-              <div key={stop.name} className={`glass rounded-2xl p-6 card-hover reveal delay-${(i % 4 + 1) * 100}`}>
-                <div className="flex items-start gap-4">
-                  <div className="text-3xl mt-1">{stop.icon}</div>
-                  <div>
-                    <h3 className="font-semibold mb-1.5 text-base" style={{ color: "var(--text-primary)" }}>{stop.name}</h3>
-                    <p className="text-sm leading-relaxed" style={{ color: "var(--text-secondary)" }}>{stop.desc}</p>
+              <div key={stop.name} className={`rounded-2xl overflow-hidden card-hover reveal delay-${(i % 4 + 1) * 100}`}
+                style={{ border: "1px solid rgba(38,201,195,0.12)" }}>
+                <div className="relative h-40 overflow-hidden">
+                  <img src={stop.img} alt={stop.name} className="w-full h-full object-cover transition-transform duration-700 hover:scale-105" />
+                  <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(6,15,30,0.9) 0%, rgba(6,15,30,0.1) 60%)" }} />
+                  <div className="absolute bottom-3 left-4 flex items-center gap-2">
+                    <span className="text-xl">{stop.icon}</span>
+                    <h3 className="font-semibold text-sm" style={{ color: "#fff" }}>{stop.name}</h3>
                   </div>
+                </div>
+                <div className="px-4 py-4" style={{ background: "rgba(13,32,64,0.7)" }}>
+                  <p className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.7)" }}>{stop.desc}</p>
                 </div>
               </div>
             ))}
@@ -429,45 +455,99 @@ export default function Index() {
             ))}
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6">
-            <div className="glass rounded-2xl p-8 reveal">
-              <h3 className="font-semibold text-lg mb-6" style={{ fontFamily: "'Cormorant Garamond', serif", color: "var(--text-primary)" }}>
-                💰 Из чего складывается стоимость
-              </h3>
-              <div className="space-y-4">
-                {[
-                  { name: "Верёвочный сбор", amount: "400 €", desc: "Основная стоимость участия" },
-                  { name: "Судовая касса", amount: "≈ 250 €", desc: "Топливо, стоянки, продукты, расходы" },
-                ].map((item) => (
-                  <div key={item.name} className="flex items-start justify-between gap-4 pb-4" style={{ borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
-                    <div>
-                      <div className="font-medium text-sm" style={{ color: "var(--text-primary)" }}>{item.name}</div>
-                      <div className="text-xs mt-0.5" style={{ color: "var(--text-muted)" }}>{item.desc}</div>
-                    </div>
-                    <div className="font-semibold text-sm whitespace-nowrap" style={{ color: "var(--teal)" }}>{item.amount}</div>
+          {/* Pricing 3 variants */}
+          <div className="mb-6">
+            <h3 className="text-center font-semibold text-lg mb-8 reveal" style={{ fontFamily: "'Cormorant Garamond', serif", color: "var(--text-primary)", fontSize: "1.6rem" }}>
+              💰 Стоимость участия
+            </h3>
+            <div className="grid md:grid-cols-3 gap-5">
+              {/* Classic */}
+              <div className="rounded-2xl overflow-hidden reveal delay-100" style={{ border: "1px solid rgba(38,201,195,0.15)" }}>
+                <div className="px-6 pt-6 pb-5" style={{ background: "rgba(13,32,64,0.8)" }}>
+                  <div className="text-xs tracking-widest uppercase mb-1" style={{ color: "var(--teal)" }}>Classic Yacht</div>
+                  <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "2.4rem", fontWeight: 600, color: "#fff", lineHeight: 1 }}>650 €</div>
+                  <div className="text-xs mt-1" style={{ color: "rgba(255,255,255,0.45)" }}>за человека / неделю</div>
+                </div>
+                <div className="px-6 py-5" style={{ background: "rgba(6,15,30,0.6)" }}>
+                  <div className="space-y-2 mb-4">
+                    {[
+                      { label: "Верёвочный сбор", val: "400 €" },
+                      { label: "Судовая касса", val: "≈ 250 €" },
+                    ].map((r) => (
+                      <div key={r.label} className="flex justify-between text-sm">
+                        <span style={{ color: "rgba(255,255,255,0.55)" }}>{r.label}</span>
+                        <span style={{ color: "rgba(255,255,255,0.85)", fontWeight: 500 }}>{r.val}</span>
+                      </div>
+                    ))}
                   </div>
-                ))}
-                <div className="flex items-center justify-between pt-2">
-                  <div className="font-semibold" style={{ color: "var(--text-primary)" }}>Итого</div>
-                  <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.8rem", fontWeight: 600, color: "var(--teal)" }}>≈ 650 €</div>
+                  <div className="text-xs" style={{ color: "rgba(255,255,255,0.4)" }}>3 каюты · 4–6 гостей</div>
+                </div>
+              </div>
+
+              {/* Comfort — highlighted */}
+              <div className="rounded-2xl overflow-hidden reveal delay-200 relative" style={{ border: "1px solid rgba(38,201,195,0.4)", boxShadow: "0 0 30px rgba(38,201,195,0.12)" }}>
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-10">
+                  <span className="px-4 py-1 rounded-full text-xs font-semibold" style={{ background: "var(--teal)", color: "var(--sea-deep)" }}>Популярный</span>
+                </div>
+                <div className="px-6 pt-8 pb-5" style={{ background: "linear-gradient(135deg, rgba(38,201,195,0.14) 0%, rgba(13,32,64,0.9) 100%)" }}>
+                  <div className="text-xs tracking-widest uppercase mb-1" style={{ color: "var(--teal)" }}>Comfort Yacht</div>
+                  <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "2.4rem", fontWeight: 600, color: "var(--teal)", lineHeight: 1 }}>880 €</div>
+                  <div className="text-xs mt-1" style={{ color: "rgba(255,255,255,0.45)" }}>за человека / неделю</div>
+                </div>
+                <div className="px-6 py-5" style={{ background: "rgba(6,15,30,0.6)" }}>
+                  <div className="space-y-2 mb-4">
+                    {[
+                      { label: "Верёвочный сбор", val: "630 €" },
+                      { label: "Судовая касса", val: "≈ 250 €" },
+                    ].map((r) => (
+                      <div key={r.label} className="flex justify-between text-sm">
+                        <span style={{ color: "rgba(255,255,255,0.55)" }}>{r.label}</span>
+                        <span style={{ color: "rgba(255,255,255,0.85)", fontWeight: 500 }}>{r.val}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="text-xs" style={{ color: "rgba(255,255,255,0.4)" }}>Просторные каюты · больше комфорта</div>
+                </div>
+              </div>
+
+              {/* Catamaran */}
+              <div className="rounded-2xl overflow-hidden reveal delay-300" style={{ border: "1px solid rgba(167,139,250,0.2)" }}>
+                <div className="px-6 pt-6 pb-5" style={{ background: "rgba(13,32,64,0.8)" }}>
+                  <div className="text-xs tracking-widest uppercase mb-1" style={{ color: "#a78bfa" }}>Premium Catamaran</div>
+                  <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "2.4rem", fontWeight: 600, color: "#fff", lineHeight: 1 }}>975 €</div>
+                  <div className="text-xs mt-1" style={{ color: "rgba(255,255,255,0.45)" }}>за человека / неделю</div>
+                </div>
+                <div className="px-6 py-5" style={{ background: "rgba(6,15,30,0.6)" }}>
+                  <div className="space-y-2 mb-4">
+                    {[
+                      { label: "Верёвочный сбор", val: "725 €" },
+                      { label: "Судовая касса", val: "≈ 250 €" },
+                    ].map((r) => (
+                      <div key={r.label} className="flex justify-between text-sm">
+                        <span style={{ color: "rgba(255,255,255,0.55)" }}>{r.label}</span>
+                        <span style={{ color: "rgba(255,255,255,0.85)", fontWeight: 500 }}>{r.val}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="text-xs" style={{ color: "rgba(255,255,255,0.4)" }}>До 10 гостей · максимальный простор</div>
                 </div>
               </div>
             </div>
+          </div>
 
-            <div className="glass rounded-2xl p-8 reveal delay-200" style={{ border: "1px solid rgba(38,201,195,0.15)" }}>
-              <h3 className="font-semibold text-lg mb-4" style={{ fontFamily: "'Cormorant Garamond', serif", color: "var(--text-primary)" }}>
-                👨‍🍳 Повар на борту
-              </h3>
-              <p className="text-sm leading-relaxed mb-5" style={{ color: "var(--text-secondary)" }}>
-                По желанию — повар на весь маршрут. Завтраки, обеды, ужины. Полностью расслабьтесь и наслаждайтесь морем.
-              </p>
-              <div className="flex flex-wrap gap-2">
-                {["Завтраки", "Обеды", "Ужины", "Свежие продукты"].map((meal) => (
-                  <span key={meal} className="px-3 py-1 rounded-full text-xs" style={{ background: "rgba(38,201,195,0.08)", color: "var(--teal)", border: "1px solid rgba(38,201,195,0.15)" }}>
-                    {meal}
-                  </span>
-                ))}
-              </div>
+          <div className="glass rounded-2xl p-8 reveal delay-400" style={{ border: "1px solid rgba(38,201,195,0.15)" }}>
+            <h3 className="font-semibold text-lg mb-4" style={{ fontFamily: "'Cormorant Garamond', serif", color: "var(--text-primary)" }}>
+              👨‍🍳 Повар на борту
+            </h3>
+            <p className="text-sm leading-relaxed mb-5" style={{ color: "var(--text-secondary)" }}>
+              По желанию — повар на весь маршрут. Завтраки, обеды, ужины. Полностью расслабьтесь и наслаждайтесь морем.
+            </p>
+            <div className="flex flex-wrap gap-2">
+              {["Завтраки", "Обеды", "Ужины", "Свежие продукты"].map((meal) => (
+                <span key={meal} className="px-3 py-1 rounded-full text-xs" style={{ background: "rgba(38,201,195,0.08)", color: "var(--teal)", border: "1px solid rgba(38,201,195,0.15)" }}>
+                  {meal}
+                </span>
+              ))}
             </div>
           </div>
 
@@ -497,9 +577,14 @@ export default function Index() {
         <div className="relative max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <div className="reveal">
-              <div className="inline-flex items-center justify-center w-20 h-20 rounded-full mb-8 text-4xl"
-                style={{ background: "linear-gradient(135deg, rgba(38,201,195,0.15) 0%, rgba(13,32,64,0.8) 100%)", border: "2px solid rgba(38,201,195,0.25)" }}>
-                ⚓
+              {/* Captain photo */}
+              <div className="relative w-48 h-48 rounded-2xl overflow-hidden mb-8" style={{ border: "2px solid rgba(38,201,195,0.3)" }}>
+                <img
+                  src="https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/77cf7e79-9a8b-45ef-8b23-08b9914ee5fb.jpg"
+                  alt="Капитан Евгений"
+                  className="w-full h-full object-cover object-top"
+                />
+                <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(6,15,30,0.5) 0%, transparent 50%)" }} />
               </div>
               <p className="text-xs tracking-widest uppercase mb-2" style={{ color: "var(--teal)" }}>Капитан</p>
               <h2 className="mb-4" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(2.5rem, 5vw, 4rem)", fontWeight: 300, color: "var(--text-primary)" }}>
