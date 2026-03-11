@@ -24,7 +24,7 @@ const YACHT_TYPES = [
     price: "от 650 €",
     priceNote: "за человека / неделю",
     highlight: false,
-    img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80",
+    img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/fac0c71e-8b54-4b85-b16f-a8fd10f0f1ec.jpg",
   },
   {
     name: "Dufour 460",
@@ -37,7 +37,7 @@ const YACHT_TYPES = [
     price: "≈ 880 €",
     priceNote: "за человека / неделю",
     highlight: true,
-    img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/fac0c71e-8b54-4b85-b16f-a8fd10f0f1ec.jpg",
+    img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/8443aba5-20f8-4a48-bd88-011de72d92dd.jpg",
   },
   {
     name: "Fountaine Pajot Astréa 42",
@@ -103,21 +103,63 @@ const REVIEWS = [
     city: "Москва",
     text: "Это была лучшая неделя в моей жизни. Просыпаться каждое утро в новой бухте — ни один отель не даст такого ощущения. Евгений — потрясающий капитан, всё организовано идеально.",
     stars: 5,
-    trip: "Classic Yacht, июль",
+    trip: "Bavaria 46, июль",
   },
   {
     name: "Максим и Лена",
     city: "Санкт-Петербург",
     text: "Провели медовый месяц на яхте. Церемония прямо на борту — что-то невероятное. Команда сделала всё, чтобы этот день запомнился на всю жизнь.",
     stars: 5,
-    trip: "Premium Catamaran, сентябрь",
+    trip: "Catamaran, сентябрь",
   },
   {
     name: "Дмитрий П.",
     city: "Екатеринбург",
     text: "Боялся морской болезни — оказалось зря. Уже на второй день забыл об этом страхе. Больше всего запомнились вечера у маленьких ресторанов прямо у воды.",
     stars: 5,
-    trip: "Comfort Yacht, август",
+    trip: "Dufour 460, август",
+  },
+  {
+    name: "Ольга и Сергей",
+    city: "Новосибирск",
+    text: "Взяли катамаран всей компанией — 8 человек. Пространства хватило всем. Рыбачили каждый день, ныряли с маской в бухтах. Обратно в Турцию хочется уже сейчас.",
+    stars: 5,
+    trip: "Catamaran, июнь",
+  },
+  {
+    name: "Ирина В.",
+    city: "Казань",
+    text: "Отдыхала одна — не знала никого из группы. Через два дня все стали как родные. Капитан Евгений создаёт особую атмосферу на борту. Буду снова в этом году.",
+    stars: 5,
+    trip: "Bavaria 46, май",
+  },
+  {
+    name: "Артём Н.",
+    city: "Ростов-на-Дону",
+    text: "Занимался морской охотой впервые — ощущения непередаваемые. Капитан знает все места, где водится рыба. Приготовили прямо на борту, с видом на скалы. Незабываемо.",
+    stars: 5,
+    trip: "Dufour 460, октябрь",
+  },
+  {
+    name: "Наташа Г.",
+    city: "Краснодар",
+    text: "Девичник на яхте — это лучшее решение в моей жизни. Никаких клубов, никакого шума. Только море, закаты, свои люди и полная свобода. Спасибо огромное!",
+    stars: 5,
+    trip: "Bavaria 46, август",
+  },
+  {
+    name: "Павел К.",
+    city: "Тюмень",
+    text: "До этого путешествовал только в отелях. Яхта — это другое измерение. Встаёшь утром — вокруг бирюзовое море и скалы. Евгений — профессионал и отличный рассказчик.",
+    stars: 5,
+    trip: "Catamaran, июль",
+  },
+  {
+    name: "Юлия и Андрей",
+    city: "Уфа",
+    text: "Взяли яхту целиком для двух пар. Лучшее решение — полная свобода маршрута. Останавливались где хотели, ходили сколько хотели. Бухта Бабочек — это сказка.",
+    stars: 5,
+    trip: "Dufour 460, сентябрь",
   },
 ];
 
@@ -238,7 +280,7 @@ export default function Index() {
         </div>
 
         {/* Content */}
-        <div className="relative max-w-7xl mx-auto px-6 pt-28 pb-16 w-full">
+        <div className="relative max-w-7xl mx-auto px-4 md:px-6 pt-28 pb-16 w-full">
           {/* Badge */}
           <div className="mb-6 animate-fadeInUp">
             <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-medium" style={{ background: "rgba(38,201,195,0.12)", color: "var(--teal)", border: "1px solid rgba(38,201,195,0.25)", backdropFilter: "blur(8px)" }}>
@@ -276,11 +318,11 @@ export default function Index() {
           </div>
 
           {/* CTA buttons */}
-          <div className="flex flex-wrap gap-4 animate-fadeInUp delay-400">
-            <a href="#routes" className="inline-flex items-center gap-2 px-8 py-4 rounded-full text-base font-semibold btn-teal" style={{ color: "var(--sea-deep)" }}>
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 animate-fadeInUp delay-400">
+            <a href="#routes" className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full text-base font-semibold btn-teal" style={{ color: "var(--sea-deep)" }}>
               Посмотреть даты <Icon name="ArrowRight" size={18} />
             </a>
-            <a href="#booking" className="inline-flex items-center gap-2 px-8 py-4 rounded-full text-base font-semibold btn-outline-teal">
+            <a href="#booking" className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full text-base font-semibold btn-outline-teal">
               Забронировать каюту
             </a>
           </div>
@@ -418,6 +460,84 @@ export default function Index() {
         </div>
       </section>
 
+      {/* CAPTAIN */}
+      <section className="py-24 relative overflow-hidden" style={{ background: "#163054" }}>
+        <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse 70% 90% at 0% 50%, rgba(38,201,195,0.04) 0%, transparent 60%)" }} />
+        <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(38,201,195,0.3), transparent)" }} />
+        <div className="relative max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16 reveal">
+            <p className="text-xs tracking-widest uppercase mb-3" style={{ color: "var(--teal)" }}>Ваш капитан</p>
+            <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: 300, color: "var(--text-primary)" }}>
+              Евгений
+            </h2>
+          </div>
+          <div className="relative rounded-3xl overflow-hidden mb-12 reveal" style={{ height: "clamp(320px, 50vw, 520px)" }}>
+            <img
+              src="https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/545b2380-b99a-4cc1-8f1c-be8ff1ba5c68.jpg"
+              alt="Капитан Евгений"
+              className="w-full h-full object-cover object-center"
+              style={{ filter: "brightness(0.85)" }}
+            />
+            <div className="absolute inset-0" style={{ background: "linear-gradient(to right, rgba(13,31,60,0.75) 0%, rgba(13,31,60,0.1) 60%)" }} />
+            <div className="absolute inset-0 flex items-end p-8 md:p-12">
+              <div className="max-w-lg">
+                <p className="text-xl md:text-2xl leading-relaxed mb-4" style={{ fontFamily: "'Cormorant Garamond', serif", fontStyle: "italic", color: "rgba(255,255,255,0.9)" }}>
+                  «Главный принцип на борту: уважение к морю, яхте и команде.»
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {["Права ГИМС РФ с 2006 года", "Международные права IYT", "Международный паспорт моряка", "Член РГО"].map((badge) => (
+                    <span key={badge} className="px-3 py-1 rounded-full text-xs" style={{ background: "rgba(38,201,195,0.15)", color: "var(--teal)", border: "1px solid rgba(38,201,195,0.3)", backdropFilter: "blur(8px)" }}>
+                      ✓ {badge}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="mb-6 rounded-2xl overflow-hidden reveal" style={{ border: "1px solid rgba(255,255,255,0.1)" }}>
+            <img
+              src="https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/52624ebb-a4af-4413-b88b-86496a8ff531.jpg"
+              alt="Парус на фоне неба"
+              className="w-full object-cover"
+              style={{ maxHeight: "320px", objectPosition: "center" }}
+            />
+          </div>
+          <div className="grid md:grid-cols-3 gap-6">
+            <div className="glass rounded-2xl p-7 reveal delay-100">
+              <div className="text-2xl mb-4">⚓</div>
+              <h3 className="font-semibold mb-3" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.2rem", color: "#fff" }}>С детства у моря</h3>
+              <p className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.65)" }}>
+                Вырос у моря и под парусом с детства. Яхтинг — не профессия, а образ жизни. Знает каждую бухту южного побережья Турции.
+              </p>
+            </div>
+            <div className="glass rounded-2xl p-7 reveal delay-200">
+              <div className="text-2xl mb-4">🌍</div>
+              <h3 className="font-semibold mb-3" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.2rem", color: "#fff" }}>8 морей за плечами</h3>
+              <div className="grid grid-cols-2 gap-2">
+                {["Азовское", "Каспийское", "Средиземное", "Эгейское", "Ионическое", "Адриатическое", "Мраморное", "Миртойское"].map((sea) => (
+                  <div key={sea} className="flex items-center gap-1.5 text-xs py-1.5" style={{ color: "rgba(255,255,255,0.6)", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+                    <span style={{ color: "var(--teal)", fontSize: "0.4rem" }}>●</span> {sea}
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="glass rounded-2xl p-7 reveal delay-300">
+              <div className="text-2xl mb-4">🧭</div>
+              <h3 className="font-semibold mb-3" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.2rem", color: "#fff" }}>О морской болезни</h3>
+              <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,255,255,0.65)" }}>
+                Капитан знает множество способов её избежать: спокойные маршруты, защищённые акватории, правильный ритм перехода.
+              </p>
+              <div className="flex items-center gap-3 rounded-xl px-4 py-3" style={{ background: "rgba(38,201,195,0.08)", border: "1px solid rgba(38,201,195,0.15)" }}>
+                <span style={{ fontSize: "1.4rem" }}>😌</span>
+                <div className="text-xs" style={{ color: "rgba(255,255,255,0.7)" }}>
+                  <strong style={{ color: "#fff" }}>90%</strong> гостей не испытывают дискомфорта
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* YACHTS */}
       <section id="yachts" className="py-24 relative" style={{ background: "#112240" }}>
         <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(38,201,195,0.3), transparent)" }} />
@@ -428,17 +548,7 @@ export default function Index() {
               Выберите свою яхту
             </h2>
           </div>
-          <div className="mb-10 rounded-2xl overflow-hidden reveal" style={{ border: "1px solid rgba(255,255,255,0.1)", background: "#fff" }}>
-            <img
-              src="https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/066c3166-b667-4161-b74b-d1e9d4d81630.jpg"
-              alt="Планировка яхты"
-              className="w-full object-contain"
-              style={{ maxHeight: "260px", padding: "1rem" }}
-            />
-            <div className="px-6 py-4" style={{ background: "rgba(13,32,64,0.9)" }}>
-              <p className="text-sm" style={{ color: "rgba(255,255,255,0.6)" }}>Типовая планировка Classic Yacht — 3 каюты, кухня, салон, 2 санузла</p>
-            </div>
-          </div>
+
           <div className="grid md:grid-cols-3 gap-6">
             {YACHT_TYPES.map((yacht, i) => (
               <div key={yacht.name}
@@ -572,7 +682,7 @@ export default function Index() {
                   { icon: "🛏", title: "Двухместные каюты", desc: "Отдельная каюта на двоих с удобной кроватью, бельём и полотенцами. Деревянная отделка, иллюминатор, освещение." },
                   { icon: "🚿", title: "Душ на борту", desc: "Горячий душ в каждой яхте. Свежая вода для купания после моря — ежедневно." },
                   { icon: "🚽", title: "Туалет", desc: "Отдельный санузел на борту. На комфорт-яхтах и катамаране — персональный санузел в каждой каюте." },
-                  { icon: "👥", title: "Каут-компания", desc: "Путешествуете с незнакомцами? Не страшно — это и есть формат каут-похода. Все участники собраны по интересам, быстро становятся своими." },
+                  { icon: "👥", title: "Кают-компания", desc: "Общий салон на борту — место для завтраков, ужинов и вечерних разговоров. Просторный стол, мягкие диваны, уютная атмосфера прямо над водой." },
                 ].map((item) => (
                   <div key={item.title} className="flex gap-4 items-start p-4 rounded-xl" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(38,201,195,0.08)" }}>
                     <div className="text-2xl flex-shrink-0 mt-0.5">{item.icon}</div>
@@ -648,7 +758,7 @@ export default function Index() {
             <h3 className="text-center font-semibold text-lg mb-8 reveal" style={{ fontFamily: "'Cormorant Garamond', serif", color: "var(--text-primary)", fontSize: "1.6rem" }}>
               💰 Стоимость участия
             </h3>
-            <div className="grid md:grid-cols-3 gap-5">
+            <div className="pricing-grid grid md:grid-cols-3 gap-5">
               {/* Classic */}
               <div className="rounded-2xl overflow-hidden reveal delay-100" style={{ border: "1px solid rgba(38,201,195,0.15)" }}>
                 <div className="px-6 pt-6 pb-5" style={{ background: "rgba(13,32,64,0.8)" }}>
@@ -787,93 +897,6 @@ export default function Index() {
         </div>
       </section>
 
-      {/* CAPTAIN */}
-      <section className="py-24 relative overflow-hidden" style={{ background: "#163054" }}>
-        <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse 70% 90% at 0% 50%, rgba(38,201,195,0.04) 0%, transparent 60%)" }} />
-        <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(38,201,195,0.3), transparent)" }} />
-        <div className="relative max-w-7xl mx-auto px-6">
-
-          <div className="text-center mb-16 reveal">
-            <p className="text-xs tracking-widest uppercase mb-3" style={{ color: "var(--teal)" }}>Ваш капитан</p>
-            <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: 300, color: "var(--text-primary)" }}>
-              Евгений
-            </h2>
-          </div>
-
-          {/* Hero photo full-width */}
-          <div className="relative rounded-3xl overflow-hidden mb-12 reveal" style={{ height: "clamp(320px, 50vw, 520px)" }}>
-            <img
-              src="https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/545b2380-b99a-4cc1-8f1c-be8ff1ba5c68.jpg"
-              alt="Капитан Евгений"
-              className="w-full h-full object-cover object-center"
-              style={{ filter: "brightness(0.85)" }}
-            />
-            <div className="absolute inset-0" style={{ background: "linear-gradient(to right, rgba(13,31,60,0.75) 0%, rgba(13,31,60,0.1) 60%)" }} />
-            <div className="absolute inset-0 flex items-end p-8 md:p-12">
-              <div className="max-w-lg">
-                <p className="text-xl md:text-2xl leading-relaxed mb-4" style={{ fontFamily: "'Cormorant Garamond', serif", fontStyle: "italic", color: "rgba(255,255,255,0.9)" }}>
-                  «Главный принцип на борту: уважение к морю, яхте и команде.»
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  {["Права ГИМС РФ с 2006 года", "Международные права IYT", "Международный паспорт моряка", "Член РГО"].map((badge) => (
-                    <span key={badge} className="px-3 py-1 rounded-full text-xs" style={{ background: "rgba(38,201,195,0.15)", color: "var(--teal)", border: "1px solid rgba(38,201,195,0.3)", backdropFilter: "blur(8px)" }}>
-                      ✓ {badge}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Sail photo */}
-          <div className="mb-6 rounded-2xl overflow-hidden reveal" style={{ border: "1px solid rgba(255,255,255,0.1)" }}>
-            <img
-              src="https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/52624ebb-a4af-4413-b88b-86496a8ff531.jpg"
-              alt="Парус на фоне неба"
-              className="w-full object-cover"
-              style={{ maxHeight: "320px", objectPosition: "center" }}
-            />
-          </div>
-
-          {/* Details grid */}
-          <div className="grid md:grid-cols-3 gap-6">
-            <div className="glass rounded-2xl p-7 reveal delay-100">
-              <div className="text-2xl mb-4">⚓</div>
-              <h3 className="font-semibold mb-3" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.2rem", color: "#fff" }}>С детства у моря</h3>
-              <p className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.65)" }}>
-                Вырос у моря и под парусом с детства. Яхтинг — не профессия, а образ жизни. Знает каждую бухту южного побережья Турции.
-              </p>
-            </div>
-
-            <div className="glass rounded-2xl p-7 reveal delay-200">
-              <div className="text-2xl mb-4">🌍</div>
-              <h3 className="font-semibold mb-3" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.2rem", color: "#fff" }}>8 морей за плечами</h3>
-              <div className="grid grid-cols-2 gap-2">
-                {["Азовское", "Каспийское", "Средиземное", "Эгейское", "Ионическое", "Адриатическое", "Мраморное", "Миртойское"].map((sea) => (
-                  <div key={sea} className="flex items-center gap-1.5 text-xs py-1.5" style={{ color: "rgba(255,255,255,0.6)", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
-                    <span style={{ color: "var(--teal)", fontSize: "0.4rem" }}>●</span> {sea}
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="glass rounded-2xl p-7 reveal delay-300">
-              <div className="text-2xl mb-4">🧭</div>
-              <h3 className="font-semibold mb-3" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.2rem", color: "#fff" }}>О морской болезни</h3>
-              <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,255,255,0.65)" }}>
-                Капитан знает множество способов её избежать: спокойные маршруты, защищённые акватории, правильный ритм перехода.
-              </p>
-              <div className="flex items-center gap-3 rounded-xl px-4 py-3" style={{ background: "rgba(38,201,195,0.08)", border: "1px solid rgba(38,201,195,0.15)" }}>
-                <span style={{ fontSize: "1.4rem" }}>😌</span>
-                <div className="text-xs" style={{ color: "rgba(255,255,255,0.7)" }}>
-                  <strong style={{ color: "#fff" }}>90%</strong> гостей не испытывают дискомфорта
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* GALLERY */}
       <section id="gallery" className="py-24 relative" style={{ background: "linear-gradient(180deg, #163054 0%, #0d1f3c 100%)" }}>
         <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(38,201,195,0.3), transparent)" }} />
@@ -910,9 +933,9 @@ export default function Index() {
               Те, кто уже побывал
             </h2>
           </div>
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="hidden md:grid md:grid-cols-3 gap-6">
             {REVIEWS.map((review, i) => (
-              <div key={review.name} className={`glass rounded-2xl p-7 card-hover reveal delay-${(i + 1) * 100} flex flex-col`}>
+              <div key={review.name} className={`glass rounded-2xl p-7 card-hover reveal delay-${(i % 3 + 1) * 100} flex flex-col`}>
                 <div className="flex gap-0.5 mb-4">
                   {Array(review.stars).fill(0).map((_, j) => (
                     <span key={j} style={{ color: "var(--gold)" }}>★</span>
@@ -920,6 +943,25 @@ export default function Index() {
                 </div>
                 <p className="text-sm leading-relaxed flex-1 mb-5" style={{ color: "var(--text-secondary)" }}>"{review.text}"</p>
                 <div className="flex items-center justify-between border-t pt-4" style={{ borderColor: "rgba(255,255,255,0.06)" }}>
+                  <div>
+                    <div className="font-semibold text-sm" style={{ color: "var(--text-primary)" }}>{review.name}</div>
+                    <div className="text-xs" style={{ color: "var(--text-muted)" }}>{review.city}</div>
+                  </div>
+                  <div className="text-xs px-2 py-1 rounded" style={{ background: "rgba(38,201,195,0.08)", color: "var(--teal)" }}>{review.trip}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="md:hidden flex gap-4 overflow-x-auto pb-4 mobile-scroll-snap" style={{ scrollSnapType: "x mandatory" }}>
+            {REVIEWS.map((review) => (
+              <div key={review.name} className="glass rounded-2xl p-5 flex flex-col flex-shrink-0" style={{ width: "80vw", scrollSnapAlign: "start", border: "1px solid rgba(38,201,195,0.12)" }}>
+                <div className="flex gap-0.5 mb-3">
+                  {Array(review.stars).fill(0).map((_, j) => (
+                    <span key={j} style={{ color: "var(--gold)" }}>★</span>
+                  ))}
+                </div>
+                <p className="text-sm leading-relaxed flex-1 mb-4" style={{ color: "var(--text-secondary)" }}>"{review.text}"</p>
+                <div className="flex items-center justify-between border-t pt-3" style={{ borderColor: "rgba(255,255,255,0.06)" }}>
                   <div>
                     <div className="font-semibold text-sm" style={{ color: "var(--text-primary)" }}>{review.name}</div>
                     <div className="text-xs" style={{ color: "var(--text-muted)" }}>{review.city}</div>
