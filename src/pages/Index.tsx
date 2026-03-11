@@ -93,12 +93,12 @@ const REVIEWS = [
 ];
 
 const GALLERY_ITEMS = [
-  { emoji: "🌊", label: "Бирюзовые бухты", bg: "from-cyan-900 to-blue-900", span: true },
-  { emoji: "⛵", label: "Под парусом", bg: "from-indigo-900 to-cyan-900", span: false },
-  { emoji: "🌅", label: "Закаты на воде", bg: "from-orange-900 to-pink-900", span: false },
-  { emoji: "🏖", label: "Дикие пляжи", bg: "from-teal-900 to-blue-900", span: false },
-  { emoji: "🍽", label: "Ужины у воды", bg: "from-blue-900 to-violet-900", span: false },
-  { emoji: "⚓", label: "Марины Турции", bg: "from-slate-900 to-blue-900", span: true },
+  { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/24f432de-4321-4ff7-a666-355f5ec5d770.jpg", label: "Бирюзовые бухты", tall: true },
+  { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/cf38f7d5-0f77-4a83-888a-20fcd95c8f7c.jpg", label: "Закат на яхте", tall: false },
+  { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/77cf7e79-9a8b-45ef-8b23-08b9914ee5fb.jpg", label: "Закат с борта", tall: false },
+  { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/46a224ed-0c9e-465f-a97b-20fa3dbcc619.jpg", label: "На палубе", tall: false },
+  { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/625de156-82ca-46d3-8609-47ac6e59c7f2.jpg", label: "У скал", tall: false },
+  { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/cf38f7d5-0f77-4a83-888a-20fcd95c8f7c.jpg", label: "Марины Турции", tall: true },
 ];
 
 export default function Index() {
@@ -163,60 +163,70 @@ export default function Index() {
       </nav>
 
       {/* HERO */}
-      <section id="hero" className="relative min-h-screen flex items-center overflow-hidden">
-        <div className="absolute inset-0" style={{
-          background: "radial-gradient(ellipse 120% 80% at 50% 100%, rgba(38,201,195,0.07) 0%, transparent 60%), linear-gradient(180deg, #060f1e 0%, #0a1628 50%, #0d2040 100%)"
-        }} />
-        {[0, 1, 2, 3].map((i) => (
-          <div key={i} className="absolute w-full animate-wave" style={{
-            height: "2px",
-            background: `linear-gradient(90deg, transparent, rgba(38,201,195,${0.12 - i * 0.025}), transparent)`,
-            bottom: `${30 + i * 35}px`,
-            animationDelay: `${i * 1.3}s`,
-            animationDuration: `${6 + i * 0.9}s`,
-          }} />
-        ))}
-        <div className="absolute top-1/3 right-1/3 w-80 h-80 rounded-full animate-float" style={{
-          background: "radial-gradient(circle, rgba(38,201,195,0.05) 0%, transparent 70%)",
-          animationDuration: "9s",
-        }} />
+      <section id="hero" className="relative min-h-screen flex flex-col justify-end overflow-hidden">
+        {/* BG photo */}
+        <div className="absolute inset-0">
+          <img
+            src="https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/cf38f7d5-0f77-4a83-888a-20fcd95c8f7c.jpg"
+            alt="Яхта на закате"
+            className="w-full h-full object-cover object-center"
+            style={{ filter: "brightness(0.55)" }}
+          />
+          {/* gradient overlays */}
+          <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(6,15,30,0.98) 0%, rgba(6,15,30,0.55) 45%, rgba(6,15,30,0.1) 100%)" }} />
+          <div className="absolute inset-0" style={{ background: "linear-gradient(to right, rgba(6,15,30,0.5) 0%, transparent 60%)" }} />
+        </div>
 
-        <div className="relative max-w-7xl mx-auto px-6 pt-28 pb-20 w-full">
-          <div className="max-w-3xl">
-            <div className="mb-5 animate-fadeInUp">
-              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium" style={{ background: "rgba(38,201,195,0.1)", color: "var(--teal)", border: "1px solid rgba(38,201,195,0.2)" }}>
-                <span className="w-1.5 h-1.5 rounded-full bg-current" style={{ animation: "pulse 2s infinite" }} />
-                Сезон апрель — ноябрь 2026
-              </span>
-            </div>
-            <h1 className="leading-tight mb-6 animate-fadeInUp delay-100"
-              style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(2.6rem, 6vw, 5.2rem)", fontWeight: 300, color: "var(--text-primary)" }}>
-              Яхтенное путешествие<br />
-              вдоль <span className="shimmer-text" style={{ fontWeight: 600 }}>бирюзового</span><br />
-              побережья Турции
-            </h1>
-            <p className="text-lg leading-relaxed mb-5 animate-fadeInUp delay-200" style={{ color: "var(--text-secondary)", maxWidth: "540px" }}>
-              Неделя под парусом. Тихие бухты, прозрачное море и жизнь на яхте.
-            </p>
-            <div className="flex flex-wrap gap-5 mb-10 animate-fadeInUp delay-300">
-              {["4–6 гостей на яхте", "До 10 на катамаране", "Заезды сб → сб", "От 650 € / неделю"].map((tag) => (
-                <span key={tag} className="flex items-center gap-1.5 text-sm" style={{ color: "var(--text-secondary)" }}>
-                  <span style={{ color: "var(--teal)", fontSize: "0.5rem" }}>●</span> {tag}
-                </span>
-              ))}
-            </div>
-            <div className="flex flex-wrap gap-4 animate-fadeInUp delay-400">
-              <a href="#routes" className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full text-base btn-teal" style={{ color: "var(--sea-deep)" }}>
-                Посмотреть даты <Icon name="ArrowRight" size={18} />
-              </a>
-              <a href="#booking" className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full text-base btn-outline-teal">
-                Забронировать каюту
-              </a>
-            </div>
+        {/* Content */}
+        <div className="relative max-w-7xl mx-auto px-6 pt-28 pb-16 w-full">
+          {/* Badge */}
+          <div className="mb-6 animate-fadeInUp">
+            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-medium" style={{ background: "rgba(38,201,195,0.12)", color: "var(--teal)", border: "1px solid rgba(38,201,195,0.25)", backdropFilter: "blur(8px)" }}>
+              <span className="w-1.5 h-1.5 rounded-full bg-current animate-pulse" />
+              Сезон апрель — ноябрь 2026
+            </span>
+          </div>
+
+          {/* Main headline */}
+          <h1 className="animate-fadeInUp delay-100 mb-5"
+            style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(3.2rem, 8vw, 7rem)", fontWeight: 300, color: "#fff", lineHeight: 1.05, maxWidth: "820px" }}>
+            Яхтенное путешествие<br />
+            вдоль <span className="shimmer-text" style={{ fontWeight: 600, fontStyle: "italic" }}>бирюзового</span><br />
+            побережья Турции
+          </h1>
+
+          <p className="text-xl leading-relaxed mb-10 animate-fadeInUp delay-200" style={{ color: "rgba(255,255,255,0.72)", maxWidth: "520px" }}>
+            Неделя под парусом. Тихие бухты,<br />прозрачное море и жизнь на яхте.
+          </p>
+
+          {/* Stat pills */}
+          <div className="flex flex-wrap gap-3 mb-10 animate-fadeInUp delay-300">
+            {[
+              { label: "Небольшая команда", value: "4–6 гостей" },
+              { label: "Катамаран", value: "до 10 гостей" },
+              { label: "Заезды", value: "сб → сб" },
+              { label: "Стоимость от", value: "650 € / неделю" },
+            ].map((s) => (
+              <div key={s.label} className="flex flex-col px-5 py-3 rounded-2xl"
+                style={{ background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.12)", backdropFilter: "blur(12px)" }}>
+                <span style={{ fontSize: "0.65rem", color: "rgba(255,255,255,0.45)", textTransform: "uppercase", letterSpacing: "0.08em" }}>{s.label}</span>
+                <span style={{ fontSize: "1rem", fontWeight: 600, color: "#fff", lineHeight: 1.2, marginTop: "2px" }}>{s.value}</span>
+              </div>
+            ))}
+          </div>
+
+          {/* CTA buttons */}
+          <div className="flex flex-wrap gap-4 animate-fadeInUp delay-400">
+            <a href="#routes" className="inline-flex items-center gap-2 px-8 py-4 rounded-full text-base font-semibold btn-teal" style={{ color: "var(--sea-deep)" }}>
+              Посмотреть даты <Icon name="ArrowRight" size={18} />
+            </a>
+            <a href="#booking" className="inline-flex items-center gap-2 px-8 py-4 rounded-full text-base font-semibold btn-outline-teal">
+              Забронировать каюту
+            </a>
           </div>
         </div>
 
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-scroll-hint" style={{ color: "var(--text-muted)" }}>
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-scroll-hint" style={{ color: "rgba(255,255,255,0.4)" }}>
           <span className="text-xs tracking-widest uppercase">Листать</span>
           <Icon name="ChevronDown" size={18} />
         </div>
@@ -541,11 +551,11 @@ export default function Index() {
             {GALLERY_ITEMS.map((item, i) => (
               <div key={item.label}
                 className={`relative rounded-2xl overflow-hidden card-hover reveal delay-${(i % 3 + 1) * 100}`}
-                style={{ minHeight: item.span ? "280px" : "200px" }}>
-                <div className={`absolute inset-0 bg-gradient-to-br ${item.bg}`} />
-                <div className="absolute inset-0 flex flex-col items-center justify-center gap-2">
-                  <div style={{ fontSize: "2.5rem" }}>{item.emoji}</div>
-                  <span className="text-sm font-medium" style={{ color: "rgba(255,255,255,0.7)" }}>{item.label}</span>
+                style={{ minHeight: item.tall ? "360px" : "220px" }}>
+                <img src={item.img} alt={item.label} className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 hover:scale-105" />
+                <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(6,15,30,0.7) 0%, transparent 50%)" }} />
+                <div className="absolute bottom-0 left-0 right-0 p-4">
+                  <span className="text-sm font-medium" style={{ color: "rgba(255,255,255,0.85)" }}>{item.label}</span>
                 </div>
               </div>
             ))}
