@@ -269,15 +269,15 @@ export default function Index() {
             <div className="reveal delay-200">
               <div className="grid grid-cols-2 gap-4">
                 {[
-                  { icon: "🌊", title: "На палубе", desc: "Завтраки, закаты, разговоры и морской воздух" },
-                  { icon: "🤿", title: "В море", desc: "Купание прямо с яхты в открытом море" },
-                  { icon: "⛵", title: "Под парусом", desc: "3–6 часов хода в день с остановками" },
-                  { icon: "🍋", title: "У ресторана", desc: "Ужины у маленьких заведений прямо у воды" },
+                  { icon: "🌊", title: "На палубе", desc: "Здесь проходит всё — завтраки под ветер, закаты с бокалом, разговоры до полуночи. Палуба становится вашим домом." },
+                  { icon: "🤿", title: "В открытом море", desc: "Прыжок прямо с борта в прозрачную воду. Снорклинг, сапы, рыбалка. Никаких пляжей и толпы — только вы и море." },
+                  { icon: "⛵", title: "Под парусом", desc: "Ветер надувает паруса, яхта кренится — и вы понимаете, зачем сюда приехали. 3–6 часов хода в день с остановками." },
+                  { icon: "🍋", title: "У берега", desc: "Ужин прямо с борта у пирса маленького ресторана. Свежая рыба, мезе, местное вино — и огни бухты вокруг." },
                 ].map((item) => (
-                  <div key={item.title} className="rounded-2xl p-5 card-hover" style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.12)" }}>
-                    <div className="text-2xl mb-3">{item.icon}</div>
-                    <div className="font-semibold mb-1 text-sm" style={{ color: "#fff" }}>{item.title}</div>
-                    <div className="text-xs leading-relaxed" style={{ color: "rgba(255,255,255,0.65)" }}>{item.desc}</div>
+                  <div key={item.title} className="rounded-2xl p-6 card-hover" style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.12)" }}>
+                    <div className="text-3xl mb-3">{item.icon}</div>
+                    <div className="font-semibold mb-2" style={{ color: "#fff", fontSize: "1rem" }}>{item.title}</div>
+                    <div className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.65)" }}>{item.desc}</div>
                   </div>
                 ))}
               </div>
@@ -308,13 +308,23 @@ export default function Index() {
               </div>
             ))}
           </div>
-          <div className="mt-10 glass rounded-2xl p-7 reveal delay-400">
-            <p className="text-xs tracking-widest uppercase mb-4" style={{ color: "var(--text-muted)" }}>Большую часть времени гости проводят</p>
-            <div className="flex flex-wrap justify-center gap-3">
-              {["На палубе", "В кокпите", "У мачты на подушках", "В море"].map((place) => (
-                <span key={place} className="px-4 py-2 rounded-full text-sm" style={{ background: "rgba(38,201,195,0.08)", color: "var(--teal)", border: "1px solid rgba(38,201,195,0.15)" }}>
-                  {place}
-                </span>
+          {/* Activities */}
+          <div className="mt-10 reveal delay-400">
+            <p className="text-xs tracking-widest uppercase mb-6 text-center" style={{ color: "var(--text-muted)" }}>Чем можно заняться по пути</p>
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+              {[
+                { icon: "🤿", title: "Снорклинг", desc: "Прозрачное дно, рыбы и морские звёзды прямо под яхтой. Маски и ласты на борту." },
+                { icon: "🏄", title: "Сапы", desc: "Встать на доску и пройти бухту — тихо, в своём темпе, с видом на скалы." },
+                { icon: "🎣", title: "Рыбалка", desc: "Закинуть снасть с кормы на ходу или на стоянке. Улов — на ужин." },
+                { icon: "🥾", title: "Ликийская тропа", desc: "Остановка в бухте — и пешая прогулка по древнему маршруту вдоль обрывов. Виды, которые не забудешь." },
+                { icon: "⛵", title: "Обучение яхтингу", desc: "Хочешь встать за штурвал? Капитан объяснит, как работают паруса и как держать курс." },
+                { icon: "🌊", title: "Морские купания", desc: "В бухтах без людей, прямо с борта — вода прозрачная до дна. Каждый день в новом месте." },
+              ].map((act) => (
+                <div key={act.title} className="rounded-2xl p-5 card-hover" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(38,201,195,0.1)" }}>
+                  <div className="text-2xl mb-3">{act.icon}</div>
+                  <div className="font-semibold mb-1.5 text-sm" style={{ color: "#fff" }}>{act.title}</div>
+                  <div className="text-xs leading-relaxed" style={{ color: "rgba(255,255,255,0.6)" }}>{act.desc}</div>
+                </div>
               ))}
             </div>
           </div>
@@ -415,24 +425,51 @@ export default function Index() {
             ))}
           </div>
 
-          <div className="mt-8 glass rounded-2xl p-8 reveal delay-400" style={{ border: "1px solid rgba(232,184,75,0.2)" }}>
-            <div className="grid md:grid-cols-2 gap-8 items-center">
-              <div>
-                <div className="text-3xl mb-3">🏆</div>
-                <h3 className="font-semibold text-xl mb-2" style={{ fontFamily: "'Cormorant Garamond', serif", color: "var(--gold)" }}>Аренда яхты целиком</h3>
-                <p className="text-sm leading-relaxed" style={{ color: "var(--text-secondary)" }}>
-                  Для компании от 4 человек — закрытое путешествие только для вашей команды и капитана. Девичники, семейные путешествия, компании друзей.
-                </p>
-              </div>
-              <div className="flex flex-col sm:flex-row gap-4 items-center">
+          <div className="mt-8 grid md:grid-cols-2 gap-5">
+            {/* Group discount */}
+            <div className="rounded-2xl p-8 reveal delay-400" style={{ border: "1px solid rgba(38,201,195,0.25)", background: "rgba(38,201,195,0.05)" }}>
+              <div className="flex items-start gap-4 mb-4">
+                <div className="text-3xl">👥</div>
                 <div>
-                  <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "2rem", fontWeight: 600, color: "var(--gold)" }}>от 3 000 €</div>
-                  <div className="text-sm" style={{ color: "var(--text-muted)" }}>за всю яхту / неделю</div>
+                  <div className="text-xs tracking-widest uppercase mb-1" style={{ color: "var(--teal)" }}>Специальные условия</div>
+                  <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.4rem", fontWeight: 600, color: "#fff" }}>Компания от 4 человек</h3>
                 </div>
-                <a href="#booking" className="btn-gold px-8 py-3 rounded-full text-sm" style={{ color: "var(--sea-deep)", whiteSpace: "nowrap" }}>
-                  Запросить условия
-                </a>
               </div>
+              <p className="text-sm leading-relaxed mb-5" style={{ color: "rgba(255,255,255,0.65)" }}>
+                Приезжаете командой? Занимаете несколько кают — и получаете скидку. Идеально для компаний друзей, девичников и семейных поездок.
+              </p>
+              <div className="flex items-center gap-4 mb-6 rounded-xl px-5 py-4" style={{ background: "rgba(38,201,195,0.1)", border: "1px solid rgba(38,201,195,0.2)" }}>
+                <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "3rem", fontWeight: 700, color: "var(--teal)", lineHeight: 1 }}>−10%</div>
+                <div className="text-sm" style={{ color: "rgba(255,255,255,0.7)" }}>
+                  скидка на стоимость<br />каждого участника
+                </div>
+              </div>
+              <a href="#contacts" className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm btn-outline-teal">
+                Узнать подробности <Icon name="ArrowRight" size={16} />
+              </a>
+            </div>
+
+            {/* Full yacht */}
+            <div className="rounded-2xl p-8 reveal delay-500" style={{ border: "1px solid rgba(232,184,75,0.3)", background: "rgba(232,184,75,0.04)" }}>
+              <div className="flex items-start gap-4 mb-4">
+                <div className="text-3xl">🏆</div>
+                <div>
+                  <div className="text-xs tracking-widest uppercase mb-1" style={{ color: "var(--gold)" }}>Закрытое путешествие</div>
+                  <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.4rem", fontWeight: 600, color: "#fff" }}>Аренда яхты целиком</h3>
+                </div>
+              </div>
+              <p className="text-sm leading-relaxed mb-5" style={{ color: "rgba(255,255,255,0.65)" }}>
+                Только ваша команда и капитан. Никаких попутчиков. Вы сами задаёте ритм: маршрут, стоянки, время отплытия. Девичники, свадьбы, корпоративы.
+              </p>
+              <div className="flex items-center gap-4 mb-6 rounded-xl px-5 py-4" style={{ background: "rgba(232,184,75,0.08)", border: "1px solid rgba(232,184,75,0.2)" }}>
+                <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "2rem", fontWeight: 700, color: "var(--gold)", lineHeight: 1 }}>от 3 000 €</div>
+                <div className="text-sm" style={{ color: "rgba(255,255,255,0.7)" }}>
+                  за всю яхту<br />/ неделю
+                </div>
+              </div>
+              <a href="#contacts" className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm btn-gold" style={{ color: "var(--sea-deep)" }}>
+                Запросить условия <Icon name="ArrowRight" size={16} />
+              </a>
             </div>
           </div>
         </div>
