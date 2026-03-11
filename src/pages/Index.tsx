@@ -48,10 +48,10 @@ const YACHT_TYPES = [
 
 const ROUTE_STOPS = [
   { name: "Фетхие / Мармарис", desc: "Старт из одной из красивейших марин Средиземноморья", icon: "⚓", img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/24f432de-4321-4ff7-a666-355f5ec5d770.jpg" },
-  { name: "Олюдениз", desc: "Знаменитая лагуна с бирюзовой водой и белым песком", icon: "🏖", img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/46a224ed-0c9e-465f-a97b-20fa3dbcc619.jpg" },
-  { name: "Бухта Бабочек", desc: "Уединённая бухта, доступная только с моря", icon: "🦋", img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/625de156-82ca-46d3-8609-47ac6e59c7f2.jpg" },
-  { name: "Остров Св. Николая", desc: "Руины древнего ликийского города прямо у кромки воды", icon: "🏛", img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/24f432de-4321-4ff7-a666-355f5ec5d770.jpg" },
-  { name: "Бухта Гемилер", desc: "Живописная якорная стоянка среди скал и оливков", icon: "⛰", img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/625de156-82ca-46d3-8609-47ac6e59c7f2.jpg" },
+  { name: "Олюдениз", desc: "Знаменитая лагуна с бирюзовой водой и белым песком", icon: "🏖", img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/0b2a898f-e8c3-439c-a974-3d7cf2883c34.jpg" },
+  { name: "Бухта Бабочек", desc: "Уединённая бухта, доступная только с моря", icon: "🦋", img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/23c69f90-c2f3-4dbe-93d9-3183595fbe5d.jpg" },
+  { name: "Остров Св. Николая", desc: "Руины древнего ликийского города прямо у кромки воды", icon: "🏛", img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/ab8d6dd3-7af1-4f9e-a417-d06307240426.jpg" },
+  { name: "Бухта Гемилер", desc: "Живописная якорная стоянка среди скал и оливков", icon: "⛰", img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/7d414dc4-051b-4225-b018-da9385f4069d.jpg" },
   { name: "Дикие бухты", desc: "Тихие стоянки вдали от туристических маршрутов", icon: "🌊", img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/cf38f7d5-0f77-4a83-888a-20fcd95c8f7c.jpg" },
 ];
 
@@ -108,12 +108,15 @@ const REVIEWS = [
 ];
 
 const GALLERY_ITEMS = [
-  { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/24f432de-4321-4ff7-a666-355f5ec5d770.jpg", label: "Бирюзовые бухты", tall: true },
-  { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/cf38f7d5-0f77-4a83-888a-20fcd95c8f7c.jpg", label: "Закат на яхте", tall: false },
-  { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/77cf7e79-9a8b-45ef-8b23-08b9914ee5fb.jpg", label: "Закат с борта", tall: false },
+  { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/0b2a898f-e8c3-439c-a974-3d7cf2883c34.jpg", label: "Бухта Бабочек", tall: true },
+  { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/cf38f7d5-0f77-4a83-888a-20fcd95c8f7c.jpg", label: "Закат на якоре", tall: false },
+  { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/23c69f90-c2f3-4dbe-93d9-3183595fbe5d.jpg", label: "Олюдениз", tall: false },
   { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/46a224ed-0c9e-465f-a97b-20fa3dbcc619.jpg", label: "На палубе", tall: false },
+  { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/ab8d6dd3-7af1-4f9e-a417-d06307240426.jpg", label: "Остров Св. Николая", tall: false },
+  { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/7d414dc4-051b-4225-b018-da9385f4069d.jpg", label: "Древние руины", tall: true },
+  { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/24f432de-4321-4ff7-a666-355f5ec5d770.jpg", label: "Бирюзовое море", tall: false },
   { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/625de156-82ca-46d3-8609-47ac6e59c7f2.jpg", label: "У скал", tall: false },
-  { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/cf38f7d5-0f77-4a83-888a-20fcd95c8f7c.jpg", label: "Марины Турции", tall: true },
+  { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/77cf7e79-9a8b-45ef-8b23-08b9914ee5fb.jpg", label: "Закат с борта", tall: false },
 ];
 
 export default function Index() {
@@ -572,49 +575,74 @@ export default function Index() {
 
       {/* CAPTAIN */}
       <section className="py-24 relative overflow-hidden" style={{ background: "#0d2040" }}>
-        <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse 60% 80% at 100% 50%, rgba(38,201,195,0.05) 0%, transparent 60%)" }} />
+        <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse 70% 90% at 0% 50%, rgba(38,201,195,0.04) 0%, transparent 60%)" }} />
         <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(38,201,195,0.3), transparent)" }} />
         <div className="relative max-w-7xl mx-auto px-6">
-          <div className="grid md:grid-cols-2 gap-16 items-center">
-            <div className="reveal">
-              {/* Captain photo */}
-              <div className="relative w-48 h-48 rounded-2xl overflow-hidden mb-8" style={{ border: "2px solid rgba(38,201,195,0.3)" }}>
-                <img
-                  src="https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/77cf7e79-9a8b-45ef-8b23-08b9914ee5fb.jpg"
-                  alt="Капитан Евгений"
-                  className="w-full h-full object-cover object-top"
-                />
-                <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(6,15,30,0.5) 0%, transparent 50%)" }} />
+
+          <div className="text-center mb-16 reveal">
+            <p className="text-xs tracking-widest uppercase mb-3" style={{ color: "var(--teal)" }}>Ваш капитан</p>
+            <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: 300, color: "var(--text-primary)" }}>
+              Евгений
+            </h2>
+          </div>
+
+          {/* Hero photo full-width */}
+          <div className="relative rounded-3xl overflow-hidden mb-12 reveal" style={{ height: "clamp(320px, 50vw, 520px)" }}>
+            <img
+              src="https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/4246cf5a-08f5-420e-9591-1b528a26e500.jpg"
+              alt="Капитан Евгений"
+              className="w-full h-full object-cover object-center"
+              style={{ filter: "brightness(0.85)" }}
+            />
+            <div className="absolute inset-0" style={{ background: "linear-gradient(to right, rgba(6,15,30,0.75) 0%, rgba(6,15,30,0.1) 60%)" }} />
+            <div className="absolute inset-0 flex items-end p-8 md:p-12">
+              <div className="max-w-lg">
+                <p className="text-xl md:text-2xl leading-relaxed mb-4" style={{ fontFamily: "'Cormorant Garamond', serif", fontStyle: "italic", color: "rgba(255,255,255,0.9)" }}>
+                  «Главный принцип на борту: уважение к морю, яхте и команде.»
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {["Права ГИМС РФ", "Лицензии IYT", "Член РГО"].map((badge) => (
+                    <span key={badge} className="px-3 py-1 rounded-full text-xs" style={{ background: "rgba(38,201,195,0.15)", color: "var(--teal)", border: "1px solid rgba(38,201,195,0.3)", backdropFilter: "blur(8px)" }}>
+                      ✓ {badge}
+                    </span>
+                  ))}
+                </div>
               </div>
-              <p className="text-xs tracking-widest uppercase mb-2" style={{ color: "var(--teal)" }}>Капитан</p>
-              <h2 className="mb-4" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(2.5rem, 5vw, 4rem)", fontWeight: 300, color: "var(--text-primary)" }}>
-                Евгений
-              </h2>
-              <p className="text-base leading-relaxed mb-6" style={{ color: "var(--text-secondary)" }}>
-                Вырос у моря и под парусом с детства. Прошёл акватории шести морей. Хорошо знает побережье Турции и множество красивых бухт.
+            </div>
+          </div>
+
+          {/* Details grid */}
+          <div className="grid md:grid-cols-3 gap-6">
+            <div className="glass rounded-2xl p-7 reveal delay-100">
+              <div className="text-2xl mb-4">⚓</div>
+              <h3 className="font-semibold mb-3" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.2rem", color: "#fff" }}>С детства у моря</h3>
+              <p className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.65)" }}>
+                Вырос у моря и под парусом с детства. Яхтинг — не профессия, а образ жизни. Знает каждую бухту южного побережья Турции.
               </p>
-              <div className="flex flex-wrap gap-3">
-                {["Права ГИМС РФ", "Лицензии IYT", "Член РГО"].map((badge) => (
-                  <span key={badge} className="px-3 py-1.5 rounded-full text-xs" style={{ background: "rgba(38,201,195,0.08)", color: "var(--teal)", border: "1px solid rgba(38,201,195,0.2)" }}>
-                    ✓ {badge}
-                  </span>
+            </div>
+
+            <div className="glass rounded-2xl p-7 reveal delay-200">
+              <div className="text-2xl mb-4">🌍</div>
+              <h3 className="font-semibold mb-3" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.2rem", color: "#fff" }}>6 морей за плечами</h3>
+              <div className="grid grid-cols-2 gap-2">
+                {["Азовское", "Каспийское", "Средиземное", "Эгейское", "Ионическое", "Адриатическое"].map((sea) => (
+                  <div key={sea} className="flex items-center gap-1.5 text-xs py-1.5" style={{ color: "rgba(255,255,255,0.6)", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+                    <span style={{ color: "var(--teal)", fontSize: "0.4rem" }}>●</span> {sea}
+                  </div>
                 ))}
               </div>
             </div>
-            <div className="reveal delay-300">
-              <div className="glass rounded-2xl p-8" style={{ border: "1px solid rgba(38,201,195,0.15)" }}>
-                <p className="text-xs tracking-widest uppercase mb-5" style={{ color: "var(--text-muted)" }}>Пройденные акватории</p>
-                <div className="grid grid-cols-2 gap-3 mb-6">
-                  {["Азовское", "Каспийское", "Средиземное", "Эгейское", "Ионическое", "Адриатическое"].map((sea) => (
-                    <div key={sea} className="flex items-center gap-2 py-2.5 px-3 rounded-lg text-sm" style={{ background: "rgba(38,201,195,0.06)", color: "var(--text-secondary)" }}>
-                      <span style={{ color: "var(--teal)", fontSize: "0.5rem" }}>●</span> {sea} море
-                    </div>
-                  ))}
-                </div>
-                <div className="pt-5 border-t" style={{ borderColor: "rgba(255,255,255,0.06)" }}>
-                  <p className="text-sm italic" style={{ color: "var(--text-secondary)" }}>
-                    «Главный принцип на борту: уважение к морю, яхте и команде.»
-                  </p>
+
+            <div className="glass rounded-2xl p-7 reveal delay-300">
+              <div className="text-2xl mb-4">🧭</div>
+              <h3 className="font-semibold mb-3" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.2rem", color: "#fff" }}>О морской болезни</h3>
+              <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,255,255,0.65)" }}>
+                Капитан знает множество способов её избежать: спокойные маршруты, защищённые акватории, правильный ритм перехода.
+              </p>
+              <div className="flex items-center gap-3 rounded-xl px-4 py-3" style={{ background: "rgba(38,201,195,0.08)", border: "1px solid rgba(38,201,195,0.15)" }}>
+                <span style={{ fontSize: "1.4rem" }}>😌</span>
+                <div className="text-xs" style={{ color: "rgba(255,255,255,0.7)" }}>
+                  <strong style={{ color: "#fff" }}>90%</strong> гостей не испытывают дискомфорта
                 </div>
               </div>
             </div>
