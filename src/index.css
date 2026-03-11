@@ -35,9 +35,9 @@
     --radius: 0.75rem;
 
     /* Custom yacht colors */
-    --sea-deep: #060f1e;
-    --sea-mid: #0a1628;
-    --sea-surface: #0d2040;
+    --sea-deep: #0d1f3c;
+    --sea-mid: #112240;
+    --sea-surface: #163054;
     --teal: #26c9c3;
     --teal-light: #4de8e2;
     --teal-glow: rgba(38, 201, 195, 0.15);
@@ -60,6 +60,7 @@
     background-color: var(--sea-deep);
     color: var(--text-primary);
     overflow-x: hidden;
+    font-size: 17px;
   }
 
   html {

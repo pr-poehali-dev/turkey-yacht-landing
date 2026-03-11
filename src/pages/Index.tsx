@@ -7,6 +7,7 @@ const NAV_LINKS = [
   { label: "Услуги", href: "#services" },
   { label: "Галерея", href: "#gallery" },
   { label: "Отзывы", href: "#reviews" },
+  { label: "FAQ", href: "#faq" },
   { label: "Контакты", href: "#contacts" },
 ];
 
@@ -117,7 +118,35 @@ const GALLERY_ITEMS = [
   { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/24f432de-4321-4ff7-a666-355f5ec5d770.jpg", label: "Бирюзовое море", tall: false },
   { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/625de156-82ca-46d3-8609-47ac6e59c7f2.jpg", label: "У скал", tall: false },
   { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/77cf7e79-9a8b-45ef-8b23-08b9914ee5fb.jpg", label: "Закат с борта", tall: false },
+  { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/a54dd1b8-4eef-4246-8f69-05765ebfb795.jpg", label: "Закат на море", tall: false },
+  { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/3c1ab62f-1ef3-4ff8-9d47-99e57b6f1f19.jpg", label: "Фетхие — марина", tall: false },
 ];
+
+function FaqItem({ question, answer }: { question: string; answer: string }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div
+      className="rounded-2xl overflow-hidden reveal"
+      style={{ border: `1px solid ${open ? "rgba(38,201,195,0.3)" : "rgba(255,255,255,0.08)"}`, transition: "border-color 0.3s" }}
+    >
+      <button
+        onClick={() => setOpen(!open)}
+        className="w-full flex items-center justify-between px-6 py-5 text-left"
+        style={{ background: open ? "rgba(38,201,195,0.06)" : "rgba(255,255,255,0.03)", transition: "background 0.3s" }}
+      >
+        <span style={{ fontFamily: "'Golos Text', sans-serif", fontSize: "1rem", fontWeight: 600, color: "#fff", paddingRight: "1rem" }}>
+          {question}
+        </span>
+        <span style={{ color: "var(--teal)", fontSize: "1.2rem", flexShrink: 0, transition: "transform 0.3s", transform: open ? "rotate(45deg)" : "rotate(0deg)" }}>+</span>
+      </button>
+      {open && (
+        <div className="px-6 pb-5" style={{ background: "rgba(38,201,195,0.03)" }}>
+          <p style={{ color: "rgba(255,255,255,0.7)", fontSize: "0.95rem", lineHeight: 1.7 }}>{answer}</p>
+        </div>
+      )}
+    </div>
+  );
+}
 
 export default function Index() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -145,7 +174,7 @@ export default function Index() {
       {/* NAVBAR */}
       <nav className="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
         style={{
-          background: navOpaque ? "rgba(6,15,30,0.96)" : "transparent",
+          background: navOpaque ? "rgba(13,31,60,0.96)" : "transparent",
           backdropFilter: navOpaque ? "blur(20px)" : "none",
           borderBottom: navOpaque ? "1px solid rgba(38,201,195,0.1)" : "none",
         }}>
@@ -191,8 +220,8 @@ export default function Index() {
             style={{ filter: "brightness(0.55)" }}
           />
           {/* gradient overlays */}
-          <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(6,15,30,0.98) 0%, rgba(6,15,30,0.55) 45%, rgba(6,15,30,0.1) 100%)" }} />
-          <div className="absolute inset-0" style={{ background: "linear-gradient(to right, rgba(6,15,30,0.5) 0%, transparent 60%)" }} />
+          <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(13,31,60,0.98) 0%, rgba(13,31,60,0.55) 45%, rgba(13,31,60,0.1) 100%)" }} />
+          <div className="absolute inset-0" style={{ background: "linear-gradient(to right, rgba(13,31,60,0.5) 0%, transparent 60%)" }} />
         </div>
 
         {/* Content */}
@@ -251,7 +280,7 @@ export default function Index() {
       </section>
 
       {/* ABOUT */}
-      <section className="py-24 relative overflow-hidden" style={{ background: "linear-gradient(180deg, #060f1e 0%, #0a1628 100%)" }}>
+      <section className="py-24 relative overflow-hidden" style={{ background: "linear-gradient(180deg, #0d1f3c 0%, #112240 100%)" }}>
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <div className="reveal">
@@ -287,7 +316,7 @@ export default function Index() {
       </section>
 
       {/* DAY SCHEDULE */}
-      <section className="py-20 relative" style={{ background: "linear-gradient(180deg, #0a1628 0%, #0d2040 100%)" }}>
+      <section className="py-20 relative" style={{ background: "linear-gradient(180deg, #112240 0%, #163054 100%)" }}>
         <div className="max-w-4xl mx-auto px-6 text-center">
           <p className="text-xs tracking-widest uppercase mb-3 reveal" style={{ color: "var(--teal)" }}>Жизнь на яхте</p>
           <h2 className="reveal delay-100 mb-16" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: 300, color: "var(--text-primary)" }}>
@@ -299,7 +328,7 @@ export default function Index() {
                 style={{ border: "1px solid rgba(38,201,195,0.12)" }}>
                 <div className="relative h-52 overflow-hidden">
                   <img src={item.img} alt={item.time} className="w-full h-full object-cover" />
-                  <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(6,15,30,0.85) 0%, rgba(6,15,30,0.1) 60%)" }} />
+                  <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(13,31,60,0.85) 0%, rgba(13,31,60,0.1) 60%)" }} />
                   <div className="absolute bottom-4 left-5 text-xs tracking-widest uppercase font-semibold" style={{ color: "var(--teal)" }}>{item.time}</div>
                 </div>
                 <div className="p-6" style={{ background: "rgba(13,32,64,0.7)", backdropFilter: "blur(12px)" }}>
@@ -332,7 +361,7 @@ export default function Index() {
       </section>
 
       {/* ROUTES */}
-      <section id="routes" className="py-24 relative" style={{ background: "linear-gradient(180deg, #0d2040 0%, #060f1e 100%)" }}>
+      <section id="routes" className="py-24 relative" style={{ background: "linear-gradient(180deg, #163054 0%, #0d1f3c 100%)" }}>
         <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(38,201,195,0.3), transparent)" }} />
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
@@ -350,7 +379,7 @@ export default function Index() {
                 style={{ border: "1px solid rgba(38,201,195,0.12)" }}>
                 <div className="relative h-40 overflow-hidden">
                   <img src={stop.img} alt={stop.name} className="w-full h-full object-cover transition-transform duration-700 hover:scale-105" />
-                  <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(6,15,30,0.9) 0%, rgba(6,15,30,0.1) 60%)" }} />
+                  <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(13,31,60,0.9) 0%, rgba(13,31,60,0.1) 60%)" }} />
                   <div className="absolute bottom-3 left-4 flex items-center gap-2">
                     <span className="text-xl">{stop.icon}</span>
                     <h3 className="font-semibold text-sm" style={{ color: "#fff" }}>{stop.name}</h3>
@@ -371,7 +400,7 @@ export default function Index() {
       </section>
 
       {/* YACHTS */}
-      <section id="yachts" className="py-24 relative" style={{ background: "#0a1628" }}>
+      <section id="yachts" className="py-24 relative" style={{ background: "#112240" }}>
         <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(38,201,195,0.3), transparent)" }} />
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
@@ -379,6 +408,17 @@ export default function Index() {
             <h2 className="reveal delay-100" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: 300, color: "var(--text-primary)" }}>
               Выберите свою яхту
             </h2>
+          </div>
+          <div className="mb-10 rounded-2xl overflow-hidden reveal" style={{ border: "1px solid rgba(255,255,255,0.1)", background: "#fff" }}>
+            <img
+              src="https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/066c3166-b667-4161-b74b-d1e9d4d81630.jpg"
+              alt="Планировка яхты"
+              className="w-full object-contain"
+              style={{ maxHeight: "260px", padding: "1rem" }}
+            />
+            <div className="px-6 py-4" style={{ background: "rgba(13,32,64,0.9)" }}>
+              <p className="text-sm" style={{ color: "rgba(255,255,255,0.6)" }}>Типовая планировка Classic Yacht — 3 каюты, кухня, салон, 2 санузла</p>
+            </div>
           </div>
           <div className="grid md:grid-cols-3 gap-6">
             {YACHT_TYPES.map((yacht, i) => (
@@ -476,7 +516,7 @@ export default function Index() {
       </section>
 
       {/* SERVICES */}
-      <section id="services" className="py-24 relative" style={{ background: "linear-gradient(180deg, #0a1628 0%, #060f1e 100%)" }}>
+      <section id="services" className="py-24 relative" style={{ background: "linear-gradient(180deg, #112240 0%, #0d1f3c 100%)" }}>
         <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(38,201,195,0.3), transparent)" }} />
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
@@ -508,7 +548,7 @@ export default function Index() {
                   <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "2.4rem", fontWeight: 600, color: "#fff", lineHeight: 1 }}>650 €</div>
                   <div className="text-xs mt-1" style={{ color: "rgba(255,255,255,0.45)" }}>за человека / неделю</div>
                 </div>
-                <div className="px-6 py-5" style={{ background: "rgba(6,15,30,0.6)" }}>
+                <div className="px-6 py-5" style={{ background: "rgba(13,31,60,0.6)" }}>
                   <div className="space-y-2 mb-4">
                     {[
                       { label: "Верёвочный сбор", val: "400 €" },
@@ -534,7 +574,7 @@ export default function Index() {
                   <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "2.4rem", fontWeight: 600, color: "var(--teal)", lineHeight: 1 }}>880 €</div>
                   <div className="text-xs mt-1" style={{ color: "rgba(255,255,255,0.45)" }}>за человека / неделю</div>
                 </div>
-                <div className="px-6 py-5" style={{ background: "rgba(6,15,30,0.6)" }}>
+                <div className="px-6 py-5" style={{ background: "rgba(13,31,60,0.6)" }}>
                   <div className="space-y-2 mb-4">
                     {[
                       { label: "Верёвочный сбор", val: "630 €" },
@@ -557,7 +597,7 @@ export default function Index() {
                   <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "2.4rem", fontWeight: 600, color: "#fff", lineHeight: 1 }}>975 €</div>
                   <div className="text-xs mt-1" style={{ color: "rgba(255,255,255,0.45)" }}>за человека / неделю</div>
                 </div>
-                <div className="px-6 py-5" style={{ background: "rgba(6,15,30,0.6)" }}>
+                <div className="px-6 py-5" style={{ background: "rgba(13,31,60,0.6)" }}>
                   <div className="space-y-2 mb-4">
                     {[
                       { label: "Верёвочный сбор", val: "725 €" },
@@ -575,7 +615,36 @@ export default function Index() {
             </div>
           </div>
 
-          <div className="glass rounded-2xl p-8 reveal delay-400" style={{ border: "1px solid rgba(38,201,195,0.15)" }}>
+          <div className="mt-8 grid md:grid-cols-2 gap-5 reveal delay-400">
+            {/* Included */}
+            <div className="rounded-2xl p-7" style={{ background: "rgba(38,201,195,0.05)", border: "1px solid rgba(38,201,195,0.2)" }}>
+              <div className="text-2xl mb-4">✅</div>
+              <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.4rem", fontWeight: 600, color: "#fff", marginBottom: "1rem" }}>Входит в стоимость</h3>
+              <div className="space-y-2.5">
+                {["Проживание на яхте всю неделю", "Услуги опытного капитана", "Маршрут по бухтам и стоянкам", "Топливо и навигация", "Всё оборудование яхты", "Маски, ласты, сапы на борту"].map((item) => (
+                  <div key={item} className="flex items-start gap-3">
+                    <span style={{ color: "var(--teal)", marginTop: "2px", flexShrink: 0 }}>✓</span>
+                    <span style={{ color: "rgba(255,255,255,0.8)", fontSize: "0.95rem" }}>{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+            {/* Not included */}
+            <div className="rounded-2xl p-7" style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.1)" }}>
+              <div className="text-2xl mb-4">📋</div>
+              <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.4rem", fontWeight: 600, color: "#fff", marginBottom: "1rem" }}>Оплачивается отдельно</h3>
+              <div className="space-y-2.5">
+                {["Питание (продукты или рестораны)", "Стоянки в маринах (≈ 20–50 € / ночь)", "Перелёт до Турции и обратно", "Личные расходы"].map((item) => (
+                  <div key={item} className="flex items-start gap-3">
+                    <span style={{ color: "rgba(255,255,255,0.3)", marginTop: "2px", flexShrink: 0 }}>–</span>
+                    <span style={{ color: "rgba(255,255,255,0.6)", fontSize: "0.95rem" }}>{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div className="glass rounded-2xl p-8 reveal delay-400 mt-6" style={{ border: "1px solid rgba(38,201,195,0.15)" }}>
             <h3 className="font-semibold text-lg mb-4" style={{ fontFamily: "'Cormorant Garamond', serif", color: "var(--text-primary)" }}>
               👨‍🍳 Повар на борту
             </h3>
@@ -611,7 +680,7 @@ export default function Index() {
       </section>
 
       {/* CAPTAIN */}
-      <section className="py-24 relative overflow-hidden" style={{ background: "#0d2040" }}>
+      <section className="py-24 relative overflow-hidden" style={{ background: "#163054" }}>
         <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse 70% 90% at 0% 50%, rgba(38,201,195,0.04) 0%, transparent 60%)" }} />
         <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(38,201,195,0.3), transparent)" }} />
         <div className="relative max-w-7xl mx-auto px-6">
@@ -626,19 +695,19 @@ export default function Index() {
           {/* Hero photo full-width */}
           <div className="relative rounded-3xl overflow-hidden mb-12 reveal" style={{ height: "clamp(320px, 50vw, 520px)" }}>
             <img
-              src="https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/4246cf5a-08f5-420e-9591-1b528a26e500.jpg"
+              src="https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/545b2380-b99a-4cc1-8f1c-be8ff1ba5c68.jpg"
               alt="Капитан Евгений"
               className="w-full h-full object-cover object-center"
               style={{ filter: "brightness(0.85)" }}
             />
-            <div className="absolute inset-0" style={{ background: "linear-gradient(to right, rgba(6,15,30,0.75) 0%, rgba(6,15,30,0.1) 60%)" }} />
+            <div className="absolute inset-0" style={{ background: "linear-gradient(to right, rgba(13,31,60,0.75) 0%, rgba(13,31,60,0.1) 60%)" }} />
             <div className="absolute inset-0 flex items-end p-8 md:p-12">
               <div className="max-w-lg">
                 <p className="text-xl md:text-2xl leading-relaxed mb-4" style={{ fontFamily: "'Cormorant Garamond', serif", fontStyle: "italic", color: "rgba(255,255,255,0.9)" }}>
                   «Главный принцип на борту: уважение к морю, яхте и команде.»
                 </p>
                 <div className="flex flex-wrap gap-2">
-                  {["Права ГИМС РФ", "Лицензии IYT", "Член РГО"].map((badge) => (
+                  {["Права ГИМС РФ с 2006 года", "Международные права IYT", "Международный паспорт моряка", "Член РГО"].map((badge) => (
                     <span key={badge} className="px-3 py-1 rounded-full text-xs" style={{ background: "rgba(38,201,195,0.15)", color: "var(--teal)", border: "1px solid rgba(38,201,195,0.3)", backdropFilter: "blur(8px)" }}>
                       ✓ {badge}
                     </span>
@@ -646,6 +715,16 @@ export default function Index() {
                 </div>
               </div>
             </div>
+          </div>
+
+          {/* Sail photo */}
+          <div className="mb-6 rounded-2xl overflow-hidden reveal" style={{ border: "1px solid rgba(255,255,255,0.1)" }}>
+            <img
+              src="https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/52624ebb-a4af-4413-b88b-86496a8ff531.jpg"
+              alt="Парус на фоне неба"
+              className="w-full object-cover"
+              style={{ maxHeight: "320px", objectPosition: "center" }}
+            />
           </div>
 
           {/* Details grid */}
@@ -660,9 +739,9 @@ export default function Index() {
 
             <div className="glass rounded-2xl p-7 reveal delay-200">
               <div className="text-2xl mb-4">🌍</div>
-              <h3 className="font-semibold mb-3" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.2rem", color: "#fff" }}>6 морей за плечами</h3>
+              <h3 className="font-semibold mb-3" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.2rem", color: "#fff" }}>8 морей за плечами</h3>
               <div className="grid grid-cols-2 gap-2">
-                {["Азовское", "Каспийское", "Средиземное", "Эгейское", "Ионическое", "Адриатическое"].map((sea) => (
+                {["Азовское", "Каспийское", "Средиземное", "Эгейское", "Ионическое", "Адриатическое", "Мраморное", "Миртойское"].map((sea) => (
                   <div key={sea} className="flex items-center gap-1.5 text-xs py-1.5" style={{ color: "rgba(255,255,255,0.6)", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
                     <span style={{ color: "var(--teal)", fontSize: "0.4rem" }}>●</span> {sea}
                   </div>
@@ -688,7 +767,7 @@ export default function Index() {
       </section>
 
       {/* GALLERY */}
-      <section id="gallery" className="py-24 relative" style={{ background: "linear-gradient(180deg, #0d2040 0%, #060f1e 100%)" }}>
+      <section id="gallery" className="py-24 relative" style={{ background: "linear-gradient(180deg, #163054 0%, #0d1f3c 100%)" }}>
         <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(38,201,195,0.3), transparent)" }} />
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
@@ -703,7 +782,7 @@ export default function Index() {
                 className={`relative rounded-2xl overflow-hidden card-hover reveal delay-${(i % 3 + 1) * 100}`}
                 style={{ minHeight: item.tall ? "360px" : "220px" }}>
                 <img src={item.img} alt={item.label} className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 hover:scale-105" />
-                <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(6,15,30,0.7) 0%, transparent 50%)" }} />
+                <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(13,31,60,0.7) 0%, transparent 50%)" }} />
                 <div className="absolute bottom-0 left-0 right-0 p-4">
                   <span className="text-sm font-medium" style={{ color: "rgba(255,255,255,0.85)" }}>{item.label}</span>
                 </div>
@@ -714,7 +793,7 @@ export default function Index() {
       </section>
 
       {/* REVIEWS */}
-      <section id="reviews" className="py-24 relative" style={{ background: "#0a1628" }}>
+      <section id="reviews" className="py-24 relative" style={{ background: "#112240" }}>
         <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(38,201,195,0.3), transparent)" }} />
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
@@ -746,7 +825,7 @@ export default function Index() {
       </section>
 
       {/* BOOKING */}
-      <section id="booking" className="py-24 relative overflow-hidden" style={{ background: "#060f1e" }}>
+      <section id="booking" className="py-24 relative overflow-hidden" style={{ background: "#0d1f3c" }}>
         <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse 80% 60% at 50% 100%, rgba(38,201,195,0.06) 0%, transparent 70%)" }} />
         <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(38,201,195,0.3), transparent)" }} />
         <div className="relative max-w-3xl mx-auto px-6 text-center">
@@ -784,8 +863,38 @@ export default function Index() {
         </div>
       </section>
 
+      {/* FAQ */}
+      <section id="faq" className="py-24 relative" style={{ background: "#112240" }}>
+        <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(38,201,195,0.3), transparent)" }} />
+        <div className="max-w-4xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <p className="text-xs tracking-widest uppercase mb-3 reveal" style={{ color: "var(--teal)" }}>FAQ</p>
+            <h2 className="reveal delay-100" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: 300, color: "var(--text-primary)" }}>
+              Частые вопросы
+            </h2>
+          </div>
+          <div className="space-y-3">
+            {[
+              { q: "Нужно ли иметь опыт яхтинга?", a: "Нет. Для путешествия не требуется никакого опыта. Капитан управляет яхтой и отвечает за маршрут и безопасность. Если интересно, можно поучаствовать в управлении — попробовать держать курс, работать с парусами и узнать, как устроена жизнь на яхте." },
+              { q: "Сколько человек будет на борту?", a: "Обычно 4–6 человек плюс капитан, на катамаране до 10. Это небольшая команда, поэтому на борту сохраняется спокойная и дружелюбная атмосфера." },
+              { q: "Где мы будем ночевать?", a: "Два варианта: в тихих бухтах на якоре — с чистой водой и звёздным небом, или в маринах небольших прибрежных городов. Чаще всего ночёвки проходят в красивых бухтах или у частных пирсов ресторанов со средиземноморской кухней." },
+              { q: "Как проходит обычный день на яхте?", a: "Утром — завтрак и купание. Днём — переход под парусом и остановки в бухтах. Вечером — новая стоянка и ужин на берегу или на яхте. Каждый день — новая бухта и новые пейзажи." },
+              { q: "Будет ли морская болезнь?", a: "В большинстве случаев её не бывает: переходы обычно проходят вдоль берега, катамараны и современные яхты устойчивы, а при необходимости капитан выбирает спокойные маршруты." },
+              { q: "Тесно ли на яхте?", a: "Яхта устроена компактно, но продуманно. На борту есть каюты для сна, кухня, душ и туалеты, просторная палуба и зоны отдыха. Большую часть времени гости проводят на палубе или в море." },
+              { q: "Как организовано питание?", a: "Несколько вариантов: готовить на яхте, закупать продукты вместе или ужинать в ресторанах на берегу. Обычно команда выбирает комфортный для всех вариант." },
+              { q: "Безопасно ли путешествовать на яхте?", a: "Капитан имеет многолетний опыт морских переходов и международные лицензии. На борту есть всё необходимое оборудование безопасности. Маршрут всегда строится с учётом погодных условий." },
+              { q: "Можно ли поехать одному?", a: "Да. Многие гости приезжают по одному и знакомятся уже на борту. Через пару дней команда обычно становится дружной компанией." },
+              { q: "Можно ли арендовать яхту полностью?", a: "Да. Яхту можно забронировать целиком для компании друзей, семьи, девичника или свадебного путешествия." },
+              { q: "Что самое ценное в таком путешествии?", a: "Каждый день начинается в новой бухте. Нет спешки, нет толп туристов, нет привычной суеты. Есть море, ветер и ощущение свободы. Через несколько дней многие замечают, что перестают смотреть в телефон и просто начинают жить моментом." },
+            ].map((item, i) => (
+              <FaqItem key={i} question={item.q} answer={item.a} />
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* CONTACTS */}
-      <section id="contacts" className="py-24 relative" style={{ background: "#0d2040" }}>
+      <section id="contacts" className="py-24 relative" style={{ background: "#163054" }}>
         <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(38,201,195,0.3), transparent)" }} />
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
