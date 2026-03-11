@@ -4,6 +4,7 @@ import Icon from "@/components/ui/icon";
 const NAV_LINKS = [
   { label: "Маршруты", href: "#routes" },
   { label: "Яхты", href: "#yachts" },
+  { label: "Размещение", href: "#accommodation" },
   { label: "Услуги", href: "#services" },
   { label: "Галерея", href: "#gallery" },
   { label: "Отзывы", href: "#reviews" },
@@ -13,47 +14,56 @@ const NAV_LINKS = [
 
 const YACHT_TYPES = [
   {
-    name: "Classic Yacht",
+    name: "Bavaria 46",
+    subtitle: "Стандарт",
     icon: "⛵",
     tag: "Базовый",
     tagColor: "var(--teal)",
-    desc: "Классическая парусная яхта. Настоящий опыт жизни под парусом.",
-    specs: ["3 каюты", "4–6 гостей + капитан"],
+    desc: "Классическая немецкая парусная яхта. Надёжная, удобная, настоящий опыт жизни под парусом.",
+    specs: ["3 каюты", "4–6 гостей + капитан", "Душ и туалет на борту"],
     price: "от 650 €",
     priceNote: "за человека / неделю",
     highlight: false,
+    img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80",
   },
   {
-    name: "Comfort Yacht",
+    name: "Dufour 460",
+    subtitle: "Комфорт",
     icon: "🛥",
     tag: "Популярный",
     tagColor: "var(--gold)",
-    desc: "Больше пространства в каютах и на палубе. Увеличенный уровень комфорта.",
-    specs: ["Просторные каюты", "Больше места на палубе"],
+    desc: "Французская яхта с просторными каютами и широкими кокпитами. Больше комфорта на каждом переходе.",
+    specs: ["Просторные каюты", "Больше места на палубе", "Отдельный санузел"],
     price: "≈ 880 €",
     priceNote: "за человека / неделю",
     highlight: true,
+    img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/fac0c71e-8b54-4b85-b16f-a8fd10f0f1ec.jpg",
   },
   {
-    name: "Premium Catamaran",
+    name: "Fountaine Pajot Astréa 42",
+    subtitle: "Премиум",
     icon: "🚢",
     tag: "Премиум",
     tagColor: "#a78bfa",
-    desc: "Двухкорпусная яхта. Максимальная устойчивость и пространство для вашей команды.",
-    specs: ["До 10 гостей", "Идеально для компаний"],
+    desc: "Двухкорпусная яхта. Максимальная устойчивость, широкий кокпит и максимальное пространство.",
+    specs: ["До 10 гостей", "4 каюты + салон", "Идеально для компаний"],
     price: "≈ 975 €",
     priceNote: "за человека / неделю",
     highlight: false,
+    img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/2a72d937-7381-4b29-9235-12ad76dbe445.jpg",
   },
 ];
 
 const ROUTE_STOPS = [
-  { name: "Фетхие / Мармарис", desc: "Старт из одной из красивейших марин Средиземноморья", icon: "⚓", img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/24f432de-4321-4ff7-a666-355f5ec5d770.jpg" },
-  { name: "Олюдениз", desc: "Знаменитая лагуна с бирюзовой водой и белым песком", icon: "🏖", img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/0b2a898f-e8c3-439c-a974-3d7cf2883c34.jpg" },
-  { name: "Бухта Бабочек", desc: "Уединённая бухта, доступная только с моря", icon: "🦋", img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/23c69f90-c2f3-4dbe-93d9-3183595fbe5d.jpg" },
-  { name: "Остров Св. Николая", desc: "Руины древнего ликийского города прямо у кромки воды", icon: "🏛", img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/ab8d6dd3-7af1-4f9e-a417-d06307240426.jpg" },
-  { name: "Бухта Гемилер", desc: "Живописная якорная стоянка среди скал и оливков", icon: "⛰", img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/7d414dc4-051b-4225-b018-da9385f4069d.jpg" },
-  { name: "Дикие бухты", desc: "Тихие стоянки вдали от туристических маршрутов", icon: "🌊", img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/cf38f7d5-0f77-4a83-888a-20fcd95c8f7c.jpg" },
+  { name: "Фетхие / Мармарис", desc: "Старт из одной из красивейших марин Средиземноморья. Набираем провизию, знакомимся с командой.", icon: "⚓", img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/24f432de-4321-4ff7-a666-355f5ec5d770.jpg" },
+  { name: "Олюдениз", desc: "Знаменитая бирюзовая лагуна с белым песком — одно из красивейших мест Турции.", icon: "🏖", img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/0b2a898f-e8c3-439c-a974-3d7cf2883c34.jpg" },
+  { name: "Бухта Бабочек", desc: "Уединённая бухта, доступная только с моря. Снорклинг и ныряние у скал.", icon: "🦋", img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/23c69f90-c2f3-4dbe-93d9-3183595fbe5d.jpg" },
+  { name: "Остров Св. Николая", desc: "Руины древнего ликийского города прямо у кромки воды. Можно исследовать пешком.", icon: "🏛", img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/ab8d6dd3-7af1-4f9e-a417-d06307240426.jpg" },
+  { name: "Бухта Гемилер", desc: "Живописная якорная стоянка среди скал и оливков. Идеально для рыбалки.", icon: "⛰", img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/7d414dc4-051b-4225-b018-da9385f4069d.jpg" },
+  { name: "Дикие бухты", desc: "Тихие стоянки вдали от туристов. Морская охота, фридайвинг, закаты у воды.", icon: "🌊", img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/cf38f7d5-0f77-4a83-888a-20fcd95c8f7c.jpg" },
+  { name: "Кас / Калкан", desc: "Живописные рыбацкие городки с террасными ресторанами и ночной жизнью.", icon: "🏘", img: "https://images.unsplash.com/photo-1589083130544-0d6a2926e519?w=600&q=80" },
+  { name: "Кекова", desc: "Затопленный античный город Симена — история прямо под водой, видна без маски.", icon: "🏺", img: "https://images.unsplash.com/photo-1555993539-1732b0258235?w=600&q=80" },
+  { name: "Демре / Мира", desc: "Древний ликийский город и церковь Святого Николая. Гробницы, высеченные в скалах.", icon: "🗿", img: "https://images.unsplash.com/photo-1564507592333-c60657eea523?w=600&q=80" },
 ];
 
 const DAY_SCHEDULE = [
@@ -78,6 +88,9 @@ const DAY_SCHEDULE = [
 ];
 
 const SPECIAL_WEEKS = [
+  { icon: "🤿", title: "Морская охота и фридайвинг", desc: "Спускаешься на глубину с ружьём — и ужин уже на борту. Кристальная вода, рыба у самых скал." },
+  { icon: "🎣", title: "Рыбалка", desc: "Закинуть снасть прямо с кормы — на ходу или на стоянке. Свежий улов сразу на сковороду." },
+  { icon: "⛵", title: "Обучение яхтингу", desc: "Встань за штурвал и возьми курс сам. Капитан обучит управлению парусами прямо в море." },
   { icon: "💍", title: "Свадебные путешествия", desc: "Капитан имеет право регистрировать брак — церемония прямо на борту яхты." },
   { icon: "👯‍♀️", title: "Девичники", desc: "Неделя красивых бухт, моря и закатов с подругами." },
   { icon: "👥", title: "Компании друзей", desc: "Лучший формат для тех, кто ценит свободу и настоящие приключения." },
@@ -342,17 +355,23 @@ export default function Index() {
             <p className="text-xs tracking-widest uppercase mb-6 text-center" style={{ color: "var(--text-muted)" }}>Чем можно заняться по пути</p>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
               {[
-                { icon: "🤿", title: "Снорклинг", desc: "Прозрачное дно, рыбы и морские звёзды прямо под яхтой. Маски и ласты на борту." },
-                { icon: "🏄", title: "Сапы", desc: "Встать на доску и пройти бухту — тихо, в своём темпе, с видом на скалы." },
-                { icon: "🎣", title: "Рыбалка", desc: "Закинуть снасть с кормы на ходу или на стоянке. Улов — на ужин." },
-                { icon: "🥾", title: "Ликийская тропа", desc: "Остановка в бухте — и пешая прогулка по древнему маршруту вдоль обрывов. Виды, которые не забудешь." },
-                { icon: "⛵", title: "Обучение яхтингу", desc: "Хочешь встать за штурвал? Капитан объяснит, как работают паруса и как держать курс." },
-                { icon: "🌊", title: "Морские купания", desc: "В бухтах без людей, прямо с борта — вода прозрачная до дна. Каждый день в новом месте." },
+                { icon: "🤿", title: "Морская охота", desc: "Нырок на глубину с ружьём — и ужин уже на борту. Кристальная вода, рыба у самых скал.", img: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&q=80" },
+                { icon: "🦈", title: "Фридайвинг", desc: "Задержка дыхания, тишина под водой и бескрайняя синева. Инструктаж на борту.", img: "https://images.unsplash.com/photo-1559827291-72ee739d0d9a?w=400&q=80" },
+                { icon: "🤿", title: "Снорклинг", desc: "Прозрачное дно, рыбы и морские звёзды прямо под яхтой. Маски и ласты на борту.", img: "https://images.unsplash.com/photo-1583212292454-1fe6229603b7?w=400&q=80" },
+                { icon: "🏄", title: "Сапы", desc: "Встать на доску и пройти бухту — тихо, в своём темпе, с видом на скалы.", img: "https://images.unsplash.com/photo-1531722569936-825d4ebd3e1e?w=400&q=80" },
+                { icon: "🎣", title: "Рыбалка", desc: "Закинуть снасть с кормы на ходу или на стоянке. Улов — на ужин.", img: "https://images.unsplash.com/photo-1500099817043-86d46000d58f?w=400&q=80" },
+                { icon: "🌊", title: "Морские купания", desc: "В бухтах без людей, прямо с борта — вода прозрачная до дна. Каждый день в новом месте.", img: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&q=80" },
               ].map((act) => (
-                <div key={act.title} className="rounded-2xl p-5 card-hover" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(38,201,195,0.1)" }}>
-                  <div className="text-2xl mb-3">{act.icon}</div>
-                  <div className="font-semibold mb-1.5 text-sm" style={{ color: "#fff" }}>{act.title}</div>
-                  <div className="text-xs leading-relaxed" style={{ color: "rgba(255,255,255,0.6)" }}>{act.desc}</div>
+                <div key={act.title} className="rounded-2xl overflow-hidden card-hover" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(38,201,195,0.1)" }}>
+                  <div className="relative h-32 overflow-hidden">
+                    <img src={act.img} alt={act.title} className="w-full h-full object-cover" />
+                    <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(13,31,60,0.85) 0%, rgba(13,31,60,0.1) 70%)" }} />
+                    <div className="absolute bottom-2 left-3 text-lg">{act.icon}</div>
+                  </div>
+                  <div className="p-4">
+                    <div className="font-semibold mb-1 text-sm" style={{ color: "#fff" }}>{act.title}</div>
+                    <div className="text-xs leading-relaxed" style={{ color: "rgba(255,255,255,0.6)" }}>{act.desc}</div>
+                  </div>
                 </div>
               ))}
             </div>
@@ -423,44 +442,52 @@ export default function Index() {
           <div className="grid md:grid-cols-3 gap-6">
             {YACHT_TYPES.map((yacht, i) => (
               <div key={yacht.name}
-                className={`relative rounded-2xl p-8 card-hover reveal delay-${(i + 1) * 100} flex flex-col`}
+                className={`relative rounded-2xl overflow-hidden card-hover reveal delay-${(i + 1) * 100} flex flex-col`}
                 style={{
                   background: yacht.highlight ? "linear-gradient(135deg, rgba(38,201,195,0.12) 0%, rgba(13,32,64,0.85) 100%)" : "rgba(13,32,64,0.7)",
                   border: `1px solid ${yacht.highlight ? "rgba(38,201,195,0.3)" : "rgba(38,201,195,0.1)"}`,
                   boxShadow: yacht.highlight ? "0 0 40px rgba(38,201,195,0.1)" : "none",
                 }}>
                 {yacht.highlight && (
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+                  <div className="absolute top-3 left-1/2 -translate-x-1/2 z-10">
                     <span className="px-4 py-1 rounded-full text-xs font-semibold animate-glow-pulse" style={{ background: "var(--teal)", color: "var(--sea-deep)" }}>
                       Популярный выбор
                     </span>
                   </div>
                 )}
-                <div className="text-4xl mb-4">{yacht.icon}</div>
-                <div className="flex items-center gap-2 mb-3">
-                  <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.25rem", fontWeight: 600, color: "var(--text-primary)" }}>{yacht.name}</h3>
-                  <span className="px-2 py-0.5 rounded text-xs" style={{ background: `${yacht.tagColor}18`, color: yacht.tagColor, border: `1px solid ${yacht.tagColor}30` }}>
-                    {yacht.tag}
-                  </span>
-                </div>
-                <p className="text-sm leading-relaxed mb-5" style={{ color: "var(--text-secondary)" }}>{yacht.desc}</p>
-                <div className="flex flex-col gap-2 mb-6 flex-1">
-                  {yacht.specs.map((s) => (
-                    <div key={s} className="flex items-center gap-2 text-sm" style={{ color: "var(--text-secondary)" }}>
-                      <span style={{ color: "var(--teal)" }}>✓</span> {s}
-                    </div>
-                  ))}
-                </div>
-                <div className="border-t pt-5" style={{ borderColor: "rgba(255,255,255,0.06)" }}>
-                  <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.6rem", fontWeight: 600, color: yacht.highlight ? "var(--teal)" : "var(--text-primary)" }}>
-                    {yacht.price}
+                <div className="relative h-48 overflow-hidden">
+                  <img src={yacht.img} alt={yacht.name} className="w-full h-full object-cover transition-transform duration-700 hover:scale-105" />
+                  <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(13,31,60,0.8) 0%, rgba(13,31,60,0.05) 60%)" }} />
+                  <div className="absolute bottom-3 right-3">
+                    <span className="px-2 py-0.5 rounded text-xs" style={{ background: `${yacht.tagColor}30`, color: yacht.tagColor, border: `1px solid ${yacht.tagColor}50`, backdropFilter: "blur(8px)" }}>
+                      {yacht.tag}
+                    </span>
                   </div>
-                  <div className="text-xs mb-4" style={{ color: "var(--text-muted)" }}>{yacht.priceNote}</div>
                 </div>
-                <a href="#booking" className={`w-full py-2.5 rounded-full text-sm text-center ${yacht.highlight ? "btn-teal" : "btn-outline-teal"}`}
-                  style={yacht.highlight ? { color: "var(--sea-deep)" } : {}}>
-                  Забронировать
-                </a>
+                <div className="p-6 flex flex-col flex-1">
+                  <div className="mb-3">
+                    <div className="text-xs tracking-widest uppercase mb-1" style={{ color: yacht.tagColor }}>{yacht.subtitle}</div>
+                    <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.3rem", fontWeight: 600, color: "var(--text-primary)" }}>{yacht.name}</h3>
+                  </div>
+                  <p className="text-sm leading-relaxed mb-5" style={{ color: "var(--text-secondary)" }}>{yacht.desc}</p>
+                  <div className="flex flex-col gap-2 mb-6 flex-1">
+                    {yacht.specs.map((s) => (
+                      <div key={s} className="flex items-center gap-2 text-sm" style={{ color: "var(--text-secondary)" }}>
+                        <span style={{ color: "var(--teal)" }}>✓</span> {s}
+                      </div>
+                    ))}
+                  </div>
+                  <div className="border-t pt-5" style={{ borderColor: "rgba(255,255,255,0.06)" }}>
+                    <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.6rem", fontWeight: 600, color: yacht.highlight ? "var(--teal)" : "var(--text-primary)" }}>
+                      {yacht.price}
+                    </div>
+                    <div className="text-xs mb-4" style={{ color: "var(--text-muted)" }}>{yacht.priceNote}</div>
+                  </div>
+                  <a href="#booking" className={`w-full py-2.5 rounded-full text-sm text-center ${yacht.highlight ? "btn-teal" : "btn-outline-teal"}`}
+                    style={yacht.highlight ? { color: "var(--sea-deep)" } : {}}>
+                    Забронировать
+                  </a>
+                </div>
               </div>
             ))}
           </div>
@@ -510,6 +537,87 @@ export default function Index() {
               <a href="#contacts" className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm btn-gold" style={{ color: "var(--sea-deep)" }}>
                 Запросить условия <Icon name="ArrowRight" size={16} />
               </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ACCOMMODATION */}
+      <section id="accommodation" className="py-24 relative" style={{ background: "#0d1e3a" }}>
+        <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(38,201,195,0.3), transparent)" }} />
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <p className="text-xs tracking-widest uppercase mb-3 reveal" style={{ color: "var(--teal)" }}>На борту</p>
+            <h2 className="reveal delay-100 mb-4" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: 300, color: "var(--text-primary)" }}>
+              Размещение
+            </h2>
+            <p className="reveal delay-200" style={{ color: "var(--text-secondary)" }}>
+              Живёте прямо на яхте — в уютных двухместных каютах с полным комфортом
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 gap-8 items-center mb-12">
+            <div className="reveal">
+              <div className="rounded-2xl overflow-hidden" style={{ border: "1px solid rgba(38,201,195,0.15)" }}>
+                <img
+                  src="https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/be7eab9f-a6ac-4af9-8d36-0032558e8718.jpg"
+                  alt="Каюта на яхте"
+                  className="w-full object-cover"
+                  style={{ height: "320px" }}
+                />
+              </div>
+            </div>
+            <div className="reveal delay-200">
+              <div className="space-y-5">
+                {[
+                  { icon: "🛏", title: "Двухместные каюты", desc: "Отдельная каюта на двоих с удобной кроватью, бельём и полотенцами. Деревянная отделка, иллюминатор, освещение." },
+                  { icon: "🚿", title: "Душ на борту", desc: "Горячий душ в каждой яхте. Свежая вода для купания после моря — ежедневно." },
+                  { icon: "🚽", title: "Туалет", desc: "Отдельный санузел на борту. На комфорт-яхтах и катамаране — персональный санузел в каждой каюте." },
+                  { icon: "👥", title: "Каут-компания", desc: "Путешествуете с незнакомцами? Не страшно — это и есть формат каут-похода. Все участники собраны по интересам, быстро становятся своими." },
+                ].map((item) => (
+                  <div key={item.title} className="flex gap-4 items-start p-4 rounded-xl" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(38,201,195,0.08)" }}>
+                    <div className="text-2xl flex-shrink-0 mt-0.5">{item.icon}</div>
+                    <div>
+                      <div className="font-semibold text-sm mb-1" style={{ color: "#fff" }}>{item.title}</div>
+                      <div className="text-xs leading-relaxed" style={{ color: "rgba(255,255,255,0.6)" }}>{item.desc}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+          <div className="grid md:grid-cols-3 gap-4 reveal delay-300">
+            <div className="rounded-2xl overflow-hidden" style={{ border: "1px solid rgba(38,201,195,0.1)" }}>
+              <img
+                src="https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/713d27dc-ee05-4a7d-8742-6859e7e004ce.jpg"
+                alt="Интерьер яхты"
+                className="w-full object-cover"
+                style={{ height: "200px" }}
+              />
+              <div className="px-4 py-3" style={{ background: "rgba(13,32,64,0.8)" }}>
+                <p className="text-xs" style={{ color: "rgba(255,255,255,0.6)" }}>Уютный салон и кают-компания</p>
+              </div>
+            </div>
+            <div className="rounded-2xl overflow-hidden" style={{ border: "1px solid rgba(38,201,195,0.1)" }}>
+              <img
+                src="https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/8443aba5-20f8-4a48-bd88-011de72d92dd.jpg"
+                alt="Катамаран в порту"
+                className="w-full object-cover"
+                style={{ height: "200px" }}
+              />
+              <div className="px-4 py-3" style={{ background: "rgba(13,32,64,0.8)" }}>
+                <p className="text-xs" style={{ color: "rgba(255,255,255,0.6)" }}>Просторный кокпит для общих ужинов</p>
+              </div>
+            </div>
+            <div className="rounded-2xl overflow-hidden" style={{ border: "1px solid rgba(38,201,195,0.1)" }}>
+              <img
+                src="https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/fac0c71e-8b54-4b85-b16f-a8fd10f0f1ec.jpg"
+                alt="Яхта в бухте"
+                className="w-full object-cover"
+                style={{ height: "200px" }}
+              />
+              <div className="px-4 py-3" style={{ background: "rgba(13,32,64,0.8)" }}>
+                <p className="text-xs" style={{ color: "rgba(255,255,255,0.6)" }}>Якорная стоянка в тихой бухте</p>
+              </div>
             </div>
           </div>
         </div>
