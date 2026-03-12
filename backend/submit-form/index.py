@@ -8,14 +8,10 @@ CHAT_IDS = [c.strip() for c in os.environ.get("TELEGRAM_CHAT_IDS", "").split(","
 
 def send_telegram(chat_id, text):
     """Отправка сообщения через Telegram Bot API"""
-    url = f"https://api.telegram.org/bot{BOT_TOKEN}/{{}}"
-    payload = json.dumps({"chat_id": chat_id, "text": text, "parse_mode": "Markdown"}).encode("utf-8")
-    req = urllib.request.Request(
-        url.format("sendMessage"),
-        data=payload,
-        headers={"Content-Type": "application/json"},
-    )
-    with urllib.request.urlopen(req) as resp:
+    url = f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage"
+    payload = json.dumps({"chat_id": chat_id, "text": text}).encode("utf-8")
+    req = urllib.request.Request(url, data=payload, headers={"Content-Type": "application/json"})
+    with urllib.request.urlopen(req, timeout=10) as resp:
         return json.loads(resp.read())
 
 
@@ -36,11 +32,7 @@ def handler(event, context):
     headers = {"Access-Control-Allow-Origin": "*", "Content-Type": "application/json"}
 
     if event.get("httpMethod") != "POST":
-        return {
-            "statusCode": 405,
-            "headers": headers,
-            "body": json.dumps({"error": "Method not allowed"}),
-        }
+        return {"statusCode": 405, "headers": headers, "body": json.dumps({"error": "Method not allowed"})}
 
     body = event.get("body", "{}")
     if isinstance(body, str):
@@ -52,40 +44,42 @@ def handler(event, context):
     dates = body.get("dates", "").strip()
 
     if not name or not contact:
-        return {
-            "statusCode": 400,
-            "headers": headers,
-            "body": json.dumps({"error": "Укажите имя и контакт"}),
-        }
+        return {"statusCode": 400, "headers": headers, "body": json.dumps({"error": "Укажите имя и контакт"})}
 
     source_ip = event.get("requestContext", {}).get("identity", {}).get("sourceIp", "unknown")
 
     text = (
-        "🚀 *Новая заявка с сайта!*\n\n"
-        f"👤 *Имя:* {name}\n"
-        f"📱 *Контакт:* {contact}\n"
-        f"👥 *Гостей:* {guests or 'не указано'}\n"
-        f"📅 *Даты:* {dates or 'не указаны'}\n"
-        f"🌐 *IP:* {source_ip}"
+        "Новая заявка с сайта!\n\n"
+        f"Имя: {name}\n"
+        f"Контакт: {contact}\n"
+        f"Гостей: {guests or 'не указано'}\n"
+        f"Даты: {dates or 'не указаны'}\n"
+        f"IP: {source_ip}"
     )
 
+    print(f"BOT_TOKEN set: {bool(BOT_TOKEN)}, CHAT_IDS: {CHAT_IDS}")
+
+    if not BOT_TOKEN:
+        print("ERROR: TELEGRAM_BOT_TOKEN is empty")
+        return {"statusCode": 500, "headers": headers, "body": json.dumps({"error": "Бот не настроен"})}
+
+    if not CHAT_IDS:
+        print("ERROR: TELEGRAM_CHAT_IDS is empty")
+        return {"statusCode": 500, "headers": headers, "body": json.dumps({"error": "Не настроены получатели"})}
+
+    errors = []
     sent = False
     for chat_id in CHAT_IDS:
         try:
-            send_telegram(chat_id, text)
+            result = send_telegram(chat_id, text)
+            print(f"Sent to {chat_id}: {result}")
             sent = True
-        except Exception:
-            pass
+        except Exception as e:
+            err_msg = str(e)
+            print(f"Failed to send to {chat_id}: {err_msg}")
+            errors.append(err_msg)
 
-    if not sent and not CHAT_IDS:
-        return {
-            "statusCode": 500,
-            "headers": headers,
-            "body": json.dumps({"error": "Не настроены получатели уведомлений"}),
-        }
+    if not sent:
+        return {"statusCode": 500, "headers": headers, "body": json.dumps({"error": f"Telegram error: {'; '.join(errors)}"})}
 
-    return {
-        "statusCode": 200,
-        "headers": headers,
-        "body": json.dumps({"ok": True, "message": "Заявка отправлена!"}),
-    }
+    return {"statusCode": 200, "headers": headers, "body": json.dumps({"ok": True, "message": "Заявка отправлена!"})}
