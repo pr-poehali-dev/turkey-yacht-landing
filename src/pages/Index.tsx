@@ -1,5 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import Icon from "@/components/ui/icon";
+import { toast } from "sonner";
+
+const SUBMIT_URL = "https://functions.poehali.dev/ca2e2601-1e74-49e6-85d5-12e9ca935f4a";
 
 const NAV_LINKS = [
   { label: "Маршруты", href: "#routes" },
@@ -212,6 +215,36 @@ export default function Index() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [navOpaque, setNavOpaque] = useState(false);
   const [formOpen, setFormOpen] = useState(false);
+  const [sending, setSending] = useState(false);
+  const formRef = useRef<HTMLFormElement>(null);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!formRef.current || sending) return;
+    const fd = new FormData(formRef.current);
+    const name = (fd.get("name") as string || "").trim();
+    const contact = (fd.get("contact") as string || "").trim();
+    const guests = (fd.get("guests") as string || "").trim();
+    const dates = (fd.get("dates") as string || "").trim();
+    if (!name || !contact) { toast.error("Укажите имя и контакт"); return; }
+    setSending(true);
+    try {
+      const res = await fetch(SUBMIT_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, contact, guests, dates }),
+      });
+      const data = await res.json();
+      if (res.ok && data.ok) {
+        toast.success("Заявка отправлена! Ответим в течение часа ⚓");
+        formRef.current.reset();
+        setFormOpen(false);
+      } else {
+        toast.error(data.error || "Ошибка отправки");
+      }
+    } catch { toast.error("Не удалось отправить. Попробуйте позже."); }
+    finally { setSending(false); }
+  };
 
   useEffect(() => {
     const handleScroll = () => setNavOpaque(window.scrollY > 60);
@@ -253,10 +286,10 @@ export default function Index() {
               </h3>
               <p className="text-sm" style={{ color: "var(--text-muted)" }}>Ответим в WhatsApp или Telegram в течение часа</p>
             </div>
-            <div className="space-y-4">
+            <form ref={formRef} onSubmit={handleSubmit} className="space-y-4">
               <div>
                 <label className="block text-xs mb-1.5 tracking-wide" style={{ color: "rgba(255,255,255,0.5)" }}>Имя</label>
-                <input type="text" placeholder="Как вас зовут?"
+                <input name="name" type="text" placeholder="Как вас зовут?" required
                   className="w-full px-4 py-3 rounded-xl text-sm outline-none transition-all"
                   style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(38,201,195,0.15)", color: "var(--text-primary)" }}
                   onFocus={(e) => (e.target.style.borderColor = "rgba(38,201,195,0.5)")}
@@ -264,7 +297,7 @@ export default function Index() {
               </div>
               <div>
                 <label className="block text-xs mb-1.5 tracking-wide" style={{ color: "rgba(255,255,255,0.5)" }}>WhatsApp / Telegram</label>
-                <input type="text" placeholder="+7 или @username"
+                <input name="contact" type="text" placeholder="+7 или @username" required
                   className="w-full px-4 py-3 rounded-xl text-sm outline-none transition-all"
                   style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(38,201,195,0.15)", color: "var(--text-primary)" }}
                   onFocus={(e) => (e.target.style.borderColor = "rgba(38,201,195,0.5)")}
@@ -272,7 +305,7 @@ export default function Index() {
               </div>
               <div>
                 <label className="block text-xs mb-1.5 tracking-wide" style={{ color: "rgba(255,255,255,0.5)" }}>Сколько человек</label>
-                <input type="text" placeholder="Например, 4"
+                <input name="guests" type="text" placeholder="Например, 4"
                   className="w-full px-4 py-3 rounded-xl text-sm outline-none transition-all"
                   style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(38,201,195,0.15)", color: "var(--text-primary)" }}
                   onFocus={(e) => (e.target.style.borderColor = "rgba(38,201,195,0.5)")}
@@ -280,19 +313,19 @@ export default function Index() {
               </div>
               <div>
                 <label className="block text-xs mb-1.5 tracking-wide" style={{ color: "rgba(255,255,255,0.5)" }}>Желаемые даты</label>
-                <input type="text" placeholder="Июнь, вторая половина"
+                <input name="dates" type="text" placeholder="Июнь, вторая половина"
                   className="w-full px-4 py-3 rounded-xl text-sm outline-none transition-all"
                   style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(38,201,195,0.15)", color: "var(--text-primary)" }}
                   onFocus={(e) => (e.target.style.borderColor = "rgba(38,201,195,0.5)")}
                   onBlur={(e) => (e.target.style.borderColor = "rgba(38,201,195,0.15)")} />
               </div>
-              <button className="w-full py-4 rounded-xl text-base font-semibold btn-teal mt-2" style={{ color: "var(--sea-deep)" }}>
-                Отправить заявку
+              <button type="submit" disabled={sending} className="w-full py-4 rounded-xl text-base font-semibold btn-teal mt-2" style={{ color: "var(--sea-deep)", opacity: sending ? 0.6 : 1 }}>
+                {sending ? "Отправляем..." : "Отправить заявку"}
               </button>
               <p className="text-xs text-center mt-2" style={{ color: "rgba(255,255,255,0.3)" }}>
                 Обычно отвечаем в течение часа
               </p>
-            </div>
+            </form>
           </div>
         </div>
       )}
