@@ -220,6 +220,7 @@ export default function Index() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    e.stopPropagation();
     if (!formRef.current || sending) return;
     const fd = new FormData(formRef.current);
     const name = (fd.get("name") as string || "").trim();
@@ -229,20 +230,26 @@ export default function Index() {
     if (!name || !contact) { toast.error("Укажите имя и контакт"); return; }
     setSending(true);
     try {
+      console.log("Submitting form to", SUBMIT_URL);
       const res = await fetch(SUBMIT_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name, contact, guests, dates }),
       });
+      console.log("Response status:", res.status);
       const data = await res.json();
+      console.log("Response data:", data);
       if (res.ok && data.ok) {
-        toast.success("Заявка отправлена! Ответим в течение часа ⚓");
+        toast.success("Заявка отправлена! Ответим в течение часа");
         formRef.current.reset();
-        setFormOpen(false);
+        setTimeout(() => setFormOpen(false), 500);
       } else {
         toast.error(data.error || "Ошибка отправки");
       }
-    } catch { toast.error("Не удалось отправить. Попробуйте позже."); }
+    } catch (err) {
+      console.error("Fetch error:", err, "for", SUBMIT_URL);
+      toast.error("Не удалось отправить. Попробуйте позже.");
+    }
     finally { setSending(false); }
   };
 
@@ -273,7 +280,7 @@ export default function Index() {
       {formOpen && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4" style={{ background: "rgba(0,0,0,0.7)", backdropFilter: "blur(8px)" }}
           onClick={(e) => e.target === e.currentTarget && setFormOpen(false)}>
-          <div className="relative w-full max-w-lg rounded-3xl p-8 md:p-10 animate-fadeInUp" style={{ background: "linear-gradient(135deg, #112240 0%, #0d1f3c 100%)", border: "1px solid rgba(38,201,195,0.2)", boxShadow: "0 25px 60px rgba(0,0,0,0.5)", maxHeight: "90vh", overflowY: "auto" }}>
+          <div className="relative w-full max-w-lg rounded-3xl p-8 md:p-10 animate-fadeInUp" onClick={(e) => e.stopPropagation()} style={{ background: "linear-gradient(135deg, #112240 0%, #0d1f3c 100%)", border: "1px solid rgba(38,201,195,0.2)", boxShadow: "0 25px 60px rgba(0,0,0,0.5)", maxHeight: "90vh", overflowY: "auto" }}>
             <button onClick={() => setFormOpen(false)} className="absolute top-4 right-4 p-2 rounded-full transition-colors" style={{ color: "rgba(255,255,255,0.5)", background: "rgba(255,255,255,0.05)" }}
               onMouseEnter={(e) => (e.currentTarget.style.color = "#fff")}
               onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.5)")}>
