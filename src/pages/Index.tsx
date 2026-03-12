@@ -70,20 +70,26 @@ const DAY_SCHEDULE = [
   {
     time: "Утро",
     emoji: "🌅",
-    text: "Завтрак на палубе и купание в бухте. Первый кофе под звуки моря.",
+    text: "Купание в прозрачной бухте. Кофе в кокпите, завтрак на палубе.",
     img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/46a224ed-0c9e-465f-a97b-20fa3dbcc619.jpg",
   },
   {
     time: "День",
     emoji: "⛵",
-    text: "Переход под парусом 3–6 часов. Остановки для купания в открытом море.",
+    text: "Переход 3–5 часов под парусом вдоль скал и островов.",
     img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/24f432de-4321-4ff7-a666-355f5ec5d770.jpg",
   },
   {
     time: "Вечер",
     emoji: "🍽",
-    text: "Якорь в тихой бухте или швартовка у пирса локального ресторана.",
+    text: "Стоянка у тихого острова или у пирса ресторана.",
     img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/cf38f7d5-0f77-4a83-888a-20fcd95c8f7c.jpg",
+  },
+  {
+    time: "Ночь",
+    emoji: "✨",
+    text: "Звёзды. Тишина. Море.",
+    img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/a54dd1b8-4eef-4246-8f69-05765ebfb795.jpg",
   },
 ];
 
@@ -265,23 +271,19 @@ export default function Index() {
       </nav>
 
       {/* HERO */}
-      <section id="hero" className="relative min-h-screen flex flex-col justify-end overflow-hidden">
-        {/* BG photo */}
+      <section id="hero" className="relative min-h-screen flex flex-col justify-center overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src="https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/cf38f7d5-0f77-4a83-888a-20fcd95c8f7c.jpg"
-            alt="Яхта на закате"
+            src="https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/files/a883263d-1db5-44be-9d0e-e3bbb2c382e3.jpg"
+            alt="Яхта в бирюзовой бухте Турции"
             className="w-full h-full object-cover object-center"
-            style={{ filter: "brightness(0.55)" }}
+            style={{ filter: "brightness(0.45)" }}
           />
-          {/* gradient overlays */}
-          <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(13,31,60,0.98) 0%, rgba(13,31,60,0.55) 45%, rgba(13,31,60,0.1) 100%)" }} />
-          <div className="absolute inset-0" style={{ background: "linear-gradient(to right, rgba(13,31,60,0.5) 0%, transparent 60%)" }} />
+          <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(13,31,60,0.98) 0%, rgba(13,31,60,0.4) 50%, rgba(13,31,60,0.25) 100%)" }} />
+          <div className="absolute inset-0" style={{ background: "linear-gradient(to right, rgba(13,31,60,0.55) 0%, transparent 65%)" }} />
         </div>
 
-        {/* Content */}
-        <div className="relative max-w-7xl mx-auto px-4 md:px-6 pt-28 pb-16 w-full">
-          {/* Badge */}
+        <div className="relative max-w-7xl mx-auto px-4 md:px-6 pt-28 pb-20 w-full">
           <div className="mb-6 animate-fadeInUp">
             <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-medium" style={{ background: "rgba(38,201,195,0.12)", color: "var(--teal)", border: "1px solid rgba(38,201,195,0.25)", backdropFilter: "blur(8px)" }}>
               <span className="w-1.5 h-1.5 rounded-full bg-current animate-pulse" />
@@ -289,43 +291,62 @@ export default function Index() {
             </span>
           </div>
 
-          {/* Main headline */}
           <h1 className="animate-fadeInUp delay-100 mb-5"
-            style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(3.2rem, 8vw, 7rem)", fontWeight: 300, color: "#fff", lineHeight: 1.05, maxWidth: "820px" }}>
-            Яхтенное путешествие<br />
+            style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(2.8rem, 7vw, 5.5rem)", fontWeight: 300, color: "#fff", lineHeight: 1.08, maxWidth: "780px" }}>
+            Неделя под парусом<br />
             вдоль <span className="shimmer-text" style={{ fontWeight: 600, fontStyle: "italic" }}>бирюзового</span><br />
             побережья Турции
           </h1>
 
-          <p className="text-xl leading-relaxed mb-10 animate-fadeInUp delay-200" style={{ color: "rgba(255,255,255,0.72)", maxWidth: "520px" }}>
-            Неделя под парусом. Тихие бухты,<br />прозрачное море и жизнь на яхте.
+          <p className="text-lg leading-relaxed mb-4 animate-fadeInUp delay-200" style={{ color: "rgba(255,255,255,0.65)", maxWidth: "480px" }}>
+            Небольшая команда · тихие бухты · жизнь на яхте
+          </p>
+          <p className="text-base mb-10 animate-fadeInUp delay-200" style={{ color: "rgba(255,255,255,0.5)", maxWidth: "480px" }}>
+            4–6 гостей на борту с опытным капитаном
           </p>
 
-          {/* Stat pills */}
-          <div className="flex flex-wrap gap-3 mb-10 animate-fadeInUp delay-300">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-10 animate-fadeInUp delay-300" style={{ maxWidth: "640px" }}>
             {[
-              { label: "Небольшая команда", value: "4–6 гостей" },
-              { label: "Катамаран", value: "до 10 гостей" },
-              { label: "Заезды", value: "сб → сб" },
-              { label: "Стоимость от", value: "650 € / неделю" },
+              { icon: "⛵", label: "Сезон", value: "апрель — ноябрь" },
+              { icon: "🌊", label: "Маршруты", value: "Фетхие · Мармарис · Олюдениз · Кекова" },
+              { icon: "👥", label: "Команда", value: "4–6 человек" },
+              { icon: "💶", label: "Стоимость", value: "от 650 € с человека" },
             ].map((s) => (
-              <div key={s.label} className="flex flex-col px-5 py-3 rounded-2xl"
-                style={{ background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.12)", backdropFilter: "blur(12px)" }}>
-                <span style={{ fontSize: "0.65rem", color: "rgba(255,255,255,0.45)", textTransform: "uppercase", letterSpacing: "0.08em" }}>{s.label}</span>
-                <span style={{ fontSize: "1rem", fontWeight: 600, color: "#fff", lineHeight: 1.2, marginTop: "2px" }}>{s.value}</span>
+              <div key={s.label} className="flex flex-col gap-1 px-4 py-3 rounded-2xl"
+                style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.1)", backdropFilter: "blur(12px)" }}>
+                <span style={{ fontSize: "1.2rem" }}>{s.icon}</span>
+                <span style={{ fontSize: "0.6rem", color: "rgba(255,255,255,0.4)", textTransform: "uppercase", letterSpacing: "0.08em" }}>{s.label}</span>
+                <span style={{ fontSize: "0.85rem", fontWeight: 500, color: "#fff", lineHeight: 1.3 }}>{s.value}</span>
               </div>
             ))}
           </div>
 
-          {/* CTA buttons */}
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 animate-fadeInUp delay-400">
+          <div className="rounded-2xl p-6 mb-10 animate-fadeInUp delay-350" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)", backdropFilter: "blur(12px)", maxWidth: "520px" }}>
+            <p className="text-sm leading-relaxed mb-3" style={{ color: "rgba(255,255,255,0.7)" }}>
+              Утро начинается в тихой бухте.<br />
+              Прозрачная вода, кофе в кокпите, купание перед завтраком.
+            </p>
+            <p className="text-sm leading-relaxed mb-3" style={{ color: "rgba(255,255,255,0.7)" }}>
+              Днём — переход под парусом вдоль скал и островов.<br />
+              Вечером — стоянка в бухте или у пирса средиземноморского ресторана.
+            </p>
+            <p className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.55)", fontStyle: "italic" }}>
+              Это не массовый тур. Это жизнь на яхте и море без толпы.
+            </p>
+          </div>
+
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-6 animate-fadeInUp delay-400">
             <a href="#routes" className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full text-base font-semibold btn-teal" style={{ color: "var(--sea-deep)" }}>
-              Посмотреть даты <Icon name="ArrowRight" size={18} />
+              Подобрать путешествие <Icon name="ArrowRight" size={18} />
             </a>
-            <a href="#booking" className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full text-base font-semibold btn-outline-teal">
-              Забронировать каюту
+            <a href="#yachts" className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full text-base font-semibold btn-outline-teal">
+              Посмотреть яхты <Icon name="Sailboat" size={18} />
             </a>
           </div>
+
+          <p className="text-xs animate-fadeInUp delay-500" style={{ color: "rgba(255,255,255,0.35)" }}>
+            На яхте всего 3 каюты — поэтому команда обычно 4–6 человек.
+          </p>
         </div>
 
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-scroll-hint" style={{ color: "rgba(255,255,255,0.4)" }}>
@@ -334,8 +355,39 @@ export default function Index() {
         </div>
       </section>
 
+      {/* DAY SCHEDULE — сразу после hero */}
+      <section className="py-20 relative" style={{ background: "linear-gradient(180deg, #0d1f3c 0%, #112240 100%)" }}>
+        <div className="max-w-5xl mx-auto px-6 text-center">
+          <p className="text-xs tracking-widest uppercase mb-3 reveal" style={{ color: "var(--teal)" }}>Жизнь на яхте</p>
+          <h2 className="reveal delay-100 mb-4" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: 300, color: "var(--text-primary)" }}>
+            Как проходит день на яхте
+          </h2>
+          <p className="text-sm mb-12 reveal delay-200" style={{ color: "var(--text-muted)" }}>
+            95% наших гостей никогда раньше не путешествовали на яхте.
+          </p>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {DAY_SCHEDULE.map((item, i) => (
+              <div key={item.time} className={`rounded-2xl overflow-hidden card-hover reveal delay-${(i + 1) * 100}`}
+                style={{ border: "1px solid rgba(38,201,195,0.12)" }}>
+                <div className="relative h-44 overflow-hidden">
+                  <img src={item.img} alt={item.time} className="w-full h-full object-cover" />
+                  <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(13,31,60,0.9) 0%, rgba(13,31,60,0.1) 60%)" }} />
+                  <div className="absolute bottom-3 left-4 flex items-center gap-2">
+                    <span className="text-lg">{item.emoji}</span>
+                    <span className="text-xs tracking-widest uppercase font-semibold" style={{ color: "var(--teal)" }}>{item.time}</span>
+                  </div>
+                </div>
+                <div className="p-5" style={{ background: "rgba(13,32,64,0.7)", backdropFilter: "blur(12px)" }}>
+                  <p className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.8)" }}>{item.text}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ABOUT */}
-      <section className="py-24 relative overflow-hidden" style={{ background: "linear-gradient(180deg, #0d1f3c 0%, #112240 100%)" }}>
+      <section className="py-24 relative overflow-hidden" style={{ background: "linear-gradient(180deg, #112240 0%, #163054 100%)" }}>
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <div className="reveal">
@@ -370,53 +422,31 @@ export default function Index() {
         </div>
       </section>
 
-      {/* DAY SCHEDULE */}
-      <section className="py-20 relative" style={{ background: "linear-gradient(180deg, #112240 0%, #163054 100%)" }}>
+      {/* ACTIVITIES */}
+      <section className="py-20 relative" style={{ background: "linear-gradient(180deg, #163054 0%, #163054 100%)" }}>
         <div className="max-w-4xl mx-auto px-6 text-center">
-          <p className="text-xs tracking-widest uppercase mb-3 reveal" style={{ color: "var(--teal)" }}>Жизнь на яхте</p>
-          <h2 className="reveal delay-100 mb-16" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: 300, color: "var(--text-primary)" }}>
-            Как проходит день
-          </h2>
-          <div className="grid md:grid-cols-3 gap-6">
-            {DAY_SCHEDULE.map((item, i) => (
-              <div key={item.time} className={`rounded-2xl overflow-hidden card-hover reveal delay-${(i + 1) * 100}`}
-                style={{ border: "1px solid rgba(38,201,195,0.12)" }}>
-                <div className="relative h-52 overflow-hidden">
-                  <img src={item.img} alt={item.time} className="w-full h-full object-cover" />
-                  <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(13,31,60,0.85) 0%, rgba(13,31,60,0.1) 60%)" }} />
-                  <div className="absolute bottom-4 left-5 text-xs tracking-widest uppercase font-semibold" style={{ color: "var(--teal)" }}>{item.time}</div>
+          <p className="text-xs tracking-widest uppercase mb-6 reveal" style={{ color: "var(--text-muted)" }}>Чем можно заняться по пути</p>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+            {[
+              { icon: "🤿", title: "Морская охота", desc: "Нырок на глубину с ружьём — и ужин уже на борту. Кристальная вода, рыба у самых скал.", img: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&q=80" },
+              { icon: "🦈", title: "Фридайвинг", desc: "Задержка дыхания, тишина под водой и бескрайняя синева. Инструктаж на борту.", img: "https://images.unsplash.com/photo-1559827291-72ee739d0d9a?w=400&q=80" },
+              { icon: "🤿", title: "Снорклинг", desc: "Прозрачное дно, рыбы и морские звёзды прямо под яхтой. Маски и ласты на борту.", img: "https://images.unsplash.com/photo-1583212292454-1fe6229603b7?w=400&q=80" },
+              { icon: "🏄", title: "Сапы", desc: "Встать на доску и пройти бухту — тихо, в своём темпе, с видом на скалы.", img: "https://images.unsplash.com/photo-1531722569936-825d4ebd3e1e?w=400&q=80" },
+              { icon: "🎣", title: "Рыбалка", desc: "Закинуть снасть с кормы на ходу или на стоянке. Улов — на ужин.", img: "https://images.unsplash.com/photo-1500099817043-86d46000d58f?w=400&q=80" },
+              { icon: "🌊", title: "Морские купания", desc: "В бухтах без людей, прямо с борта — вода прозрачная до дна. Каждый день в новом месте.", img: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&q=80" },
+            ].map((act) => (
+              <div key={act.title} className="rounded-2xl overflow-hidden card-hover reveal" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(38,201,195,0.1)" }}>
+                <div className="relative h-32 overflow-hidden">
+                  <img src={act.img} alt={act.title} className="w-full h-full object-cover" />
+                  <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(13,31,60,0.85) 0%, rgba(13,31,60,0.1) 70%)" }} />
+                  <div className="absolute bottom-2 left-3 text-lg">{act.icon}</div>
                 </div>
-                <div className="p-6" style={{ background: "rgba(13,32,64,0.7)", backdropFilter: "blur(12px)" }}>
-                  <p className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.8)" }}>{item.text}</p>
+                <div className="p-4">
+                  <div className="font-semibold mb-1 text-sm" style={{ color: "#fff" }}>{act.title}</div>
+                  <div className="text-xs leading-relaxed" style={{ color: "rgba(255,255,255,0.6)" }}>{act.desc}</div>
                 </div>
               </div>
             ))}
-          </div>
-          {/* Activities */}
-          <div className="mt-10 reveal delay-400">
-            <p className="text-xs tracking-widest uppercase mb-6 text-center" style={{ color: "var(--text-muted)" }}>Чем можно заняться по пути</p>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-              {[
-                { icon: "🤿", title: "Морская охота", desc: "Нырок на глубину с ружьём — и ужин уже на борту. Кристальная вода, рыба у самых скал.", img: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&q=80" },
-                { icon: "🦈", title: "Фридайвинг", desc: "Задержка дыхания, тишина под водой и бескрайняя синева. Инструктаж на борту.", img: "https://images.unsplash.com/photo-1559827291-72ee739d0d9a?w=400&q=80" },
-                { icon: "🤿", title: "Снорклинг", desc: "Прозрачное дно, рыбы и морские звёзды прямо под яхтой. Маски и ласты на борту.", img: "https://images.unsplash.com/photo-1583212292454-1fe6229603b7?w=400&q=80" },
-                { icon: "🏄", title: "Сапы", desc: "Встать на доску и пройти бухту — тихо, в своём темпе, с видом на скалы.", img: "https://images.unsplash.com/photo-1531722569936-825d4ebd3e1e?w=400&q=80" },
-                { icon: "🎣", title: "Рыбалка", desc: "Закинуть снасть с кормы на ходу или на стоянке. Улов — на ужин.", img: "https://images.unsplash.com/photo-1500099817043-86d46000d58f?w=400&q=80" },
-                { icon: "🌊", title: "Морские купания", desc: "В бухтах без людей, прямо с борта — вода прозрачная до дна. Каждый день в новом месте.", img: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&q=80" },
-              ].map((act) => (
-                <div key={act.title} className="rounded-2xl overflow-hidden card-hover" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(38,201,195,0.1)" }}>
-                  <div className="relative h-32 overflow-hidden">
-                    <img src={act.img} alt={act.title} className="w-full h-full object-cover" />
-                    <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(13,31,60,0.85) 0%, rgba(13,31,60,0.1) 70%)" }} />
-                    <div className="absolute bottom-2 left-3 text-lg">{act.icon}</div>
-                  </div>
-                  <div className="p-4">
-                    <div className="font-semibold mb-1 text-sm" style={{ color: "#fff" }}>{act.title}</div>
-                    <div className="text-xs leading-relaxed" style={{ color: "rgba(255,255,255,0.6)" }}>{act.desc}</div>
-                  </div>
-                </div>
-              ))}
-            </div>
           </div>
         </div>
       </section>
