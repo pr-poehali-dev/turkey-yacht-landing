@@ -55,15 +55,14 @@ const YACHT_TYPES = [
 ];
 
 const ROUTE_STOPS = [
-  { name: "Фетхие / Мармарис", desc: "Старт из одной из красивейших марин Средиземноморья. Набираем провизию, знакомимся с командой.", icon: "⚓", img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/24f432de-4321-4ff7-a666-355f5ec5d770.jpg" },
-  { name: "Олюдениз", desc: "Знаменитая бирюзовая лагуна с белым песком — одно из красивейших мест Турции.", icon: "🏖", img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/0b2a898f-e8c3-439c-a974-3d7cf2883c34.jpg" },
-  { name: "Бухта Бабочек", desc: "Уединённая бухта, доступная только с моря. Снорклинг и ныряние у скал.", icon: "🦋", img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/23c69f90-c2f3-4dbe-93d9-3183595fbe5d.jpg" },
-  { name: "Остров Св. Николая", desc: "Руины древнего ликийского города прямо у кромки воды. Можно исследовать пешком.", icon: "🏛", img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/ab8d6dd3-7af1-4f9e-a417-d06307240426.jpg" },
-  { name: "Бухта Гемилер", desc: "Живописная якорная стоянка среди скал и оливков. Идеально для рыбалки.", icon: "⛰", img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/7d414dc4-051b-4225-b018-da9385f4069d.jpg" },
-  { name: "Дикие бухты", desc: "Тихие стоянки вдали от туристов. Морская охота, фридайвинг, закаты у воды.", icon: "🌊", img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/cf38f7d5-0f77-4a83-888a-20fcd95c8f7c.jpg" },
-  { name: "Кас / Калкан", desc: "Живописные рыбацкие городки с террасными ресторанами и ночной жизнью.", icon: "🏘", img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/files/3e160d5d-d683-484f-a808-06e5de68f291.jpg" },
-  { name: "Кекова", desc: "Затопленный античный город Симена — история прямо под водой, видна без маски.", icon: "🏺", img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/files/8ea7f811-8a45-4154-af2e-4da2577e3dac.jpg" },
-  { name: "Демре / Мира", desc: "Древний ликийский город и церковь Святого Николая. Гробницы, высеченные в скалах.", icon: "🗿", img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/files/161fab17-3ccb-41d2-bf05-09142adee71e.jpg" },
+  { name: "Фетхие / Мармарис", desc: "Старт из одной из красивейших марин Средиземноморья. Набираем провизию, знакомимся с командой.", icon: "⚓", img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/files/e0b1280c-9f05-4527-aa0d-1a900f0ff9e0.jpg" },
+  { name: "Олюдениз", desc: "Знаменитая бирюзовая лагуна с белым песком — одно из красивейших мест Турции.", icon: "🏖", img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/files/ab80fa8c-e10a-4261-a773-70389cfd5cb0.jpg" },
+  { name: "Бухта Бабочек", desc: "Уединённая бухта, доступная только с моря. Снорклинг и ныряние у скал.", icon: "🦋", img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/files/b3fa61df-77bd-45d0-9c41-58eb93962faf.jpg" },
+  { name: "Остров Гемилер", desc: "Руины византийских церквей прямо у воды. Якорная стоянка среди скал и оливков — можно исследовать пешком.", icon: "🏛", img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/files/fe6f1d55-c4ae-42d0-9bee-e4f5c33388b7.jpg" },
+  { name: "Дикие бухты", desc: "Тихие стоянки вдали от туристов. Морская охота, фридайвинг, закаты у воды.", icon: "🌊", img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/files/b4399b74-8a91-4f26-97bd-66882dfe61b6.jpg" },
+  { name: "Кас / Калкан", desc: "Живописные рыбацкие городки с террасными ресторанами и ночной жизнью.", icon: "🏘", img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/files/712f8940-a329-4ab8-85ac-9a5e109b00e6.jpg" },
+  { name: "Кекова", desc: "Затопленный античный город Симена — история прямо под водой, видна без маски.", icon: "🏺", img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/files/bf2476da-c70e-4ee3-b660-a427e3062b84.jpg" },
+  { name: "Демре / Мира", desc: "Древний ликийский город и церковь Святого Николая. Гробницы, высеченные в скалах.", icon: "🗿", img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/files/cf94c814-2c42-4598-9833-bb0f6905404f.jpg" },
 ];
 
 const DAY_SCHEDULE = [
