@@ -61,9 +61,9 @@ const ROUTE_STOPS = [
   { name: "Остров Св. Николая", desc: "Руины древнего ликийского города прямо у кромки воды. Можно исследовать пешком.", icon: "🏛", img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/ab8d6dd3-7af1-4f9e-a417-d06307240426.jpg" },
   { name: "Бухта Гемилер", desc: "Живописная якорная стоянка среди скал и оливков. Идеально для рыбалки.", icon: "⛰", img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/7d414dc4-051b-4225-b018-da9385f4069d.jpg" },
   { name: "Дикие бухты", desc: "Тихие стоянки вдали от туристов. Морская охота, фридайвинг, закаты у воды.", icon: "🌊", img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/cf38f7d5-0f77-4a83-888a-20fcd95c8f7c.jpg" },
-  { name: "Кас / Калкан", desc: "Живописные рыбацкие городки с террасными ресторанами и ночной жизнью.", icon: "🏘", img: "https://images.unsplash.com/photo-1589083130544-0d6a2926e519?w=600&q=80" },
-  { name: "Кекова", desc: "Затопленный античный город Симена — история прямо под водой, видна без маски.", icon: "🏺", img: "https://images.unsplash.com/photo-1555993539-1732b0258235?w=600&q=80" },
-  { name: "Демре / Мира", desc: "Древний ликийский город и церковь Святого Николая. Гробницы, высеченные в скалах.", icon: "🗿", img: "https://images.unsplash.com/photo-1564507592333-c60657eea523?w=600&q=80" },
+  { name: "Кас / Калкан", desc: "Живописные рыбацкие городки с террасными ресторанами и ночной жизнью.", icon: "🏘", img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/files/3e160d5d-d683-484f-a808-06e5de68f291.jpg" },
+  { name: "Кекова", desc: "Затопленный античный город Симена — история прямо под водой, видна без маски.", icon: "🏺", img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/files/8ea7f811-8a45-4154-af2e-4da2577e3dac.jpg" },
+  { name: "Демре / Мира", desc: "Древний ликийский город и церковь Святого Николая. Гробницы, высеченные в скалах.", icon: "🗿", img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/files/161fab17-3ccb-41d2-bf05-09142adee71e.jpg" },
 ];
 
 const DAY_SCHEDULE = [
@@ -212,6 +212,7 @@ function FaqItem({ question, answer }: { question: string; answer: string }) {
 export default function Index() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [navOpaque, setNavOpaque] = useState(false);
+  const [formOpen, setFormOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setNavOpaque(window.scrollY > 60);
@@ -229,8 +230,73 @@ export default function Index() {
     return () => observer.disconnect();
   }, []);
 
+  useEffect(() => {
+    document.body.style.overflow = formOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [formOpen]);
+
   return (
     <div style={{ background: "var(--sea-deep)", color: "var(--text-primary)", fontFamily: "'Golos Text', sans-serif", minHeight: "100vh" }}>
+
+      {formOpen && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4" style={{ background: "rgba(0,0,0,0.7)", backdropFilter: "blur(8px)" }}
+          onClick={(e) => e.target === e.currentTarget && setFormOpen(false)}>
+          <div className="relative w-full max-w-lg rounded-3xl p-8 md:p-10 animate-fadeInUp" style={{ background: "linear-gradient(135deg, #112240 0%, #0d1f3c 100%)", border: "1px solid rgba(38,201,195,0.2)", boxShadow: "0 25px 60px rgba(0,0,0,0.5)", maxHeight: "90vh", overflowY: "auto" }}>
+            <button onClick={() => setFormOpen(false)} className="absolute top-4 right-4 p-2 rounded-full transition-colors" style={{ color: "rgba(255,255,255,0.5)", background: "rgba(255,255,255,0.05)" }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = "#fff")}
+              onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.5)")}>
+              <Icon name="X" size={20} />
+            </button>
+            <div className="text-center mb-8">
+              <span className="text-3xl mb-3 block">⛵</span>
+              <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.8rem", fontWeight: 400, color: "var(--text-primary)", marginBottom: "0.5rem" }}>
+                Подобрать путешествие
+              </h3>
+              <p className="text-sm" style={{ color: "var(--text-muted)" }}>Ответим в WhatsApp или Telegram в течение часа</p>
+            </div>
+            <div className="space-y-4">
+              <div>
+                <label className="block text-xs mb-1.5 tracking-wide" style={{ color: "rgba(255,255,255,0.5)" }}>Имя</label>
+                <input type="text" placeholder="Как вас зовут?"
+                  className="w-full px-4 py-3 rounded-xl text-sm outline-none transition-all"
+                  style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(38,201,195,0.15)", color: "var(--text-primary)" }}
+                  onFocus={(e) => (e.target.style.borderColor = "rgba(38,201,195,0.5)")}
+                  onBlur={(e) => (e.target.style.borderColor = "rgba(38,201,195,0.15)")} />
+              </div>
+              <div>
+                <label className="block text-xs mb-1.5 tracking-wide" style={{ color: "rgba(255,255,255,0.5)" }}>WhatsApp / Telegram</label>
+                <input type="text" placeholder="+7 или @username"
+                  className="w-full px-4 py-3 rounded-xl text-sm outline-none transition-all"
+                  style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(38,201,195,0.15)", color: "var(--text-primary)" }}
+                  onFocus={(e) => (e.target.style.borderColor = "rgba(38,201,195,0.5)")}
+                  onBlur={(e) => (e.target.style.borderColor = "rgba(38,201,195,0.15)")} />
+              </div>
+              <div>
+                <label className="block text-xs mb-1.5 tracking-wide" style={{ color: "rgba(255,255,255,0.5)" }}>Сколько человек</label>
+                <input type="text" placeholder="Например, 4"
+                  className="w-full px-4 py-3 rounded-xl text-sm outline-none transition-all"
+                  style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(38,201,195,0.15)", color: "var(--text-primary)" }}
+                  onFocus={(e) => (e.target.style.borderColor = "rgba(38,201,195,0.5)")}
+                  onBlur={(e) => (e.target.style.borderColor = "rgba(38,201,195,0.15)")} />
+              </div>
+              <div>
+                <label className="block text-xs mb-1.5 tracking-wide" style={{ color: "rgba(255,255,255,0.5)" }}>Желаемые даты</label>
+                <input type="text" placeholder="Июнь, вторая половина"
+                  className="w-full px-4 py-3 rounded-xl text-sm outline-none transition-all"
+                  style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(38,201,195,0.15)", color: "var(--text-primary)" }}
+                  onFocus={(e) => (e.target.style.borderColor = "rgba(38,201,195,0.5)")}
+                  onBlur={(e) => (e.target.style.borderColor = "rgba(38,201,195,0.15)")} />
+              </div>
+              <button className="w-full py-4 rounded-xl text-base font-semibold btn-teal mt-2" style={{ color: "var(--sea-deep)" }}>
+                Отправить заявку
+              </button>
+              <p className="text-xs text-center mt-2" style={{ color: "rgba(255,255,255,0.3)" }}>
+                Обычно отвечаем в течение часа
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* NAVBAR */}
       <nav className="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
@@ -251,9 +317,9 @@ export default function Index() {
               <a key={l.href} href={l.href} className="nav-link">{l.label}</a>
             ))}
           </div>
-          <a href="#booking" className="hidden md:inline-flex items-center gap-2 px-5 py-2 rounded-full text-sm btn-teal" style={{ color: "var(--sea-deep)" }}>
+          <button onClick={() => setFormOpen(true)} className="hidden md:inline-flex items-center gap-2 px-5 py-2 rounded-full text-sm btn-teal" style={{ color: "var(--sea-deep)" }}>
             Забронировать
-          </a>
+          </button>
           <button className="md:hidden p-2" onClick={() => setMenuOpen(!menuOpen)} style={{ color: "var(--teal)" }}>
             <Icon name={menuOpen ? "X" : "Menu"} size={24} />
           </button>
@@ -264,7 +330,7 @@ export default function Index() {
               {NAV_LINKS.map((l) => (
                 <a key={l.href} href={l.href} className="py-3 px-4 rounded-lg text-sm" style={{ color: "var(--text-secondary)" }} onClick={() => setMenuOpen(false)}>{l.label}</a>
               ))}
-              <a href="#booking" className="mt-2 py-3 px-4 rounded-full text-center text-sm btn-teal" style={{ color: "var(--sea-deep)" }}>Забронировать</a>
+              <button onClick={() => { setFormOpen(true); setMenuOpen(false); }} className="mt-2 py-3 px-4 rounded-full text-center text-sm btn-teal" style={{ color: "var(--sea-deep)" }}>Забронировать</button>
             </div>
           </div>
         )}
@@ -336,9 +402,9 @@ export default function Index() {
           </div>
 
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-6 animate-fadeInUp delay-400">
-            <a href="#routes" className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full text-base font-semibold btn-teal" style={{ color: "var(--sea-deep)" }}>
+            <button onClick={() => setFormOpen(true)} className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full text-base font-semibold btn-teal" style={{ color: "var(--sea-deep)" }}>
               Подобрать путешествие <Icon name="ArrowRight" size={18} />
-            </a>
+            </button>
             <a href="#yachts" className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full text-base font-semibold btn-outline-teal">
               Посмотреть яхты <Icon name="Sailboat" size={18} />
             </a>
@@ -428,12 +494,12 @@ export default function Index() {
           <p className="text-xs tracking-widest uppercase mb-6 reveal" style={{ color: "var(--text-muted)" }}>Чем можно заняться по пути</p>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
             {[
-              { icon: "🤿", title: "Морская охота", desc: "Нырок на глубину с ружьём — и ужин уже на борту. Кристальная вода, рыба у самых скал.", img: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&q=80" },
-              { icon: "🦈", title: "Фридайвинг", desc: "Задержка дыхания, тишина под водой и бескрайняя синева. Инструктаж на борту.", img: "https://images.unsplash.com/photo-1559827291-72ee739d0d9a?w=400&q=80" },
-              { icon: "🤿", title: "Снорклинг", desc: "Прозрачное дно, рыбы и морские звёзды прямо под яхтой. Маски и ласты на борту.", img: "https://images.unsplash.com/photo-1583212292454-1fe6229603b7?w=400&q=80" },
-              { icon: "🏄", title: "Сапы", desc: "Встать на доску и пройти бухту — тихо, в своём темпе, с видом на скалы.", img: "https://images.unsplash.com/photo-1531722569936-825d4ebd3e1e?w=400&q=80" },
-              { icon: "🎣", title: "Рыбалка", desc: "Закинуть снасть с кормы на ходу или на стоянке. Улов — на ужин.", img: "https://images.unsplash.com/photo-1500099817043-86d46000d58f?w=400&q=80" },
-              { icon: "🌊", title: "Морские купания", desc: "В бухтах без людей, прямо с борта — вода прозрачная до дна. Каждый день в новом месте.", img: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&q=80" },
+              { icon: "🤿", title: "Морская охота", desc: "Нырок на глубину с ружьём — и ужин уже на борту. Кристальная вода, рыба у самых скал.", img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/files/31e9debb-691f-4f00-a7be-ea6b2a262280.jpg" },
+              { icon: "🦈", title: "Фридайвинг", desc: "Задержка дыхания, тишина под водой и бескрайняя синева. Инструктаж на борту.", img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/files/d0e664f5-7ac7-4c0e-89d9-f6d2f65628f4.jpg" },
+              { icon: "🤿", title: "Снорклинг", desc: "Прозрачное дно, рыбы и морские звёзды прямо под яхтой. Маски и ласты на борту.", img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/files/69e9220d-22e3-43a4-a889-0adfabde133f.jpg" },
+              { icon: "🏄", title: "Сапы", desc: "Встать на доску и пройти бухту — тихо, в своём темпе, с видом на скалы.", img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/files/b39de825-bdff-4b15-81cb-8dcb25bc5724.jpg" },
+              { icon: "🎣", title: "Рыбалка", desc: "Закинуть снасть с кормы на ходу или на стоянке. Улов — на ужин.", img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/files/3f28094f-29dd-41c1-bfa8-c5ef1aa883aa.jpg" },
+              { icon: "🌊", title: "Морские купания", desc: "В бухтах без людей, прямо с борта — вода прозрачная до дна. Каждый день в новом месте.", img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/files/910fbcae-f7f5-43b9-8bb3-d14cd1c19197.jpg" },
             ].map((act) => (
               <div key={act.title} className="rounded-2xl overflow-hidden card-hover reveal" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(38,201,195,0.1)" }}>
                 <div className="relative h-32 overflow-hidden">
@@ -662,10 +728,10 @@ export default function Index() {
                     </div>
                     <div className="text-xs mb-4" style={{ color: "var(--text-muted)" }}>{yacht.priceNote}</div>
                   </div>
-                  <a href="#booking" className={`w-full py-2.5 rounded-full text-sm text-center ${yacht.highlight ? "btn-teal" : "btn-outline-teal"}`}
+                  <button onClick={() => setFormOpen(true)} className={`w-full py-2.5 rounded-full text-sm text-center ${yacht.highlight ? "btn-teal" : "btn-outline-teal"}`}
                     style={yacht.highlight ? { color: "var(--sea-deep)" } : {}}>
                     Забронировать
-                  </a>
+                  </button>
                 </div>
               </div>
             ))}
@@ -690,9 +756,9 @@ export default function Index() {
                   скидка на стоимость<br />каждого участника
                 </div>
               </div>
-              <a href="#contacts" className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm btn-outline-teal">
+              <button onClick={() => setFormOpen(true)} className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm btn-outline-teal">
                 Узнать подробности <Icon name="ArrowRight" size={16} />
-              </a>
+              </button>
             </div>
 
             {/* Full yacht */}
@@ -713,9 +779,9 @@ export default function Index() {
                   за всю яхту<br />/ неделю
                 </div>
               </div>
-              <a href="#contacts" className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm btn-gold" style={{ color: "var(--sea-deep)" }}>
+              <button onClick={() => setFormOpen(true)} className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm btn-gold" style={{ color: "var(--sea-deep)" }}>
                 Запросить условия <Icon name="ArrowRight" size={16} />
-              </a>
+              </button>
             </div>
           </div>
         </div>
@@ -1110,13 +1176,72 @@ export default function Index() {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="#contacts" className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full text-base btn-teal" style={{ color: "var(--sea-deep)" }}>
+              <button onClick={() => setFormOpen(true)} className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full text-base btn-teal" style={{ color: "var(--sea-deep)" }}>
                 Посмотреть календарь <Icon name="Calendar" size={18} />
-              </a>
-              <a href="#contacts" className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full text-base btn-gold" style={{ color: "var(--sea-deep)" }}>
+              </button>
+              <button onClick={() => setFormOpen(true)} className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full text-base btn-gold" style={{ color: "var(--sea-deep)" }}>
                 Забронировать <Icon name="ArrowRight" size={18} />
-              </a>
+              </button>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* WHO IS IT FOR */}
+      <section className="py-24 relative" style={{ background: "linear-gradient(180deg, #0d1f3c 0%, #112240 100%)" }}>
+        <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(38,201,195,0.3), transparent)" }} />
+        <div className="max-w-4xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <p className="text-xs tracking-widest uppercase mb-3 reveal" style={{ color: "var(--teal)" }}>Честно</p>
+            <h2 className="reveal delay-100" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: 300, color: "var(--text-primary)" }}>
+              Кому подойдёт это путешествие
+            </h2>
+          </div>
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="rounded-2xl p-8 reveal" style={{ background: "rgba(38,201,195,0.05)", border: "1px solid rgba(38,201,195,0.2)" }}>
+              <div className="flex items-center gap-3 mb-6">
+                <span className="text-2xl">✅</span>
+                <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.4rem", fontWeight: 600, color: "#fff" }}>Подойдёт</h3>
+              </div>
+              <div className="space-y-4">
+                {[
+                  "тем, кто устал от массовых курортов",
+                  "кто любит море и природу",
+                  "кто хочет тишины и свободы",
+                  "небольшие компании друзей",
+                  "пары",
+                  "девичники",
+                ].map((item) => (
+                  <div key={item} className="flex items-start gap-3">
+                    <span style={{ color: "var(--teal)", marginTop: "2px", flexShrink: 0 }}>✓</span>
+                    <span className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.8)" }}>{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="rounded-2xl p-8 reveal delay-200" style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.1)" }}>
+              <div className="flex items-center gap-3 mb-6">
+                <span className="text-2xl">🚫</span>
+                <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.4rem", fontWeight: 600, color: "#fff" }}>Не подойдёт</h3>
+              </div>
+              <div className="space-y-4">
+                {[
+                  "тем, кто ждёт пятизвёздочный отель",
+                  "тем, кто не любит море",
+                  "тем, кто ищет шумные вечеринки",
+                ].map((item) => (
+                  <div key={item} className="flex items-start gap-3">
+                    <span style={{ color: "rgba(255,255,255,0.3)", marginTop: "2px", flexShrink: 0 }}>✕</span>
+                    <span className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.5)" }}>{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+          <div className="text-center mt-10 reveal delay-300">
+            <button onClick={() => setFormOpen(true)} className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full text-base font-semibold btn-teal" style={{ color: "var(--sea-deep)" }}>
+              Подобрать путешествие <Icon name="ArrowRight" size={18} />
+            </button>
           </div>
         </div>
       </section>
