@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import Icon from "@/components/ui/icon";
 import { toast } from "sonner";
+import YachtModal, { type YachtDetail } from "@/components/YachtModal";
 
 const SUBMIT_URL = "https://functions.poehali.dev/ca2e2601-1e74-49e6-85d5-12e9ca935f4a";
 
@@ -15,7 +16,7 @@ const NAV_LINKS = [
   { label: "Контакты", href: "#contacts" },
 ];
 
-const YACHT_TYPES = [
+const YACHT_TYPES: YachtDetail[] = [
   {
     name: "Bavaria 46",
     subtitle: "Стандарт",
@@ -23,11 +24,22 @@ const YACHT_TYPES = [
     tag: "Базовый",
     tagColor: "var(--teal)",
     desc: "Классическая немецкая парусная яхта. Надёжная, удобная, настоящий опыт жизни под парусом.",
-    specs: ["3 каюты", "4–6 гостей + капитан", "Душ и туалет на борту"],
+    fullDesc: "Bavaria 46 — это классика немецкого яхтостроения. Надёжный корпус, продуманная эргономика и всё необходимое для комфортного плавания. Три отдельные каюты с двуспальными кроватями, просторный салон с обеденной зоной, полностью оборудованная кухня. На палубе — удобный кокпит для совместных ужинов под звёздами. Идеальный выбор для тех, кто хочет настоящий опыт жизни под парусом без лишних переплат.",
+    specs: ["3 каюты с двуспальными кроватями", "4–6 гостей + капитан", "Душ и туалет на борту", "Полностью оборудованная кухня", "Кокпит с тентом от солнца", "Снаряжение для снорклинга"],
+    detailedSpecs: [
+      { label: "Длина", value: "14.2 м" },
+      { label: "Каюты", value: "3" },
+      { label: "Гости", value: "до 6" },
+      { label: "Год", value: "2019" },
+    ],
     price: "от 650 €",
     priceNote: "за человека / неделю",
     highlight: false,
     img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/edfcd69f-06be-4d9d-88fc-4e9120dbe519.jpg",
+    gallery: [
+      "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/files/1849d4df-c408-409e-9770-1fd4701012a5.jpg",
+      "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/files/9dd8f24e-04d4-4f36-a2b8-85b1994c5b79.jpg",
+    ],
   },
   {
     name: "Dufour 460",
@@ -36,11 +48,22 @@ const YACHT_TYPES = [
     tag: "Популярный",
     tagColor: "var(--gold)",
     desc: "Французская яхта с просторными каютами и широкими кокпитами. Больше комфорта на каждом переходе.",
-    specs: ["Просторные каюты", "Больше места на палубе", "Отдельный санузел"],
+    fullDesc: "Dufour 460 — французская элегантность на воде. Эта яхта создана для тех, кто ценит простор и комфорт. Увеличенные каюты с отдельными санузлами, широкий кокпит с двумя штурвалами и большая носовая площадка для загара. Панорамные окна в салоне наполняют пространство светом. Просторная кухня позволяет готовить полноценные ужины. Самый популярный выбор среди наших гостей — идеальный баланс цены и комфорта.",
+    specs: ["Просторные каюты с отдельными санузлами", "Больше места на палубе", "Два штурвала", "Носовая площадка для загара", "Панорамные окна в салоне", "Электрическая лебёдка"],
+    detailedSpecs: [
+      { label: "Длина", value: "14.5 м" },
+      { label: "Каюты", value: "4" },
+      { label: "Гости", value: "до 8" },
+      { label: "Год", value: "2021" },
+    ],
     price: "≈ 880 €",
     priceNote: "за человека / неделю",
     highlight: true,
     img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/f1d30f88-a388-4bb1-a5d7-17f190ecb504.jpg",
+    gallery: [
+      "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/files/a89baed4-03c1-4556-a4b5-680c0a0fc15b.jpg",
+      "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/files/8dc4411b-32bf-4e2a-b296-6dab3d3c2367.jpg",
+    ],
   },
   {
     name: "Fountaine Pajot Astréa 42",
@@ -49,11 +72,22 @@ const YACHT_TYPES = [
     tag: "Премиум",
     tagColor: "#a78bfa",
     desc: "Двухкорпусная яхта. Максимальная устойчивость, широкий кокпит и максимальное пространство.",
-    specs: ["До 10 гостей", "4 каюты + салон", "Идеально для компаний"],
+    fullDesc: "Fountaine Pajot Astréa 42 — премиальный катамаран для тех, кто не идёт на компромиссы. Два корпуса обеспечивают исключительную устойчивость — никакой качки даже при волнении. Огромный салон с панорамным остеклением, четыре изолированные каюты, каждая с собственным санузлом. Широкий кокпит вмещает компанию до 10 человек. Идеально для больших компаний, семей с детьми, девичников и корпоративных поездок.",
+    specs: ["4 каюты с индивидуальными санузлами", "До 10 гостей + капитан", "Минимальная качка — два корпуса", "Огромный кокпит и салон", "Трамплинная сетка на носу", "Каяк и SUP-борд"],
+    detailedSpecs: [
+      { label: "Длина", value: "12.8 м" },
+      { label: "Ширина", value: "7.4 м" },
+      { label: "Каюты", value: "4" },
+      { label: "Гости", value: "до 10" },
+    ],
     price: "≈ 975 €",
     priceNote: "за человека / неделю",
     highlight: false,
     img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/2a72d937-7381-4b29-9235-12ad76dbe445.jpg",
+    gallery: [
+      "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/files/4593a3bb-3918-4efb-8ac3-6eeeaaa0d716.jpg",
+      "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/files/4eb5fdce-ba89-4d4b-bb85-32d668655d13.jpg",
+    ],
   },
 ];
 
@@ -216,6 +250,7 @@ export default function Index() {
   const [navOpaque, setNavOpaque] = useState(false);
   const [formOpen, setFormOpen] = useState(false);
   const [sending, setSending] = useState(false);
+  const [selectedYacht, setSelectedYacht] = useState<YachtDetail | null>(null);
   const formRef = useRef<HTMLFormElement>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -726,7 +761,8 @@ export default function Index() {
           <div className="grid md:grid-cols-3 gap-6">
             {YACHT_TYPES.map((yacht, i) => (
               <div key={yacht.name}
-                className={`relative rounded-2xl overflow-hidden card-hover reveal delay-${(i + 1) * 100} flex flex-col`}
+                className={`relative rounded-2xl overflow-hidden card-hover reveal delay-${(i + 1) * 100} flex flex-col cursor-pointer`}
+                onClick={() => setSelectedYacht(yacht)}
                 style={{
                   background: yacht.highlight ? "linear-gradient(135deg, rgba(38,201,195,0.12) 0%, rgba(13,32,64,0.85) 100%)" : "rgba(13,32,64,0.7)",
                   border: `1px solid ${yacht.highlight ? "rgba(38,201,195,0.3)" : "rgba(38,201,195,0.1)"}`,
@@ -742,6 +778,11 @@ export default function Index() {
                 <div className="relative h-48 overflow-hidden">
                   <img src={yacht.img} alt={yacht.name} className="w-full h-full object-cover transition-transform duration-700 hover:scale-105" />
                   <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(13,31,60,0.8) 0%, rgba(13,31,60,0.05) 60%)" }} />
+                  <div className="absolute bottom-3 left-3">
+                    <span className="px-2 py-1 rounded-full text-xs flex items-center gap-1" style={{ background: "rgba(0,0,0,0.4)", color: "#fff", backdropFilter: "blur(8px)" }}>
+                      <Icon name="Images" size={12} /> {1 + yacht.gallery.length} фото
+                    </span>
+                  </div>
                   <div className="absolute bottom-3 right-3">
                     <span className="px-2 py-0.5 rounded text-xs" style={{ background: `${yacht.tagColor}30`, color: yacht.tagColor, border: `1px solid ${yacht.tagColor}50`, backdropFilter: "blur(8px)" }}>
                       {yacht.tag}
@@ -755,7 +796,7 @@ export default function Index() {
                   </div>
                   <p className="text-sm leading-relaxed mb-5" style={{ color: "var(--text-secondary)" }}>{yacht.desc}</p>
                   <div className="flex flex-col gap-2 mb-6 flex-1">
-                    {yacht.specs.map((s) => (
+                    {yacht.specs.slice(0, 3).map((s) => (
                       <div key={s} className="flex items-center gap-2 text-sm" style={{ color: "var(--text-secondary)" }}>
                         <span style={{ color: "var(--teal)" }}>✓</span> {s}
                       </div>
@@ -767,9 +808,9 @@ export default function Index() {
                     </div>
                     <div className="text-xs mb-4" style={{ color: "var(--text-muted)" }}>{yacht.priceNote}</div>
                   </div>
-                  <button onClick={() => setFormOpen(true)} className={`w-full py-2.5 rounded-full text-sm text-center ${yacht.highlight ? "btn-teal" : "btn-outline-teal"}`}
+                  <button onClick={(e) => { e.stopPropagation(); setSelectedYacht(yacht); }} className={`w-full py-2.5 rounded-full text-sm text-center flex items-center justify-center gap-2 ${yacht.highlight ? "btn-teal" : "btn-outline-teal"}`}
                     style={yacht.highlight ? { color: "var(--sea-deep)" } : {}}>
-                    Забронировать
+                    Подробнее <Icon name="ArrowRight" size={14} />
                   </button>
                 </div>
               </div>
@@ -1400,6 +1441,12 @@ export default function Index() {
           <p className="text-xs" style={{ color: "var(--text-muted)" }}>Сезон 2026 · Апрель — Ноябрь</p>
         </div>
       </footer>
+
+      <YachtModal
+        yacht={selectedYacht}
+        onClose={() => setSelectedYacht(null)}
+        onBook={() => { setSelectedYacht(null); setFormOpen(true); }}
+      />
     </div>
   );
 }
