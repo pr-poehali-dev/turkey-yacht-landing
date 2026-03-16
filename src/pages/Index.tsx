@@ -1372,11 +1372,11 @@ export default function Index() {
                 <h3 className="font-semibold mb-6" style={{ color: "var(--text-primary)" }}>Связаться с нами</h3>
                 <div className="space-y-3">
                   {[
-                    { icon: "MessageCircle", label: "Telegram", value: "@yacht_turkey" },
-                    { icon: "Phone", label: "WhatsApp", value: "+7 (999) 000-00-00" },
-                    { icon: "Mail", label: "Email", value: "info@yacht-turkey.ru" },
-                  ].map((contact) => (
-                    <a key={contact.label} href="#"
+                    { icon: "MessageCircle", label: "Telegram", value: "@yacht_week_bot", href: "https://t.me/yacht_week_bot" },
+                    { icon: "Phone", label: "Телефон", value: "+7 (928) 905-16-18", href: "tel:+79289051618" },
+                    { icon: "Phone", label: "Телефон", value: "+7 (920) 751-75-15", href: "tel:+79207517515" },
+                  ].map((contact, i) => (
+                    <a key={contact.label + i} href={contact.href}
                       className="flex items-center gap-4 py-3 px-4 rounded-xl transition-all"
                       style={{ background: "rgba(255,255,255,0.03)" }}
                       onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(38,201,195,0.08)")}
