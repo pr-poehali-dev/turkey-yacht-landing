@@ -35,8 +35,11 @@ const YACHT_TYPES: YachtDetail[] = [
     price: "от 650 €",
     priceNote: "за человека / неделю",
     highlight: false,
-    img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/6555c1f3-4648-40c1-af88-9965632c5cf4.jpg",
+    img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/b6bd9ef5-857a-486b-b803-5ce119900841.jpg",
     gallery: [
+      "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/26db3cb8-1dea-4ca6-bd52-24ec06a471bd.jpg",
+      "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/6591ef33-a420-4b12-89b4-8c90742faa17.jpg",
+      "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/6555c1f3-4648-40c1-af88-9965632c5cf4.jpg",
       "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/c8688f27-641a-4452-8667-bd98db5fe801.jpg",
       "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/d08eda47-77d4-4636-a55b-aa4f9f45006f.jpg",
       "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/d341d8b4-5642-4a8c-8b8b-dec78931e625.jpg",
@@ -606,6 +609,16 @@ export default function Index() {
               Один из самых красивых регионов Средиземного моря. Старт из Фетхие или Мармарис.
             </p>
           </div>
+          <div className="mb-12 reveal delay-200">
+            <div className="rounded-2xl overflow-hidden" style={{ border: "1px solid rgba(38,201,195,0.15)" }}>
+              <img
+                src="https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/6e886e7c-4689-4738-a306-8a54d32f3b1b.jpg"
+                alt="Карта маршрута — Ликийская тропа, побережье Турции"
+                className="w-full h-auto object-contain"
+              />
+            </div>
+          </div>
+
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
             {ROUTE_STOPS.map((stop, i) => (
               <div key={stop.name} className={`rounded-2xl overflow-hidden card-hover reveal delay-${(i % 4 + 1) * 100}`}
