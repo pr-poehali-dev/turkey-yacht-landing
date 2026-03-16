@@ -76,7 +76,7 @@ export default function YachtModal({ yacht, onClose, onBook }: YachtModalProps) 
         </button>
 
         <div className="relative">
-          <div className="relative h-64 md:h-80 overflow-hidden">
+          <div className="relative h-72 md:h-96 overflow-hidden">
             <img
               src={allImages[activeImg]}
               alt={yacht.name}

@@ -35,10 +35,12 @@ const YACHT_TYPES: YachtDetail[] = [
     price: "от 650 €",
     priceNote: "за человека / неделю",
     highlight: false,
-    img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/edfcd69f-06be-4d9d-88fc-4e9120dbe519.jpg",
+    img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/6555c1f3-4648-40c1-af88-9965632c5cf4.jpg",
     gallery: [
-      "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/files/1849d4df-c408-409e-9770-1fd4701012a5.jpg",
-      "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/files/9dd8f24e-04d4-4f36-a2b8-85b1994c5b79.jpg",
+      "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/c8688f27-641a-4452-8667-bd98db5fe801.jpg",
+      "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/d08eda47-77d4-4636-a55b-aa4f9f45006f.jpg",
+      "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/d341d8b4-5642-4a8c-8b8b-dec78931e625.jpg",
+      "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/edfe203f-fddb-4c78-be69-bdb00a04baa6.jpg",
     ],
   },
   {
@@ -97,7 +99,7 @@ const ROUTE_STOPS = [
   { name: "Бухта Бабочек", desc: "Уединённая бухта, доступная только с моря. Снорклинг и ныряние у скал.", icon: "🦋", img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/files/b3fa61df-77bd-45d0-9c41-58eb93962faf.jpg" },
   { name: "Остров Гемилер", desc: "Руины византийских церквей прямо у воды. Якорная стоянка среди скал и оливков — можно исследовать пешком.", icon: "🏛", img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/files/fe6f1d55-c4ae-42d0-9bee-e4f5c33388b7.jpg" },
   { name: "Дикие бухты", desc: "Тихие стоянки вдали от туристов. Морская охота, фридайвинг, закаты у воды.", icon: "🌊", img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/files/b4399b74-8a91-4f26-97bd-66882dfe61b6.jpg" },
-  { name: "Кас / Калкан", desc: "Живописные рыбацкие городки с террасными ресторанами и ночной жизнью.", icon: "🏘", img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/files/712f8940-a329-4ab8-85ac-9a5e109b00e6.jpg" },
+  { name: "Каш / Калкан", desc: "Живописные рыбацкие городки с террасными ресторанами и ночной жизнью.", icon: "🏘", img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/files/712f8940-a329-4ab8-85ac-9a5e109b00e6.jpg" },
   { name: "Кекова", desc: "Затопленный античный город Симена — история прямо под водой, видна без маски.", icon: "🏺", img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/files/bf2476da-c70e-4ee3-b660-a427e3062b84.jpg" },
   { name: "Демре / Мира", desc: "Древний ликийский город и церковь Святого Николая. Гробницы, высеченные в скалах.", icon: "🗿", img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/files/cf94c814-2c42-4598-9833-bb0f6905404f.jpg" },
 ];
@@ -716,7 +718,7 @@ export default function Index() {
               <div className="text-2xl mb-4">🌍</div>
               <h3 className="font-semibold mb-3" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.2rem", color: "#fff" }}>8 морей за плечами</h3>
               <div className="grid grid-cols-2 gap-2">
-                {["Азовское", "Каспийское", "Средиземное", "Эгейское", "Ионическое", "Адриатическое", "Мраморное", "Миртойское"].map((sea) => (
+                {["Азовское", "Кашпийское", "Средиземное", "Эгейское", "Ионическое", "Адриатическое", "Мраморное", "Миртойское"].map((sea) => (
                   <div key={sea} className="flex items-center gap-1.5 text-xs py-1.5" style={{ color: "rgba(255,255,255,0.6)", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
                     <span style={{ color: "var(--teal)", fontSize: "0.4rem" }}>●</span> {sea}
                   </div>
@@ -775,7 +777,7 @@ export default function Index() {
                     </span>
                   </div>
                 )}
-                <div className="relative h-48 overflow-hidden">
+                <div className="relative h-56 md:h-64 overflow-hidden">
                   <img src={yacht.img} alt={yacht.name} className="w-full h-full object-cover transition-transform duration-700 hover:scale-105" />
                   <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(13,31,60,0.8) 0%, rgba(13,31,60,0.05) 60%)" }} />
                   <div className="absolute bottom-3 left-3">
