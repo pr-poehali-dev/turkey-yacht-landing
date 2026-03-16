@@ -18,13 +18,13 @@ const NAV_LINKS = [
 
 const YACHT_TYPES: YachtDetail[] = [
   {
-    name: "Bavaria 46",
+    name: "Bavaria 42",
     subtitle: "Стандарт",
     icon: "⛵",
     tag: "Базовый",
     tagColor: "var(--teal)",
     desc: "Классическая немецкая парусная яхта. Надёжная, удобная, настоящий опыт жизни под парусом.",
-    fullDesc: "Bavaria 46 — это классика немецкого яхтостроения. Надёжный корпус, продуманная эргономика и всё необходимое для комфортного плавания. Три отдельные каюты с двуспальными кроватями, просторный салон с обеденной зоной, полностью оборудованная кухня. На палубе — удобный кокпит для совместных ужинов под звёздами. Идеальный выбор для тех, кто хочет настоящий опыт жизни под парусом без лишних переплат.",
+    fullDesc: "Bavaria 42 — это классика немецкого яхтостроения. Надёжный корпус, продуманная эргономика и всё необходимое для комфортного плавания. Три отдельные каюты с двуспальными кроватями, просторный салон с обеденной зоной, полностью оборудованная кухня. На палубе — удобный кокпит для совместных ужинов под звёздами. Идеальный выбор для тех, кто хочет настоящий опыт жизни под парусом без лишних переплат.",
     specs: ["3 каюты с двуспальными кроватями", "4–6 гостей + капитан", "Душ и туалет на борту", "Полностью оборудованная кухня", "Кокпит с тентом от солнца", "Снаряжение для снорклинга"],
     detailedSpecs: [
       { label: "Длина", value: "14.2 м" },
@@ -147,7 +147,7 @@ const REVIEWS = [
     city: "Москва",
     text: "Это была лучшая неделя в моей жизни. Просыпаться каждое утро в новой бухте — ни один отель не даст такого ощущения. Евгений — потрясающий капитан, всё организовано идеально.",
     stars: 5,
-    trip: "Bavaria 46, июль",
+    trip: "Bavaria 42, июль",
   },
   {
     name: "Максим и Лена",
@@ -175,7 +175,7 @@ const REVIEWS = [
     city: "Казань",
     text: "Отдыхала одна — не знала никого из группы. Через два дня все стали как родные. Капитан Евгений создаёт особую атмосферу на борту. Буду снова в этом году.",
     stars: 5,
-    trip: "Bavaria 46, май",
+    trip: "Bavaria 42, май",
   },
   {
     name: "Артём Н.",
@@ -189,7 +189,7 @@ const REVIEWS = [
     city: "Краснодар",
     text: "Девичник на яхте — это лучшее решение в моей жизни. Никаких клубов, никакого шума. Только море, закаты, свои люди и полная свобода. Спасибо огромное!",
     stars: 5,
-    trip: "Bavaria 46, август",
+    trip: "Bavaria 42, август",
   },
   {
     name: "Павел К.",
@@ -777,9 +777,9 @@ export default function Index() {
                     </span>
                   </div>
                 )}
-                <div className="relative h-56 md:h-64 overflow-hidden">
-                  <img src={yacht.img} alt={yacht.name} className="w-full h-full object-cover transition-transform duration-700 hover:scale-105" />
-                  <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(13,31,60,0.8) 0%, rgba(13,31,60,0.05) 60%)" }} />
+                <div className="relative h-56 md:h-64 overflow-hidden flex items-center justify-center" style={{ background: "rgba(13,31,60,0.95)" }}>
+                  <img src={yacht.img} alt={yacht.name} className="w-full h-full object-contain transition-transform duration-700 hover:scale-105" />
+                  <div className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(to top, rgba(13,31,60,0.9) 0%, rgba(13,31,60,0) 40%)" }} />
                   <div className="absolute bottom-3 left-3">
                     <span className="px-2 py-1 rounded-full text-xs flex items-center gap-1" style={{ background: "rgba(0,0,0,0.4)", color: "#fff", backdropFilter: "blur(8px)" }}>
                       <Icon name="Images" size={12} /> {1 + yacht.gallery.length} фото
