@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Icon from "@/components/ui/icon";
 
 export interface YachtDetail {
@@ -26,6 +26,8 @@ interface YachtModalProps {
 
 export default function YachtModal({ yacht, onClose, onBook }: YachtModalProps) {
   const [activeImg, setActiveImg] = useState(0);
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const thumbRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (yacht) {
@@ -46,14 +48,34 @@ export default function YachtModal({ yacht, onClose, onBook }: YachtModalProps) 
     return () => window.removeEventListener("keydown", handleKey);
   });
 
+  useEffect(() => {
+    if (thumbRef.current) {
+      const active = thumbRef.current.children[activeImg] as HTMLElement;
+      if (active) {
+        active.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+      }
+    }
+  }, [activeImg]);
+
   if (!yacht) return null;
 
   const allImages = [yacht.img, ...yacht.gallery];
 
+  const goNext = () => setActiveImg((p) => (p + 1) % allImages.length);
+  const goPrev = () => setActiveImg((p) => (p - 1 + allImages.length) % allImages.length);
+
+  const handleTouchStart = (e: React.TouchEvent) => setTouchStart(e.touches[0].clientX);
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStart === null) return;
+    const diff = touchStart - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 50) { if (diff > 0) { goNext(); } else { goPrev(); } }
+    setTouchStart(null);
+  };
+
   return (
     <div
-      className="fixed inset-0 z-[100] flex items-center justify-center p-4"
-      style={{ background: "rgba(0,0,0,0.8)", backdropFilter: "blur(12px)" }}
+      className="fixed inset-0 z-[100] flex items-center justify-center p-3 md:p-4"
+      style={{ background: "rgba(0,0,0,0.85)", backdropFilter: "blur(12px)" }}
       onClick={(e) => e.target === e.currentTarget && onClose()}
     >
       <div
@@ -70,69 +92,65 @@ export default function YachtModal({ yacht, onClose, onBook }: YachtModalProps) 
         <button
           onClick={onClose}
           className="absolute top-4 right-4 z-20 p-2 rounded-full transition-colors"
-          style={{ color: "#fff", background: "rgba(0,0,0,0.4)", backdropFilter: "blur(8px)" }}
+          style={{ color: "#fff", background: "rgba(0,0,0,0.5)", backdropFilter: "blur(8px)" }}
         >
           <Icon name="X" size={20} />
         </button>
 
-        <div className="relative">
-          <div className="relative h-72 md:h-96 overflow-hidden">
+        <div className="relative" style={{ background: "#0a1628" }}>
+          <div
+            className="relative overflow-hidden flex items-center justify-center"
+            style={{ height: "clamp(260px, 50vw, 420px)" }}
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
+          >
             <img
               src={allImages[activeImg]}
               alt={yacht.name}
-              className="w-full h-full object-cover transition-all duration-500"
-            />
-            <div
-              className="absolute inset-0"
-              style={{ background: "linear-gradient(to top, rgba(13,31,60,1) 0%, rgba(13,31,60,0) 60%)" }}
+              className="max-w-full max-h-full object-contain transition-all duration-400"
+              style={{ userSelect: "none" }}
             />
 
             {allImages.length > 1 && (
               <>
                 <button
-                  onClick={() => setActiveImg((p) => (p - 1 + allImages.length) % allImages.length)}
-                  className="absolute left-3 top-1/2 -translate-y-1/2 p-2 rounded-full transition-all hover:scale-110"
-                  style={{ background: "rgba(0,0,0,0.5)", color: "#fff", backdropFilter: "blur(8px)" }}
+                  onClick={goPrev}
+                  className="absolute left-3 top-1/2 -translate-y-1/2 p-2.5 rounded-full transition-all hover:scale-110"
+                  style={{ background: "rgba(0,0,0,0.6)", color: "#fff", backdropFilter: "blur(8px)" }}
                 >
                   <Icon name="ChevronLeft" size={20} />
                 </button>
                 <button
-                  onClick={() => setActiveImg((p) => (p + 1) % allImages.length)}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 p-2 rounded-full transition-all hover:scale-110"
-                  style={{ background: "rgba(0,0,0,0.5)", color: "#fff", backdropFilter: "blur(8px)" }}
+                  onClick={goNext}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 p-2.5 rounded-full transition-all hover:scale-110"
+                  style={{ background: "rgba(0,0,0,0.6)", color: "#fff", backdropFilter: "blur(8px)" }}
                 >
                   <Icon name="ChevronRight" size={20} />
                 </button>
               </>
             )}
 
-            <div className="absolute bottom-20 left-0 right-0 flex justify-center gap-1.5">
-              {allImages.map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => setActiveImg(i)}
-                  className="rounded-full transition-all"
-                  style={{
-                    width: activeImg === i ? 24 : 8,
-                    height: 8,
-                    background: activeImg === i ? "var(--teal)" : "rgba(255,255,255,0.4)",
-                  }}
-                />
-              ))}
+            <div className="absolute top-4 left-4 px-3 py-1 rounded-full text-xs" style={{ background: "rgba(0,0,0,0.5)", color: "rgba(255,255,255,0.8)", backdropFilter: "blur(8px)" }}>
+              {activeImg + 1} / {allImages.length}
             </div>
           </div>
 
-          <div className="flex gap-2 px-6 -mt-10 relative z-10 overflow-x-auto pb-2 scrollbar-hide">
+          <div
+            ref={thumbRef}
+            className="flex gap-2 px-4 py-3 overflow-x-auto scrollbar-hide"
+            style={{ background: "rgba(0,0,0,0.3)" }}
+          >
             {allImages.map((img, i) => (
               <button
                 key={i}
                 onClick={() => setActiveImg(i)}
-                className="flex-shrink-0 rounded-xl overflow-hidden transition-all"
+                className="flex-shrink-0 rounded-lg overflow-hidden transition-all"
                 style={{
-                  width: 72,
-                  height: 48,
+                  width: 80,
+                  height: 56,
                   border: activeImg === i ? "2px solid var(--teal)" : "2px solid transparent",
-                  opacity: activeImg === i ? 1 : 0.6,
+                  opacity: activeImg === i ? 1 : 0.5,
+                  transform: activeImg === i ? "scale(1.05)" : "scale(1)",
                 }}
               >
                 <img src={img} alt="" className="w-full h-full object-cover" />
