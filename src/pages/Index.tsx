@@ -185,7 +185,7 @@ const REVIEWS = [
     text: "Провели медовый месяц на яхте. Церемония прямо на борту — что-то невероятное. Команда сделала всё, чтобы этот день запомнился на всю жизнь.",
     stars: 5,
     trip: "Catamaran, сентябрь",
-    img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/f842a71b-5168-48cb-bcba-ad0ad3e96301.jpg",
+    img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/f793efad-69d4-42c1-b61e-11dcd2e8a877.jpg",
   },
   {
     name: "Дмитрий П.",
@@ -225,7 +225,7 @@ const REVIEWS = [
     text: "Девичник на яхте — это лучшее решение в моей жизни. Никаких клубов, никакого шума. Только море, закаты, свои люди и полная свобода. Спасибо огромное!",
     stars: 5,
     trip: "Bavaria 42, август",
-    img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/c936e9b9-f800-43f6-9df4-8fc2a6af0eb3.jpg",
+    img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/f842a71b-5168-48cb-bcba-ad0ad3e96301.jpg",
   },
   {
     name: "Павел К.",
@@ -297,6 +297,40 @@ function CaptainSlider({ photos }: { photos: { src: string; label: string }[] })
           </button>
         )}
       </div>
+    </div>
+  );
+}
+
+function DinnerSlider({ photos }: { photos: { src: string; label: string }[] }) {
+  const [idx, setIdx] = useState(0);
+  return (
+    <div className="relative overflow-hidden" style={{ height: "220px" }}>
+      <img
+        key={idx}
+        src={photos[idx].src}
+        alt={photos[idx].label}
+        className="w-full h-full object-cover transition-all duration-500"
+        style={{ objectPosition: "center 40%" }}
+      />
+      <div className="absolute inset-0 flex items-end justify-between p-4" style={{ background: "linear-gradient(to top, rgba(13,31,60,0.8) 0%, transparent 60%)" }}>
+        <p className="text-sm" style={{ color: "rgba(255,255,255,0.8)", fontStyle: "italic" }}>{photos[idx].label}</p>
+        <div className="flex gap-1.5">
+          {photos.map((_, i) => (
+            <button key={i} onClick={() => setIdx(i)} className="rounded-full transition-all"
+              style={{ width: i === idx ? 16 : 6, height: 6, background: i === idx ? "var(--teal)" : "rgba(255,255,255,0.4)" }} />
+          ))}
+        </div>
+      </div>
+      <button onClick={() => setIdx((p) => (p - 1 + photos.length) % photos.length)}
+        className="absolute left-2 top-1/2 -translate-y-1/2 p-1.5 rounded-full"
+        style={{ background: "rgba(0,0,0,0.45)", color: "#fff" }}>
+        <Icon name="ChevronLeft" size={14} />
+      </button>
+      <button onClick={() => setIdx((p) => (p + 1) % photos.length)}
+        className="absolute right-2 top-1/2 -translate-y-1/2 p-1.5 rounded-full"
+        style={{ background: "rgba(0,0,0,0.45)", color: "#fff" }}>
+        <Icon name="ChevronRight" size={14} />
+      </button>
     </div>
   );
 }
@@ -1046,13 +1080,13 @@ export default function Index() {
                 icon: "🚿",
                 title: "Душ и туалет — на борту",
                 desc: "На Bavaria и Dufour — 2 санузла с душем на борту. Горячий душ работает каждый день. На катамаране — отдельный санузел в каждой каюте. Также на купальной платформе есть душ с пресной водой — ополоснуться после моря.",
-                img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/6f836418-08db-4383-8936-cc2ee5b3e143.jpg",
+                img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/94c7012e-9644-4e4e-9f53-a3ce7e02f996.jpeg",
               },
               {
                 icon: "⛵",
                 title: "Кокпит — ваша открытая терраса",
                 desc: "Кокпит — это открытая площадка на корме, где проходит большая часть жизни. Завтраки под ветер, закаты с бокалом, ужины у тихих скал. Здесь стоит штурвал, здесь сидит капитан, и здесь вы будете проводить большую часть времени в море.",
-                img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/94d0fe48-da26-4233-ac06-47e6e806a99c.jpeg",
+                img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/d6422ad4-32fe-4c6e-aed1-9a2440a69a7f.jpg",
               },
             ].map((zone, i) => (
               <div key={zone.title} className={`rounded-2xl overflow-hidden reveal delay-${(i + 1) * 100}`} style={{ border: "1px solid rgba(38,201,195,0.12)" }}>
@@ -1251,17 +1285,15 @@ export default function Index() {
                 </div>
               </div>
             </div>
-            <div className="relative overflow-hidden" style={{ height: "220px" }}>
-              <img
-                src="https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/6a38c055-5bea-47e3-a34b-6b2158169b02.jpg"
-                alt="Ужин у воды"
-                className="w-full h-full object-cover"
-                style={{ objectPosition: "center 40%" }}
-              />
-              <div className="absolute inset-0 flex items-end p-4" style={{ background: "linear-gradient(to top, rgba(13,31,60,0.8) 0%, transparent 60%)" }}>
-                <p className="text-sm" style={{ color: "rgba(255,255,255,0.8)", fontStyle: "italic" }}>Вечерний ужин у воды — один из любимых ритуалов путешествия</p>
-              </div>
-            </div>
+            {(() => {
+              const dinnerPhotos = [
+                { src: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/6a38c055-5bea-47e3-a34b-6b2158169b02.jpg", label: "Ужин у воды" },
+                { src: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/d470a3be-3852-47b8-8d50-a52ab065532b.jpeg", label: "Свежие блюда на борту" },
+                { src: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/d6422ad4-32fe-4c6e-aed1-9a2440a69a7f.jpg", label: "Компания за столом" },
+                { src: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/94d0fe48-da26-4233-ac06-47e6e806a99c.jpeg", label: "Праздничный стол на катамаране" },
+              ];
+              return <DinnerSlider photos={dinnerPhotos} />;
+            })()}
           </div>
 
           <div className="mt-6 glass rounded-2xl p-7 reveal delay-300">
