@@ -146,15 +146,28 @@ const DAY_SCHEDULE = [
 ];
 
 const SPECIAL_WEEKS = [
-  { icon: "🤿", title: "Морская охота и фридайвинг", desc: "Спускаешься на глубину с ружьём — и ужин уже на борту. Кристальная вода, рыба у самых скал." },
-  { icon: "🎣", title: "Рыбалка", desc: "Закинуть снасть прямо с кормы — на ходу или на стоянке. Свежий улов сразу на сковороду." },
-  { icon: "⛵", title: "Обучение яхтингу", desc: "Встань за штурвал и возьми курс сам. Капитан обучит управлению парусами прямо в море." },
-  { icon: "🥾", title: "Яхтинг + Ликийская тропа", desc: "Самая красивая треккинговая тропа мира 2025 года. Высаживаемся в бухте, идём налегке — без рюкзаков. После прогулки отдыхаем на яхте. Доступно всем, включая детей." },
-  { icon: "💍", title: "Бракосочетание на яхте", desc: "В морских традициях. Капитан имеет право росписи — церемония прямо на борту, в открытом море." },
-  { icon: "🎂", title: "День рождения на яхте", desc: "Для взрослых и детей. Квест на руинах древнего города, пиратская вечеринка, день Нептуна — и всё, на что хватит фантазии. Фотограф и аниматор — по запросу." },
-  { icon: "👯‍♀️", title: "Девичники", desc: "Неделя красивых бухт, моря и закатов с подругами. Профессиональная фотосессия — по запросу." },
-  { icon: "👥", title: "Компании друзей", desc: "Лучший формат для тех, кто ценит свободу и настоящие приключения." },
-  { icon: "🧘", title: "Спокойный яхтинг", desc: "Для тех, кто ищет тишину и море вдали от шумных курортов." },
+  { icon: "🤿", title: "Морская охота и фридайвинг", desc: "Спускаешься на глубину с ружьём — и ужин уже на борту. Кристальная вода, рыба у самых скал.", img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/20de6d30-2c27-4ee2-97a8-0821c30bb597.jpg" },
+  { icon: "🎣", title: "Рыбалка", desc: "Закинуть снасть прямо с кормы — на ходу или на стоянке. Свежий улов сразу на сковороду.", img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/1d80504d-b2c9-4a9b-b603-477b7e628a7d.jpg" },
+  { icon: "⛵", title: "Обучение яхтингу", desc: "Встань за штурвал и возьми курс сам. Капитан обучит управлению парусами прямо в море.", img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/c732e4c6-bccd-482e-a03f-6258c8e73768.jpg" },
+  { icon: "🥾", title: "Яхтинг + Ликийская тропа", desc: "Самая красивая треккинговая тропа мира 2025 года. Высаживаемся в бухте, идём налегке — без рюкзаков. После прогулки отдыхаем на яхте. Доступно всем, включая детей.", img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/7a939002-4344-4d75-a70d-a1f63896b51e.jpg" },
+  { icon: "💍", title: "Бракосочетание на яхте", desc: "В морских традициях. Капитан имеет право росписи — церемония прямо на борту, в открытом море.", img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/f842a71b-5168-48cb-bcba-ad0ad3e96301.jpg" },
+  { icon: "🎂", title: "День рождения на яхте", desc: "Для взрослых и детей. Квест на руинах древнего города, пиратская вечеринка, день Нептуна — и всё, на что хватит фантазии. Фотограф и аниматор — по запросу.", img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/d6422ad4-32fe-4c6e-aed1-9a2440a69a7f.jpg" },
+  { icon: "👯‍♀️", title: "Девичники", desc: "Неделя красивых бухт, моря и закатов с подругами. Профессиональная фотосессия — по запросу.", img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/f842a71b-5168-48cb-bcba-ad0ad3e96301.jpg" },
+  { icon: "👥", title: "Компании друзей", desc: "Лучший формат для тех, кто ценит свободу и настоящие приключения.", img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/bd68ae2d-75f0-4144-94f5-13347159898e.jpg" },
+  { icon: "🧘", title: "Спокойный яхтинг", desc: "Для тех, кто ищет тишину и море вдали от шумных курортов.", img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/274be0fa-8c28-4f88-b93c-779ee450e35e.jpg" },
+];
+
+const YACHT_GLOSSARY = [
+  { term: "Кокпит", def: "Открытая площадка на корме яхты — ваша «терраса». Здесь штурвал, капитан и большая часть жизни на переходах." },
+  { term: "Кают-компания", def: "Общий салон внутри яхты — столовая, гостиная и кухня в одном. Тут едят, общаются и отдыхают." },
+  { term: "Камбуз", def: "Кухня на яхте. Плита, холодильник, раковина и всё для готовки — в компактном пространстве." },
+  { term: "Гальюн", def: "Туалет на яхте. Работает немного иначе, чем дома — капитан объяснит при посадке." },
+  { term: "Марина", def: "Яхтенный порт с причалами, водой, электричеством и иногда ресторанами. Здесь начинается и заканчивается маршрут." },
+  { term: "Бакштаг / Галфвинд", def: "Курс яхты относительно ветра. Новичкам знать необязательно — капитан разберётся сам." },
+  { term: "Якорная стоянка", def: "Стоянка вдали от берега — яхта держится на якоре. Тишина, звёзды, вода вокруг." },
+  { term: "Купальная платформа", def: "Площадка в корме на уровне воды — для прыжков и выхода из моря. Лесенка сюда же." },
+  { term: "Динги", def: "Маленькая надувная лодка с мотором — доставляет на берег, когда яхта стоит на якоре." },
+  { term: "Шкот", def: "Верёвка (снасть) для управления парусами. Если капитан попросит потянуть — это как раз шкот." },
 ];
 
 const REVIEWS = [
@@ -164,6 +177,7 @@ const REVIEWS = [
     text: "Это была лучшая неделя в моей жизни. Просыпаться каждое утро в новой бухте — ни один отель не даст такого ощущения. Евгений — потрясающий капитан, всё организовано идеально.",
     stars: 5,
     trip: "Bavaria 42, июль",
+    img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/274be0fa-8c28-4f88-b93c-779ee450e35e.jpg",
   },
   {
     name: "Максим и Лена",
@@ -171,6 +185,7 @@ const REVIEWS = [
     text: "Провели медовый месяц на яхте. Церемония прямо на борту — что-то невероятное. Команда сделала всё, чтобы этот день запомнился на всю жизнь.",
     stars: 5,
     trip: "Catamaran, сентябрь",
+    img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/f842a71b-5168-48cb-bcba-ad0ad3e96301.jpg",
   },
   {
     name: "Дмитрий П.",
@@ -178,6 +193,7 @@ const REVIEWS = [
     text: "Боялся морской болезни — оказалось зря. Уже на второй день забыл об этом страхе. Больше всего запомнились вечера у маленьких ресторанов прямо у воды.",
     stars: 5,
     trip: "Dufour 455, август",
+    img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/d6422ad4-32fe-4c6e-aed1-9a2440a69a7f.jpg",
   },
   {
     name: "Ольга и Сергей",
@@ -185,6 +201,7 @@ const REVIEWS = [
     text: "Взяли катамаран всей компанией — 8 человек. Пространства хватило всем. Рыбачили каждый день, ныряли с маской в бухтах. Обратно в Турцию хочется уже сейчас.",
     stars: 5,
     trip: "Catamaran, июнь",
+    img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/7a939002-4344-4d75-a70d-a1f63896b51e.jpg",
   },
   {
     name: "Ирина В.",
@@ -192,6 +209,7 @@ const REVIEWS = [
     text: "Отдыхала одна — не знала никого из группы. Через два дня все стали как родные. Капитан Евгений создаёт особую атмосферу на борту. Буду снова в этом году.",
     stars: 5,
     trip: "Bavaria 42, май",
+    img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/bd68ae2d-75f0-4144-94f5-13347159898e.jpg",
   },
   {
     name: "Артём Н.",
@@ -199,6 +217,7 @@ const REVIEWS = [
     text: "Занимался морской охотой впервые — ощущения непередаваемые. Капитан знает все места, где водится рыба. Приготовили прямо на борту, с видом на скалы. Незабываемо.",
     stars: 5,
     trip: "Dufour 455, октябрь",
+    img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/20de6d30-2c27-4ee2-97a8-0821c30bb597.jpg",
   },
   {
     name: "Наташа Г.",
@@ -206,6 +225,7 @@ const REVIEWS = [
     text: "Девичник на яхте — это лучшее решение в моей жизни. Никаких клубов, никакого шума. Только море, закаты, свои люди и полная свобода. Спасибо огромное!",
     stars: 5,
     trip: "Bavaria 42, август",
+    img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/c936e9b9-f800-43f6-9df4-8fc2a6af0eb3.jpg",
   },
   {
     name: "Павел К.",
@@ -213,6 +233,7 @@ const REVIEWS = [
     text: "До этого путешествовал только в отелях. Яхта — это другое измерение. Встаёшь утром — вокруг бирюзовое море и скалы. Евгений — профессионал и отличный рассказчик.",
     stars: 5,
     trip: "Catamaran, июль",
+    img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/cf38f7d5-0f77-4a83-888a-20fcd95c8f7c.jpg",
   },
   {
     name: "Юлия и Андрей",
@@ -220,6 +241,7 @@ const REVIEWS = [
     text: "Взяли яхту целиком для двух пар. Лучшее решение — полная свобода маршрута. Останавливались где хотели, ходили сколько хотели. Бухта Бабочек — это сказка.",
     stars: 5,
     trip: "Dufour 460, сентябрь",
+    img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/0b2a898f-e8c3-439c-a974-3d7cf2883c34.jpg",
   },
 ];
 
@@ -230,11 +252,9 @@ const GALLERY_ITEMS = [
   { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/0b2a898f-e8c3-439c-a974-3d7cf2883c34.jpg", label: "Бухта Бабочек", pos: "center center" },
   { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/cf38f7d5-0f77-4a83-888a-20fcd95c8f7c.jpg", label: "Закат на якоре", pos: "center center" },
   { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/23c69f90-c2f3-4dbe-93d9-3183595fbe5d.jpg", label: "Олюдениз", pos: "center center" },
-  { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/46a224ed-0c9e-465f-a97b-20fa3dbcc619.jpg", label: "На палубе", pos: "center center" },
   { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/ab8d6dd3-7af1-4f9e-a417-d06307240426.jpg", label: "Остров Св. Николая", pos: "center center" },
   { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/7d414dc4-051b-4225-b018-da9385f4069d.jpg", label: "Древние руины", pos: "center center" },
   { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/24f432de-4321-4ff7-a666-355f5ec5d770.jpg", label: "Бирюзовое море", pos: "center center" },
-  { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/625de156-82ca-46d3-8609-47ac6e59c7f2.jpg", label: "У скал", pos: "center top" },
   { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/77cf7e79-9a8b-45ef-8b23-08b9914ee5fb.jpg", label: "Закат с борта", pos: "center center" },
   { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/a54dd1b8-4eef-4246-8f69-05765ebfb795.jpg", label: "Закат на море", pos: "center center" },
   { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/3c1ab62f-1ef3-4ff8-9d47-99e57b6f1f19.jpg", label: "Фетхие — марина", pos: "center center" },
@@ -315,6 +335,7 @@ export default function Index() {
   const [selectedYacht, setSelectedYacht] = useState<YachtDetail | null>(null);
   const [routeSlide, setRouteSlide] = useState(0);
   const [gallerySlide, setGallerySlide] = useState(0);
+  const [reviewSlide, setReviewSlide] = useState(0);
   const formRef = useRef<HTMLFormElement>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -999,76 +1020,87 @@ export default function Index() {
           <div className="text-center mb-16">
             <p className="text-xs tracking-widest uppercase mb-3 reveal" style={{ color: "var(--teal)" }}>На борту</p>
             <h2 className="reveal delay-100 mb-4" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: 300, color: "var(--text-primary)" }}>
-              Размещение
+              Как устроена жизнь на яхте
             </h2>
-            <p className="reveal delay-200" style={{ color: "var(--text-secondary)" }}>
-              Живёте прямо на яхте — в уютных двухместных каютах с полным комфортом
+            <p className="reveal delay-200" style={{ color: "var(--text-secondary)", maxWidth: "560px", margin: "0 auto" }}>
+              95% наших гостей впервые на яхте. Рассказываем, где спать, есть и мыться — без сюрпризов.
             </p>
           </div>
-          <div className="grid md:grid-cols-2 gap-8 items-center mb-12">
-            <div className="reveal">
-              <div className="rounded-2xl overflow-hidden" style={{ border: "1px solid rgba(38,201,195,0.15)" }}>
-                <img
-                  src="https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/be7eab9f-a6ac-4af9-8d36-0032558e8718.jpg"
-                  alt="Каюта на яхте"
-                  className="w-full object-cover"
-                  style={{ height: "320px" }}
-                />
-              </div>
-            </div>
-            <div className="reveal delay-200">
-              <div className="space-y-5">
-                {[
-                  { icon: "🛏", title: "Двухместные каюты", desc: "Отдельная каюта на двоих с удобной кроватью, бельём и полотенцами. Деревянная отделка, иллюминатор, освещение." },
-                  { icon: "🚿", title: "Душ на борту", desc: "Горячий душ в каждой яхте. Свежая вода для купания после моря — ежедневно." },
-                  { icon: "🚽", title: "Туалет", desc: "Отдельный санузел на борту. На комфорт-яхтах и катамаране — персональный санузел в каждой каюте." },
-                  { icon: "👥", title: "Кают-компания", desc: "Общий салон на борту — место для завтраков, ужинов и вечерних разговоров. Просторный стол, мягкие диваны, уютная атмосфера прямо над водой." },
-                ].map((item) => (
-                  <div key={item.title} className="flex gap-4 items-start p-4 rounded-xl" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(38,201,195,0.08)" }}>
-                    <div className="text-2xl flex-shrink-0 mt-0.5">{item.icon}</div>
-                    <div>
-                      <div className="font-semibold text-sm mb-1" style={{ color: "#fff" }}>{item.title}</div>
-                      <div className="text-xs leading-relaxed" style={{ color: "rgba(255,255,255,0.6)" }}>{item.desc}</div>
-                    </div>
+
+          {/* 4 зоны — каждая карточка с фото */}
+          <div className="grid md:grid-cols-2 gap-6 mb-10">
+            {[
+              {
+                icon: "🛏",
+                title: "Каюта — ваша личная комната",
+                desc: "Отдельное закрытое пространство для 1–2 человек. Внутри: полноценная двуспальная кровать, бельё и полотенца, деревянная отделка, иллюминатор с видом на воду, освещение и розетки. Закрывается на замок. По ощущениям — уютный гостиничный номер, только над морем.",
+                img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/be7eab9f-a6ac-4af9-8d36-0032558e8718.jpg",
+              },
+              {
+                icon: "🍽",
+                title: "Кают-компания — общая гостиная",
+                desc: "Салон в центре яхты, где все собираются вместе. Здесь завтракают, ужинают, играют в карты и разговаривают до полуночи. Большой стол, мягкие диваны по бортам, навигационный стол капитана. Кухня (камбуз) — тут же: плита, холодильник, раковина.",
+                img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/713d27dc-ee05-4a7d-8742-6859e7e004ce.jpg",
+              },
+              {
+                icon: "🚿",
+                title: "Душ и туалет — на борту",
+                desc: "Санузел (гальюн) прямо на яхте. Горячий душ работает каждый день. На Bavaria и Dufour — один общий санузел на всех, на катамаране — отдельный в каждой каюте. Также на купальной платформе есть душ с пресной водой — ополоснуться после моря.",
+                img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/fac0c71e-8b54-4b85-b16f-a8fd10f0f1ec.jpg",
+              },
+              {
+                icon: "⛵",
+                title: "Кокпит — ваша открытая терраса",
+                desc: "Кокпит — это открытая площадка на корме, где проходит большая часть жизни. Завтраки под ветер, закаты с бокалом, ужины у тихих скал. Здесь стоит штурвал, здесь сидит капитан, и здесь вы будете проводить большую часть времени в море.",
+                img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/8443aba5-20f8-4a48-bd88-011de72d92dd.jpg",
+              },
+            ].map((zone, i) => (
+              <div key={zone.title} className={`rounded-2xl overflow-hidden reveal delay-${(i + 1) * 100}`} style={{ border: "1px solid rgba(38,201,195,0.12)" }}>
+                <div className="relative h-48 overflow-hidden">
+                  <img src={zone.img} alt={zone.title} className="w-full h-full object-cover" />
+                  <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(13,31,60,0.85) 0%, transparent 55%)" }} />
+                  <div className="absolute bottom-4 left-4 flex items-center gap-2">
+                    <span className="text-xl">{zone.icon}</span>
+                    <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.15rem", fontWeight: 600, color: "#fff" }}>{zone.title}</span>
                   </div>
-                ))}
+                </div>
+                <div className="p-5" style={{ background: "rgba(13,32,64,0.7)" }}>
+                  <p className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.7)" }}>{zone.desc}</p>
+                </div>
               </div>
-            </div>
+            ))}
           </div>
-          <div className="grid md:grid-cols-3 gap-4 reveal delay-300">
-            <div className="rounded-2xl overflow-hidden" style={{ border: "1px solid rgba(38,201,195,0.1)" }}>
-              <img
-                src="https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/713d27dc-ee05-4a7d-8742-6859e7e004ce.jpg"
-                alt="Интерьер яхты"
-                className="w-full object-cover"
-                style={{ height: "200px" }}
-              />
-              <div className="px-4 py-3" style={{ background: "rgba(13,32,64,0.8)" }}>
-                <p className="text-xs" style={{ color: "rgba(255,255,255,0.6)" }}>Уютный салон и кают-компания</p>
+
+          {/* Итоговая плашка */}
+          <div className="rounded-2xl p-6 reveal delay-500 flex flex-col md:flex-row gap-4 items-center" style={{ background: "rgba(38,201,195,0.05)", border: "1px solid rgba(38,201,195,0.2)" }}>
+            <div className="text-3xl flex-shrink-0">💡</div>
+            <p className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.75)" }}>
+              <strong style={{ color: "#fff" }}>Главное отличие от отеля:</strong> пространство компактное, зато всё время рядом с морем. Утром открываешь иллюминатор — вода в метре от тебя. Никаких коридоров, лифтов и ресепшенов — только яхта, команда и открытое море.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* GLOSSARY */}
+      <section className="py-20 relative" style={{ background: "#0a1828" }}>
+        <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(38,201,195,0.15), transparent)" }} />
+        <div className="max-w-5xl mx-auto px-6">
+          <div className="text-center mb-12">
+            <p className="text-xs tracking-widest uppercase mb-3 reveal" style={{ color: "var(--teal)" }}>Для новичков</p>
+            <h2 className="reveal delay-100 mb-3" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(1.8rem, 3vw, 2.5rem)", fontWeight: 300, color: "var(--text-primary)" }}>
+              Словарь яхтсмена
+            </h2>
+            <p className="text-sm reveal delay-200" style={{ color: "var(--text-muted)" }}>Чтобы вы понимали, о чём говорит капитан</p>
+          </div>
+          <div className="grid md:grid-cols-2 gap-3 reveal delay-200">
+            {YACHT_GLOSSARY.map((item) => (
+              <div key={item.term} className="flex gap-4 p-4 rounded-xl" style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(38,201,195,0.08)" }}>
+                <div className="flex-shrink-0 px-3 py-1 rounded-lg h-fit" style={{ background: "rgba(38,201,195,0.12)", border: "1px solid rgba(38,201,195,0.2)" }}>
+                  <span className="text-xs font-bold" style={{ color: "var(--teal)", whiteSpace: "nowrap" }}>{item.term}</span>
+                </div>
+                <p className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.65)" }}>{item.def}</p>
               </div>
-            </div>
-            <div className="rounded-2xl overflow-hidden" style={{ border: "1px solid rgba(38,201,195,0.1)" }}>
-              <img
-                src="https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/8443aba5-20f8-4a48-bd88-011de72d92dd.jpg"
-                alt="Катамаран в порту"
-                className="w-full object-cover"
-                style={{ height: "200px" }}
-              />
-              <div className="px-4 py-3" style={{ background: "rgba(13,32,64,0.8)" }}>
-                <p className="text-xs" style={{ color: "rgba(255,255,255,0.6)" }}>Просторный кокпит для общих ужинов</p>
-              </div>
-            </div>
-            <div className="rounded-2xl overflow-hidden" style={{ border: "1px solid rgba(38,201,195,0.1)" }}>
-              <img
-                src="https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/fac0c71e-8b54-4b85-b16f-a8fd10f0f1ec.jpg"
-                alt="Яхта в бухте"
-                className="w-full object-cover"
-                style={{ height: "200px" }}
-              />
-              <div className="px-4 py-3" style={{ background: "rgba(13,32,64,0.8)" }}>
-                <p className="text-xs" style={{ color: "rgba(255,255,255,0.6)" }}>Якорная стоянка в тихой бухте</p>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
@@ -1083,12 +1115,20 @@ export default function Index() {
               Морские недели
             </h2>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5 mb-16">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 mb-16">
             {SPECIAL_WEEKS.map((item, i) => (
-              <div key={item.title} className={`glass rounded-2xl p-6 card-hover reveal delay-${(i + 1) * 100}`}>
-                <div className="text-3xl mb-4">{item.icon}</div>
-                <h3 className="font-semibold mb-2 text-sm" style={{ color: "var(--text-primary)" }}>{item.title}</h3>
-                <p className="text-sm leading-relaxed" style={{ color: "var(--text-secondary)" }}>{item.desc}</p>
+              <div key={item.title} className={`rounded-2xl overflow-hidden card-hover reveal delay-${(i % 3 + 1) * 100}`} style={{ border: "1px solid rgba(255,255,255,0.08)", background: "rgba(255,255,255,0.03)" }}>
+                <div className="relative h-40 overflow-hidden">
+                  <img src={item.img} alt={item.title} className="w-full h-full object-cover transition-transform duration-500 hover:scale-105" />
+                  <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(13,31,60,0.8) 0%, transparent 55%)" }} />
+                  <div className="absolute bottom-3 left-4 flex items-center gap-2">
+                    <span className="text-lg">{item.icon}</span>
+                    <span className="font-semibold text-sm" style={{ color: "#fff" }}>{item.title}</span>
+                  </div>
+                </div>
+                <div className="p-5">
+                  <p className="text-sm leading-relaxed" style={{ color: "var(--text-secondary)" }}>{item.desc}</p>
+                </div>
               </div>
             ))}
           </div>
@@ -1313,44 +1353,58 @@ export default function Index() {
               Те, кто уже побывал
             </h2>
           </div>
-          <div className="hidden md:grid md:grid-cols-3 gap-6">
-            {REVIEWS.map((review, i) => (
-              <div key={review.name} className={`glass rounded-2xl p-7 card-hover reveal delay-${(i % 3 + 1) * 100} flex flex-col`}>
-                <div className="flex gap-0.5 mb-4">
-                  {Array(review.stars).fill(0).map((_, j) => (
-                    <span key={j} style={{ color: "var(--gold)" }}>★</span>
+          {(() => {
+            const PER = 3;
+            const total = Math.ceil(REVIEWS.length / PER);
+            const visible = REVIEWS.slice(reviewSlide * PER, reviewSlide * PER + PER);
+            return (
+              <div>
+                <div className="grid md:grid-cols-3 gap-6 mb-8">
+                  {visible.map((review) => (
+                    <div key={review.name} className="rounded-2xl overflow-hidden flex flex-col" style={{ border: "1px solid rgba(38,201,195,0.12)", background: "rgba(255,255,255,0.03)" }}>
+                      <div className="relative h-44 overflow-hidden flex-shrink-0">
+                        <img src={review.img} alt={review.trip} className="w-full h-full object-cover" />
+                        <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(13,31,60,0.75) 0%, transparent 55%)" }} />
+                        <div className="absolute bottom-3 left-4 flex gap-0.5">
+                          {Array(review.stars).fill(0).map((_, j) => (
+                            <span key={j} style={{ color: "var(--gold)" }}>★</span>
+                          ))}
+                        </div>
+                      </div>
+                      <div className="p-6 flex flex-col flex-1">
+                        <p className="text-sm leading-relaxed flex-1 mb-5" style={{ color: "var(--text-secondary)" }}>"{review.text}"</p>
+                        <div className="flex items-center justify-between border-t pt-4" style={{ borderColor: "rgba(255,255,255,0.06)" }}>
+                          <div>
+                            <div className="font-semibold text-sm" style={{ color: "var(--text-primary)" }}>{review.name}</div>
+                            <div className="text-xs" style={{ color: "var(--text-muted)" }}>{review.city}</div>
+                          </div>
+                          <div className="text-xs px-2 py-1 rounded" style={{ background: "rgba(38,201,195,0.08)", color: "var(--teal)" }}>{review.trip}</div>
+                        </div>
+                      </div>
+                    </div>
                   ))}
                 </div>
-                <p className="text-sm leading-relaxed flex-1 mb-5" style={{ color: "var(--text-secondary)" }}>"{review.text}"</p>
-                <div className="flex items-center justify-between border-t pt-4" style={{ borderColor: "rgba(255,255,255,0.06)" }}>
-                  <div>
-                    <div className="font-semibold text-sm" style={{ color: "var(--text-primary)" }}>{review.name}</div>
-                    <div className="text-xs" style={{ color: "var(--text-muted)" }}>{review.city}</div>
+                <div className="flex items-center justify-center gap-4">
+                  <button onClick={() => setReviewSlide(p => Math.max(0, p - 1))} disabled={reviewSlide === 0}
+                    className="p-2.5 rounded-full transition-all"
+                    style={{ background: reviewSlide === 0 ? "rgba(255,255,255,0.05)" : "rgba(38,201,195,0.15)", color: reviewSlide === 0 ? "rgba(255,255,255,0.2)" : "var(--teal)", border: "1px solid rgba(38,201,195,0.2)" }}>
+                    <Icon name="ChevronLeft" size={18} />
+                  </button>
+                  <div className="flex gap-2">
+                    {Array(total).fill(0).map((_, i) => (
+                      <button key={i} onClick={() => setReviewSlide(i)} className="rounded-full transition-all"
+                        style={{ width: i === reviewSlide ? 20 : 8, height: 8, background: i === reviewSlide ? "var(--teal)" : "rgba(255,255,255,0.2)" }} />
+                    ))}
                   </div>
-                  <div className="text-xs px-2 py-1 rounded" style={{ background: "rgba(38,201,195,0.08)", color: "var(--teal)" }}>{review.trip}</div>
+                  <button onClick={() => setReviewSlide(p => Math.min(total - 1, p + 1))} disabled={reviewSlide === total - 1}
+                    className="p-2.5 rounded-full transition-all"
+                    style={{ background: reviewSlide === total - 1 ? "rgba(255,255,255,0.05)" : "rgba(38,201,195,0.15)", color: reviewSlide === total - 1 ? "rgba(255,255,255,0.2)" : "var(--teal)", border: "1px solid rgba(38,201,195,0.2)" }}>
+                    <Icon name="ChevronRight" size={18} />
+                  </button>
                 </div>
               </div>
-            ))}
-          </div>
-          <div className="md:hidden flex gap-4 overflow-x-auto pb-4 mobile-scroll-snap" style={{ scrollSnapType: "x mandatory" }}>
-            {REVIEWS.map((review) => (
-              <div key={review.name} className="glass rounded-2xl p-5 flex flex-col flex-shrink-0" style={{ width: "80vw", scrollSnapAlign: "start", border: "1px solid rgba(38,201,195,0.12)" }}>
-                <div className="flex gap-0.5 mb-3">
-                  {Array(review.stars).fill(0).map((_, j) => (
-                    <span key={j} style={{ color: "var(--gold)" }}>★</span>
-                  ))}
-                </div>
-                <p className="text-sm leading-relaxed flex-1 mb-4" style={{ color: "var(--text-secondary)" }}>"{review.text}"</p>
-                <div className="flex items-center justify-between border-t pt-3" style={{ borderColor: "rgba(255,255,255,0.06)" }}>
-                  <div>
-                    <div className="font-semibold text-sm" style={{ color: "var(--text-primary)" }}>{review.name}</div>
-                    <div className="text-xs" style={{ color: "var(--text-muted)" }}>{review.city}</div>
-                  </div>
-                  <div className="text-xs px-2 py-1 rounded" style={{ background: "rgba(38,201,195,0.08)", color: "var(--teal)" }}>{review.trip}</div>
-                </div>
-              </div>
-            ))}
-          </div>
+            );
+          })()}
         </div>
       </section>
 
