@@ -97,8 +97,11 @@ const YACHT_TYPES: YachtDetail[] = [
     highlight: false,
     img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/2a72d937-7381-4b29-9235-12ad76dbe445.jpg",
     gallery: [
-      "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/files/4593a3bb-3918-4efb-8ac3-6eeeaaa0d716.jpg",
-      "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/files/4eb5fdce-ba89-4d4b-bb85-32d668655d13.jpg",
+      "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/5f0d8f69-bc9f-499d-abb9-bd7d60d09d3e.jpeg",
+      "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/aa8dcdd9-c425-4636-9594-0eb0f5314809.jpg",
+      "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/ce7ec152-3864-4f7e-b0a2-170a1290c915.jpeg",
+      "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/512d7d1b-96ae-4a11-84d4-1dfd7974752b.jpg",
+      "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/3c49a4f6-b8e9-4d98-8027-c913e59205be.jpeg",
     ],
   },
 ];
