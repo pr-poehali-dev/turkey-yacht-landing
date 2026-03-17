@@ -269,6 +269,7 @@ export default function Index() {
   const [formOpen, setFormOpen] = useState(false);
   const [sending, setSending] = useState(false);
   const [selectedYacht, setSelectedYacht] = useState<YachtDetail | null>(null);
+  const [routeSlide, setRouteSlide] = useState(0);
   const formRef = useRef<HTMLFormElement>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -409,9 +410,6 @@ export default function Index() {
               <a key={l.href} href={l.href} className="nav-link">{l.label}</a>
             ))}
           </div>
-          <button onClick={() => setFormOpen(true)} className="hidden md:inline-flex items-center gap-2 px-5 py-2 rounded-full text-sm btn-teal" style={{ color: "var(--sea-deep)" }}>
-            Забронировать
-          </button>
           <button className="md:hidden p-2" onClick={() => setMenuOpen(!menuOpen)} style={{ color: "var(--teal)" }}>
             <Icon name={menuOpen ? "X" : "Menu"} size={24} />
           </button>
@@ -632,23 +630,55 @@ export default function Index() {
             </div>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {ROUTE_STOPS.map((stop, i) => (
-              <div key={stop.name} className={`rounded-2xl overflow-hidden card-hover reveal delay-${(i % 4 + 1) * 100}`}
-                style={{ border: "1px solid rgba(38,201,195,0.12)" }}>
-                <div className="relative h-40 overflow-hidden">
-                  <img src={stop.img} alt={stop.name} className="w-full h-full object-cover transition-transform duration-700 hover:scale-105" />
-                  <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(13,31,60,0.9) 0%, rgba(13,31,60,0.1) 60%)" }} />
-                  <div className="absolute bottom-3 left-4 flex items-center gap-2">
-                    <span className="text-xl">{stop.icon}</span>
-                    <h3 className="font-semibold text-sm" style={{ color: "#fff" }}>{stop.name}</h3>
+          {/* Route slider */}
+          <div className="relative reveal delay-200">
+            <div className="rounded-2xl overflow-hidden" style={{ border: "1px solid rgba(38,201,195,0.12)" }}>
+              <div className="relative" style={{ height: "clamp(260px, 45vw, 420px)" }}>
+                <img
+                  src={ROUTE_STOPS[routeSlide].img}
+                  alt={ROUTE_STOPS[routeSlide].name}
+                  className="w-full h-full object-cover transition-all duration-500"
+                />
+                <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(13,31,60,0.92) 0%, rgba(13,31,60,0.1) 55%)" }} />
+                <div className="absolute bottom-0 left-0 right-0 px-6 pb-5">
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className="text-2xl">{ROUTE_STOPS[routeSlide].icon}</span>
+                    <h3 className="font-semibold text-lg" style={{ color: "#fff", fontFamily: "'Cormorant Garamond', serif" }}>{ROUTE_STOPS[routeSlide].name}</h3>
+                    <span className="ml-auto text-xs" style={{ color: "rgba(255,255,255,0.4)" }}>{routeSlide + 1} / {ROUTE_STOPS.length}</span>
                   </div>
+                  <p className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.75)", maxWidth: "520px" }}>{ROUTE_STOPS[routeSlide].desc}</p>
                 </div>
-                <div className="px-4 py-4" style={{ background: "rgba(13,32,64,0.7)" }}>
-                  <p className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.7)" }}>{stop.desc}</p>
-                </div>
+                <button
+                  onClick={() => setRouteSlide((p) => (p - 1 + ROUTE_STOPS.length) % ROUTE_STOPS.length)}
+                  className="absolute left-3 top-1/2 -translate-y-1/2 p-2.5 rounded-full transition-all hover:scale-110"
+                  style={{ background: "rgba(0,0,0,0.5)", color: "#fff", backdropFilter: "blur(8px)" }}
+                >
+                  <Icon name="ChevronLeft" size={20} />
+                </button>
+                <button
+                  onClick={() => setRouteSlide((p) => (p + 1) % ROUTE_STOPS.length)}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 p-2.5 rounded-full transition-all hover:scale-110"
+                  style={{ background: "rgba(0,0,0,0.5)", color: "#fff", backdropFilter: "blur(8px)" }}
+                >
+                  <Icon name="ChevronRight" size={20} />
+                </button>
               </div>
-            ))}
+              {/* Dot nav */}
+              <div className="flex justify-center gap-1.5 py-3" style={{ background: "rgba(13,32,64,0.7)" }}>
+                {ROUTE_STOPS.map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setRouteSlide(i)}
+                    className="rounded-full transition-all"
+                    style={{
+                      width: i === routeSlide ? 20 : 6,
+                      height: 6,
+                      background: i === routeSlide ? "var(--teal)" : "rgba(255,255,255,0.2)",
+                    }}
+                  />
+                ))}
+              </div>
+            </div>
           </div>
           <div className="mt-6 glass rounded-xl p-4 text-center reveal delay-400">
             <p className="text-sm" style={{ color: "var(--text-muted)" }}>
@@ -676,12 +706,12 @@ export default function Index() {
           {/* Hero photo + bio side by side */}
           <div className="grid md:grid-cols-2 gap-8 mb-12 items-start">
             <div className="reveal">
-              <div className="relative rounded-3xl overflow-hidden" style={{ height: "clamp(400px, 55vw, 580px)" }}>
+              <div className="relative rounded-3xl overflow-hidden" style={{ height: "clamp(360px, 50vw, 520px)" }}>
                 <img
-                  src="https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/545b2380-b99a-4cc1-8f1c-be8ff1ba5c68.jpg"
+                  src="https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/20776608-7f6e-47cc-ae6f-8577a963c736.jpg"
                   alt="Капитан Евгений"
                   className="w-full h-full object-cover object-top"
-                  style={{ filter: "brightness(0.9)" }}
+                  style={{ filter: "brightness(0.92)" }}
                 />
                 <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(13,31,60,0.7) 0%, transparent 50%)" }} />
                 <div className="absolute bottom-6 left-6 right-6">
@@ -691,39 +721,43 @@ export default function Index() {
                 </div>
               </div>
             </div>
-            <div className="reveal delay-200 flex flex-col gap-5">
-              <div className="glass rounded-2xl p-6">
-                <div className="text-2xl mb-3">📋</div>
-                <h3 className="font-semibold mb-3" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.2rem", color: "#fff" }}>Документы и лицензии</h3>
-                <div className="space-y-3">
+            <div className="reveal delay-200 flex flex-col gap-4">
+              <div className="glass rounded-2xl p-5">
+                <div className="flex items-center gap-2 mb-3">
+                  <span className="text-xl">📋</span>
+                  <h3 className="font-semibold" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.15rem", color: "#fff" }}>Документы и лицензии</h3>
+                </div>
+                <div className="space-y-2">
                   {[
-                    { short: "ГИМС РФ", full: "Государственная инспекция по маломерным судам РФ — российские права на управление судами", year: "с 2006 г." },
-                    { short: "IYT", full: "International Yacht Training — международные права яхтенного капитана, признанные во всём мире", year: "Skipper" },
-                    { short: "МПМ", full: "Международный паспорт моряка — документ подтверждает профессиональный морской статус", year: "действующий" },
-                    { short: "РГО", full: "Русское географическое общество — член организации, участник экспедиций", year: "член" },
+                    { short: "ГИМС РФ", full: "Права на управление моторными и парусными судами РФ", year: "с 2006 г." },
+                    { short: "УЛМ", full: "Удостоверение личности моряка — международный документ профессионального морского статуса", year: "действующий" },
+                    { short: "IYT", full: "International Yacht Training — международные права яхтенного капитана", year: "Skipper" },
+                    { short: "РГО", full: "Русское географическое общество — член, участник экспедиций", year: "член" },
                   ].map((item) => (
-                    <div key={item.short} className="flex gap-3 items-start py-2" style={{ borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
-                      <span className="flex-shrink-0 px-2 py-0.5 rounded text-xs font-bold" style={{ background: "rgba(38,201,195,0.15)", color: "var(--teal)", minWidth: "52px", textAlign: "center" }}>{item.short}</span>
-                      <div className="flex-1">
-                        <div className="text-xs leading-relaxed" style={{ color: "rgba(255,255,255,0.75)" }}>{item.full}</div>
-                      </div>
+                    <div key={item.short} className="flex gap-2 items-start py-1.5" style={{ borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+                      <span className="flex-shrink-0 px-2 py-0.5 rounded text-xs font-bold" style={{ background: "rgba(38,201,195,0.15)", color: "var(--teal)", minWidth: "48px", textAlign: "center" }}>{item.short}</span>
+                      <div className="flex-1 text-xs leading-relaxed" style={{ color: "rgba(255,255,255,0.7)" }}>{item.full}</div>
                       <span className="flex-shrink-0 text-xs" style={{ color: "rgba(255,255,255,0.35)" }}>{item.year}</span>
                     </div>
                   ))}
                 </div>
               </div>
-              <div className="glass rounded-2xl p-6">
-                <div className="text-2xl mb-3">⚓</div>
-                <h3 className="font-semibold mb-2" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.2rem", color: "#fff" }}>История и опыт</h3>
+              <div className="glass rounded-2xl p-5">
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="text-xl">⚓</span>
+                  <h3 className="font-semibold" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.15rem", color: "#fff" }}>История и опыт</h3>
+                </div>
                 <p className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.65)" }}>
-                  Вырос у моря. Первый выход под парусом — в 14 лет. С тех пор море стало профессией, призванием и образом жизни. Прошёл все уровни: матрос, шкипер, капитан. Сейчас проводит сезонные экспедиции вдоль турецкого побережья — маршрут, который знает наизусть, каждую бухту и каждый подводный камень.
+                  Вырос у моря. Первый выход под парусом — в 14 лет. Прошёл все уровни: матрос, шкипер, капитан. 20 лет в море, более 50 000 пройденных миль. Сейчас проводит сезонные экспедиции вдоль турецкого побережья — маршрут, который знает наизусть, каждую бухту и каждый подводный камень.
                 </p>
               </div>
-              <div className="glass rounded-2xl p-6">
-                <div className="text-2xl mb-3">🧘</div>
-                <h3 className="font-semibold mb-2" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.2rem", color: "#fff" }}>Атмосфера на борту</h3>
+              <div className="glass rounded-2xl p-5">
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="text-xl">🧘</span>
+                  <h3 className="font-semibold" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.15rem", color: "#fff" }}>Атмосфера на борту</h3>
+                </div>
                 <p className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.65)" }}>
-                  Евгений умеет создавать особую атмосферу — где все чувствуют себя командой. Он не просто везёт вас из точки А в точку Б. Он рассказывает истории о местах, учит яхтингу, готовит с вами на гриле и знает, где найти рыбу.
+                  Евгений умеет создавать особую атмосферу — где все чувствуют себя командой. Он не просто везёт из точки А в точку Б — рассказывает истории о местах, учит яхтингу, готовит с вами на гриле и знает, где найти рыбу.
                 </p>
               </div>
             </div>
@@ -1077,7 +1111,7 @@ export default function Index() {
               <div className="text-2xl mb-4">📋</div>
               <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.4rem", fontWeight: 600, color: "#fff", marginBottom: "1rem" }}>Оплачивается отдельно</h3>
               <div className="space-y-2.5">
-                {["Питание (продукты или рестораны)", "Стоянки в маринах (≈ 20–50 € / ночь)", "Перелёт до Турции и обратно", "Личные расходы"].map((item) => (
+                {["Питание (продукты или рестораны)", "Стоянки в маринах (≈ 20–50 € / ночь)", "Перелёт до Турции и обратно", "Страховка путешественника", "Личные расходы"].map((item) => (
                   <div key={item} className="flex items-start gap-3">
                     <span style={{ color: "rgba(255,255,255,0.3)", marginTop: "2px", flexShrink: 0 }}>–</span>
                     <span style={{ color: "rgba(255,255,255,0.6)", fontSize: "0.95rem" }}>{item}</span>
@@ -1352,7 +1386,7 @@ export default function Index() {
               { q: "Сколько человек будет на борту?", a: "Обычно 4–6 человек плюс капитан, на катамаране до 10. Это небольшая команда, поэтому на борту сохраняется спокойная и дружелюбная атмосфера." },
               { q: "Где мы будем ночевать?", a: "Два варианта: в тихих бухтах на якоре — с чистой водой и звёздным небом, или в маринах небольших прибрежных городов. Чаще всего ночёвки проходят в красивых бухтах или у частных пирсов ресторанов со средиземноморской кухней." },
               { q: "Как проходит обычный день на яхте?", a: "Утром — завтрак и купание. Днём — переход под парусом и остановки в бухтах. Вечером — новая стоянка и ужин на берегу или на яхте. Каждый день — новая бухта и новые пейзажи." },
-              { q: "Будет ли морская болезнь?", a: "В большинстве случаев её не бывает: переходы обычно проходят вдоль берега, катамараны и современные яхты устойчивы, а при необходимости капитан выбирает спокойные маршруты." },
+              { q: "Будет ли морская болезнь?", a: "90% наших гостей не испытывают дискомфорта от морской болезни: переходы проходят вдоль берега, яхты устойчивы. На борту есть препараты, и капитан знает много приёмов, чтобы вас не укачало." },
               { q: "Тесно ли на яхте?", a: "Яхта устроена компактно, но продуманно. На борту есть каюты для сна, кухня, душ и туалеты, просторная палуба и зоны отдыха. Большую часть времени гости проводят на палубе или в море." },
               { q: "Как организовано питание?", a: "Несколько вариантов: готовить на яхте, закупать продукты вместе или ужинать в ресторанах на берегу. Обычно команда выбирает комфортный для всех вариант." },
               { q: "Безопасно ли путешествовать на яхте?", a: "Капитан имеет многолетний опыт морских переходов и международные лицензии. На борту есть всё необходимое оборудование безопасности. Маршрут всегда строится с учётом погодных условий." },
