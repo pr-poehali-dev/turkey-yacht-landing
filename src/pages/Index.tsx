@@ -241,31 +241,19 @@ const GALLERY_ITEMS = [
 ];
 
 function CaptainSlider({ photos }: { photos: { src: string; label: string }[] }) {
-  const [active, setActive] = useState<number | null>(null);
   return (
     <div className="mb-8 reveal">
-      <div className="flex gap-3 overflow-x-auto pb-2" style={{ scrollbarWidth: "none" }}>
+      <div className="flex gap-3 overflow-x-auto pb-3" style={{ scrollbarWidth: "none", WebkitOverflowScrolling: "touch" } as React.CSSProperties}>
         {photos.map((photo, i) => (
-          <div
-            key={i}
-            className="flex-shrink-0 rounded-2xl overflow-hidden cursor-pointer transition-all duration-300"
-            style={{
-              border: active === i ? "2px solid var(--teal)" : "2px solid rgba(255,255,255,0.08)",
-              background: "#0d1f3c",
-              maxHeight: "320px",
-            }}
-            onClick={() => setActive(active === i ? null : i)}
-          >
-            <img
-              src={photo.src}
-              alt={photo.label}
-              style={{
-                display: "block",
-                maxHeight: "320px",
-                width: "auto",
-                objectFit: "contain",
-              }}
-            />
+          <div key={i} className="flex-shrink-0 flex flex-col gap-2" style={{ width: 200 }}>
+            <div className="rounded-2xl overflow-hidden" style={{ border: "1px solid rgba(255,255,255,0.1)", background: "#0a1828", height: 280 }}>
+              <img
+                src={photo.src}
+                alt={photo.label}
+                style={{ width: "100%", height: "100%", objectFit: "contain", display: "block" }}
+              />
+            </div>
+            <p className="text-xs text-center" style={{ color: "rgba(255,255,255,0.45)" }}>{photo.label}</p>
           </div>
         ))}
       </div>
