@@ -206,10 +206,10 @@ export default function YachtModal({ yacht, onClose, onBook }: YachtModalProps) 
             ))}
           </div>
 
-          <div className="flex flex-col gap-2 mb-6">
+          <div className="grid grid-cols-2 gap-x-4 gap-y-2 mb-6">
             {yacht.specs.map((s) => (
-              <div key={s} className="flex items-center gap-2 text-sm" style={{ color: "var(--text-secondary)" }}>
-                <span style={{ color: "var(--teal)" }}>✓</span> {s}
+              <div key={s} className="flex items-start gap-2 text-sm" style={{ color: "var(--text-secondary)" }}>
+                <span className="mt-0.5 flex-shrink-0" style={{ color: "var(--teal)" }}>✓</span> {s}
               </div>
             ))}
           </div>
