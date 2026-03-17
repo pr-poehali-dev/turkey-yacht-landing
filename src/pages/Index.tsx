@@ -70,8 +70,6 @@ const YACHT_TYPES: YachtDetail[] = [
       "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/321bd7db-5c28-44b9-9fdd-be9257cc0ab8.png",
       "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/4f8fc50c-df5e-44dd-bd93-37c3010c7941.png",
       "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/7a6aa587-4b82-474e-83ba-f1475a0a8ea9.png",
-      "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/files/a89baed4-03c1-4556-a4b5-680c0a0fc15b.jpg",
-      "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/files/8dc4411b-32bf-4e2a-b296-6dab3d3c2367.jpg",
     ],
   },
   {
