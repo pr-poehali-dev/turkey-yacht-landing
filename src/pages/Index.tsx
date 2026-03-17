@@ -102,6 +102,7 @@ const YACHT_TYPES: YachtDetail[] = [
       "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/ce7ec152-3864-4f7e-b0a2-170a1290c915.jpeg",
       "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/512d7d1b-96ae-4a11-84d4-1dfd7974752b.jpg",
       "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/3c49a4f6-b8e9-4d98-8027-c913e59205be.jpeg",
+      "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/47fb2b23-0607-45de-8f59-b162bf469bff.jpg",
     ],
   },
 ];
@@ -148,7 +149,8 @@ const SPECIAL_WEEKS = [
   { icon: "🤿", title: "Морская охота и фридайвинг", desc: "Спускаешься на глубину с ружьём — и ужин уже на борту. Кристальная вода, рыба у самых скал." },
   { icon: "🎣", title: "Рыбалка", desc: "Закинуть снасть прямо с кормы — на ходу или на стоянке. Свежий улов сразу на сковороду." },
   { icon: "⛵", title: "Обучение яхтингу", desc: "Встань за штурвал и возьми курс сам. Капитан обучит управлению парусами прямо в море." },
-  { icon: "💍", title: "Свадебные путешествия", desc: "Капитан имеет право регистрировать брак — церемония прямо на борту яхты." },
+  { icon: "💍", title: "Бракосочетание на яхте", desc: "В морских традициях. Капитан имеет право росписи — церемония прямо на борту, в открытом море." },
+  { icon: "🎂", title: "День рождения на яхте", desc: "Для взрослых и детей. Квест на руинах древнего города, пиратская вечеринка, день Нептуна — и всё, на что хватит фантазии. Фотограф и аниматор — по запросу." },
   { icon: "👯‍♀️", title: "Девичники", desc: "Неделя красивых бухт, моря и закатов с подругами." },
   { icon: "👥", title: "Компании друзей", desc: "Лучший формат для тех, кто ценит свободу и настоящие приключения." },
   { icon: "🧘", title: "Спокойный яхтинг", desc: "Для тех, кто ищет тишину и море вдали от шумных курортов." },
@@ -880,13 +882,24 @@ export default function Index() {
                 </div>
               </div>
               <p className="text-sm leading-relaxed mb-5" style={{ color: "rgba(255,255,255,0.65)" }}>
-                Только ваша команда и капитан. Никаких попутчиков. Вы сами задаёте ритм: маршрут, стоянки, время отплытия. Девичники, свадьбы, корпоративы.
+                Только ваша команда и капитан. Никаких попутчиков. Вы сами задаёте ритм: маршрут, стоянки, время отплытия. Девичники, свадьбы, корпоративы, дни рождения.
               </p>
-              <div className="flex items-center gap-4 mb-6 rounded-xl px-5 py-4" style={{ background: "rgba(232,184,75,0.08)", border: "1px solid rgba(232,184,75,0.2)" }}>
-                <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "2rem", fontWeight: 700, color: "var(--gold)", lineHeight: 1 }}>от 3 000 €</div>
-                <div className="text-sm" style={{ color: "rgba(255,255,255,0.7)" }}>
-                  за всю яхту<br />/ неделю
-                </div>
+              <div className="flex flex-col gap-3 mb-6">
+                {[
+                  { name: "Bavaria 42", guests: "до 6 чел.", price: "4 500 €" },
+                  { name: "Dufour 455", guests: "до 6 чел.", price: "5 280 €" },
+                  { name: "Катамаран", guests: "до 8 чел.", price: "9 600 €" },
+                ].map((y) => (
+                  <div key={y.name} className="flex items-center justify-between rounded-xl px-4 py-3" style={{ background: "rgba(232,184,75,0.08)", border: "1px solid rgba(232,184,75,0.15)" }}>
+                    <div>
+                      <div className="text-sm font-semibold" style={{ color: "#fff" }}>{y.name}</div>
+                      <div className="text-xs" style={{ color: "rgba(255,255,255,0.5)" }}>{y.guests}</div>
+                    </div>
+                    <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.4rem", fontWeight: 700, color: "var(--gold)" }}>
+                      {y.price} <span className="text-xs font-normal" style={{ color: "rgba(255,255,255,0.5)" }}>/ неделя</span>
+                    </div>
+                  </div>
+                ))}
               </div>
               <button onClick={() => setFormOpen(true)} className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm btn-gold" style={{ color: "var(--sea-deep)" }}>
                 Запросить условия <Icon name="ArrowRight" size={16} />
