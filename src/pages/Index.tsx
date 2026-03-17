@@ -241,36 +241,33 @@ const GALLERY_ITEMS = [
 ];
 
 function CaptainSlider({ photos }: { photos: { src: string; label: string }[] }) {
-  const [idx, setIdx] = useState(0);
+  const [active, setActive] = useState<number | null>(null);
   return (
-    <div className="mb-8 rounded-2xl overflow-hidden reveal" style={{ border: "1px solid rgba(255,255,255,0.1)" }}>
-      <div className="relative" style={{ height: "340px" }}>
-        <img
-          src={photos[idx].src}
-          alt={photos[idx].label}
-          className="w-full h-full object-cover transition-all duration-500"
-          style={{ objectPosition: "center top" }}
-        />
-        <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(13,31,60,0.65) 0%, transparent 55%)" }} />
-        <div className="absolute bottom-4 left-5 text-sm font-medium" style={{ color: "rgba(255,255,255,0.8)", fontFamily: "'Cormorant Garamond', serif", fontSize: "1rem" }}>
-          {photos[idx].label}
-        </div>
-        <div className="absolute bottom-4 right-5 flex gap-2">
-          {photos.map((_, i) => (
-            <button key={i} onClick={() => setIdx(i)} className="rounded-full transition-all"
-              style={{ width: i === idx ? 18 : 6, height: 6, background: i === idx ? "var(--teal)" : "rgba(255,255,255,0.35)" }} />
-          ))}
-        </div>
-        <button onClick={() => setIdx((p) => (p - 1 + photos.length) % photos.length)}
-          className="absolute left-3 top-1/2 -translate-y-1/2 p-2 rounded-full transition-all hover:scale-110"
-          style={{ background: "rgba(0,0,0,0.45)", color: "#fff", backdropFilter: "blur(6px)" }}>
-          <Icon name="ChevronLeft" size={18} />
-        </button>
-        <button onClick={() => setIdx((p) => (p + 1) % photos.length)}
-          className="absolute right-3 top-1/2 -translate-y-1/2 p-2 rounded-full transition-all hover:scale-110"
-          style={{ background: "rgba(0,0,0,0.45)", color: "#fff", backdropFilter: "blur(6px)" }}>
-          <Icon name="ChevronRight" size={18} />
-        </button>
+    <div className="mb-8 reveal">
+      <div className="flex gap-3 overflow-x-auto pb-2" style={{ scrollbarWidth: "none" }}>
+        {photos.map((photo, i) => (
+          <div
+            key={i}
+            className="flex-shrink-0 rounded-2xl overflow-hidden cursor-pointer transition-all duration-300"
+            style={{
+              border: active === i ? "2px solid var(--teal)" : "2px solid rgba(255,255,255,0.08)",
+              background: "#0d1f3c",
+              maxHeight: "320px",
+            }}
+            onClick={() => setActive(active === i ? null : i)}
+          >
+            <img
+              src={photo.src}
+              alt={photo.label}
+              style={{
+                display: "block",
+                maxHeight: "320px",
+                width: "auto",
+                objectFit: "contain",
+              }}
+            />
+          </div>
+        ))}
       </div>
     </div>
   );
