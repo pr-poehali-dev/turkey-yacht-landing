@@ -228,6 +228,14 @@ const REVIEWS = [
     img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/f842a71b-5168-48cb-bcba-ad0ad3e96301.jpg",
   },
   {
+    name: "Евгения М.",
+    city: "Тула",
+    text: "Ехала с подругами, совсем не знали капитана. Уже на второй день Евгений стал как свой человек — рассказывал про каждое место, учил нырять, готовил на гриле. Такого не купишь ни в каком туре.",
+    stars: 5,
+    trip: "Bavaria 42, июнь",
+    img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/c936e9b9-f800-43f6-9df4-8fc2a6af0eb3.jpg",
+  },
+  {
     name: "Павел К.",
     city: "Тюмень",
     text: "До этого путешествовал только в отелях. Яхта — это другое измерение. Встаёшь утром — вокруг бирюзовое море и скалы. Евгений — профессионал и отличный рассказчик.",
@@ -1437,6 +1445,84 @@ export default function Index() {
               </div>
             );
           })()}
+        </div>
+      </section>
+
+      {/* WHY US */}
+      <section className="py-24 relative" style={{ background: "linear-gradient(180deg, #112240 0%, #0d1f3c 100%)" }}>
+        <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(38,201,195,0.3), transparent)" }} />
+        <div className="max-w-5xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <p className="text-xs tracking-widest uppercase mb-3 reveal" style={{ color: "var(--teal)" }}>Честно о главном</p>
+            <h2 className="reveal delay-100 mb-4" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: 300, color: "var(--text-primary)" }}>
+              Чем мы отличаемся<br />от 90% похожих предложений
+            </h2>
+            <p className="text-base reveal delay-200" style={{ color: "var(--text-secondary)", maxWidth: "520px", margin: "0 auto" }}>
+              Рынок яхтенных туров большой. Вот почему гости возвращаются снова.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-5 mb-8">
+            {[
+              {
+                icon: "🧭",
+                title: "Капитан — не наёмник, а хозяин",
+                desc: "Евгений относится к яхте как к родной — следит, чинит, знает каждый болт. Большинство операторов нанимают случайных шкиперов под сезон. Здесь капитан вкладывает душу, потому что это его дело и его море.",
+                accent: true,
+              },
+              {
+                icon: "📚",
+                title: "20 лет в море и живая история",
+                desc: "Евгений не просто везёт из точки А в точку Б. Он знает историю каждого места: затопленные города, древние церкви, тайные бухты. Экскурсия происходит сама собой — прямо с борта.",
+                accent: false,
+              },
+              {
+                icon: "🎒",
+                title: "Оборудование, которого нет у других",
+                desc: "Два SUP-борда, маски и ласты, снаряжение для подводной охоты, удочки, гамак, мангал, ледогенератор — всё включено. Большинство аренд дают пустую яхту. Мы даём полное снаряжение для активного отдыха.",
+                accent: false,
+              },
+              {
+                icon: "🎭",
+                title: "Тематические программы под запрос",
+                desc: "Морская охота, свадьба на борту, день рождения с квестом, Ликийская тропа, обучение яхтингу — каждый тур можно настроить. Не типовой маршрут, а путешествие под вас.",
+                accent: false,
+              },
+              {
+                icon: "👥",
+                title: "Маленькая группа — не безликий чартер",
+                desc: "Максимум 6–8 человек. Никаких попутчиков с другого сайта, никакой толпы. Либо своя компания, либо небольшой сборный тур — в любом случае камерная атмосфера.",
+                accent: false,
+              },
+              {
+                icon: "🔒",
+                title: "Прозрачные условия без скрытых платежей",
+                desc: "Цена фиксируется заранее. Никаких «доплати на месте за газ», «порт отдельно» и других сюрпризов. Всё, что входит — написано явно. Предоплата фиксирует место, остаток — при посадке.",
+                accent: false,
+              },
+            ].map((item) => (
+              <div key={item.title} className={`rounded-2xl p-7 reveal flex gap-5 items-start`}
+                style={{
+                  background: item.accent ? "linear-gradient(135deg, rgba(38,201,195,0.1) 0%, rgba(13,32,64,0.8) 100%)" : "rgba(255,255,255,0.03)",
+                  border: item.accent ? "1px solid rgba(38,201,195,0.35)" : "1px solid rgba(255,255,255,0.08)",
+                }}>
+                <div className="text-3xl flex-shrink-0 mt-0.5">{item.icon}</div>
+                <div>
+                  <h3 className="font-semibold mb-2" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.15rem", color: item.accent ? "var(--teal)" : "#fff" }}>
+                    {item.title}
+                  </h3>
+                  <p className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.65)" }}>{item.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="rounded-2xl p-8 text-center reveal" style={{ background: "rgba(38,201,195,0.05)", border: "1px solid rgba(38,201,195,0.2)" }}>
+            <p className="text-base leading-relaxed mb-2" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.3rem", color: "#fff", fontStyle: "italic" }}>
+              «Мы не продаём недели на яхте. Мы делаем так, чтобы вы захотели вернуться.»
+            </p>
+            <p className="text-sm" style={{ color: "rgba(255,255,255,0.4)" }}>— 90% гостей рекомендуют нас друзьям</p>
+          </div>
         </div>
       </section>
 
