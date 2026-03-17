@@ -2,19 +2,10 @@ import { useEffect, useState, useRef } from "react";
 import Icon from "@/components/ui/icon";
 import { toast } from "sonner";
 import YachtModal, { type YachtDetail } from "@/components/YachtModal";
+import { t, type Lang } from "@/i18n";
 
 const SUBMIT_URL = "https://functions.poehali.dev/ca2e2601-1e74-49e6-85d5-12e9ca935f4a";
 
-const NAV_LINKS = [
-  { label: "Маршруты", href: "#routes" },
-  { label: "Яхты", href: "#yachts" },
-  { label: "Размещение", href: "#accommodation" },
-  { label: "Услуги", href: "#services" },
-  { label: "Галерея", href: "#gallery" },
-  { label: "Отзывы", href: "#reviews" },
-  { label: "FAQ", href: "#faq" },
-  { label: "Контакты", href: "#contacts" },
-];
 
 const YACHT_TYPES: YachtDetail[] = [
   {
@@ -277,7 +268,7 @@ const GALLERY_ITEMS = [
   { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/426ba048-2e84-4067-8733-8d0e4177af04.jpg", label: "Девичник — бухта у скал", pos: "center top", fit: "contain" },
   { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/a698bbe8-fbcb-49a2-a321-afb7ab92f379.jpg", label: "Прогулка по городу", pos: "center center", fit: "contain" },
   { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/2d804142-411c-41fe-9d62-0df22a4ff91a.jpg", label: "Закат на SUP", pos: "center center", fit: "contain" },
-  { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/e4feca87-e70b-4001-8ad8-59a50b7fe49b.jpg", label: "День рождения на яхте", pos: "center center", fit: "contain" },
+  { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/e4feca87-e70b-4001-8ad8-59a50b7fe49b.jpg", label: "Праздник на яхте", pos: "center center", fit: "contain" },
   { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/b4fa9568-be82-4cca-b2de-5a57298e0a7e.jpg", label: "Команда на переходе", pos: "center center", fit: "contain" },
 ];
 
@@ -383,6 +374,18 @@ function FaqItem({ question, answer }: { question: string; answer: string }) {
 }
 
 export default function Index() {
+  const [lang, setLang] = useState<Lang>("ru");
+  const T = t[lang];
+  const navLinks = [
+    { label: T.nav.routes, href: "#routes" },
+    { label: T.nav.yachts, href: "#yachts" },
+    { label: T.nav.accommodation, href: "#accommodation" },
+    { label: T.nav.services, href: "#services" },
+    { label: T.nav.gallery, href: "#gallery" },
+    { label: T.nav.reviews, href: "#reviews" },
+    { label: T.nav.faq, href: "#faq" },
+    { label: T.nav.contacts, href: "#contacts" },
+  ];
   const [menuOpen, setMenuOpen] = useState(false);
   const [navOpaque, setNavOpaque] = useState(false);
   const [formOpen, setFormOpen] = useState(false);
@@ -464,7 +467,7 @@ export default function Index() {
             <div className="text-center mb-8">
               <span className="text-3xl mb-3 block">⛵</span>
               <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.8rem", fontWeight: 400, color: "var(--text-primary)", marginBottom: "0.5rem" }}>
-                Подобрать путешествие
+                {T.booking.title}
               </h3>
               <p className="text-sm" style={{ color: "var(--text-muted)" }}>Ответим в WhatsApp или Telegram в течение часа</p>
             </div>
@@ -502,7 +505,7 @@ export default function Index() {
                   onBlur={(e) => (e.target.style.borderColor = "rgba(38,201,195,0.15)")} />
               </div>
               <button type="submit" disabled={sending} className="w-full py-4 rounded-xl text-base font-semibold btn-teal mt-2" style={{ color: "var(--sea-deep)", opacity: sending ? 0.6 : 1 }}>
-                {sending ? "Отправляем..." : "Отправить заявку"}
+                {sending ? "..." : T.booking.submitBtn}
               </button>
               <p className="text-xs text-center mt-2" style={{ color: "rgba(255,255,255,0.3)" }}>
                 Обычно отвечаем в течение часа
@@ -523,25 +526,43 @@ export default function Index() {
           <a href="#hero" className="flex items-center gap-2">
             <span style={{ fontSize: "1.4rem" }}>⚓</span>
             <span style={{ fontFamily: "'Cormorant Garamond', serif", color: "var(--teal)", fontSize: "1.1rem", fontWeight: 600 }}>
-              Яхтинг в Турции
+              {T.footer.brand}
             </span>
           </a>
           <div className="hidden md:flex items-center gap-8">
-            {NAV_LINKS.map((l) => (
+            {navLinks.map((l) => (
               <a key={l.href} href={l.href} className="nav-link">{l.label}</a>
             ))}
           </div>
-          <button className="md:hidden p-2" onClick={() => setMenuOpen(!menuOpen)} style={{ color: "var(--teal)" }}>
-            <Icon name={menuOpen ? "X" : "Menu"} size={24} />
-          </button>
+          <div className="hidden md:flex items-center gap-3">
+            <button
+              onClick={() => setLang(lang === "ru" ? "en" : "ru")}
+              className="px-3 py-1.5 rounded-full text-xs font-semibold transition-all"
+              style={{ background: "rgba(38,201,195,0.12)", color: "var(--teal)", border: "1px solid rgba(38,201,195,0.3)" }}
+            >
+              {lang === "ru" ? "EN" : "RU"}
+            </button>
+          </div>
+          <div className="flex items-center gap-3 md:hidden">
+            <button
+              onClick={() => setLang(lang === "ru" ? "en" : "ru")}
+              className="px-3 py-1.5 rounded-full text-xs font-semibold transition-all"
+              style={{ background: "rgba(38,201,195,0.12)", color: "var(--teal)", border: "1px solid rgba(38,201,195,0.3)" }}
+            >
+              {lang === "ru" ? "EN" : "RU"}
+            </button>
+            <button className="p-2" onClick={() => setMenuOpen(!menuOpen)} style={{ color: "var(--teal)" }}>
+              <Icon name={menuOpen ? "X" : "Menu"} size={24} />
+            </button>
+          </div>
         </div>
         {menuOpen && (
           <div className="md:hidden glass" style={{ borderTop: "1px solid rgba(38,201,195,0.1)" }}>
             <div className="flex flex-col gap-1 p-4">
-              {NAV_LINKS.map((l) => (
+              {navLinks.map((l) => (
                 <a key={l.href} href={l.href} className="py-3 px-4 rounded-lg text-sm" style={{ color: "var(--text-secondary)" }} onClick={() => setMenuOpen(false)}>{l.label}</a>
               ))}
-              <button onClick={() => { setFormOpen(true); setMenuOpen(false); }} className="mt-2 py-3 px-4 rounded-full text-center text-sm btn-teal" style={{ color: "var(--sea-deep)" }}>Забронировать</button>
+              <button onClick={() => { setFormOpen(true); setMenuOpen(false); }} className="mt-2 py-3 px-4 rounded-full text-center text-sm btn-teal" style={{ color: "var(--sea-deep)" }}>{T.nav.book}</button>
             </div>
           </div>
         )}
@@ -564,30 +585,30 @@ export default function Index() {
           <div className="mb-6 animate-fadeInUp">
             <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-medium" style={{ background: "rgba(38,201,195,0.12)", color: "var(--teal)", border: "1px solid rgba(38,201,195,0.25)", backdropFilter: "blur(8px)" }}>
               <span className="w-1.5 h-1.5 rounded-full bg-current animate-pulse" />
-              Сезон апрель — ноябрь 2026
+              {T.hero.season}
             </span>
           </div>
 
           <h1 className="animate-fadeInUp delay-100 mb-5"
             style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(2.8rem, 7vw, 5.5rem)", fontWeight: 300, color: "#fff", lineHeight: 1.08, maxWidth: "780px" }}>
-            Неделя под парусом<br />
-            вдоль <span className="shimmer-text" style={{ fontWeight: 600, fontStyle: "italic" }}>бирюзового</span><br />
-            побережья Турции
+            {T.hero.title1}<br />
+            {T.hero.title2} <span className="shimmer-text" style={{ fontWeight: 600, fontStyle: "italic" }}>{T.hero.titleAccent}</span><br />
+            {T.hero.title3}
           </h1>
 
           <p className="text-lg leading-relaxed mb-4 animate-fadeInUp delay-200" style={{ color: "rgba(255,255,255,0.65)", maxWidth: "480px" }}>
-            Небольшая команда · тихие бухты · жизнь на яхте
+            {T.hero.subtitle}
           </p>
           <p className="text-base mb-10 animate-fadeInUp delay-200" style={{ color: "rgba(255,255,255,0.5)", maxWidth: "480px" }}>
-            4–6 гостей на борту с опытным капитаном
+            {T.hero.guests}
           </p>
 
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-10 animate-fadeInUp delay-300" style={{ maxWidth: "640px" }}>
             {[
-              { icon: "⛵", label: "Сезон", value: "апрель — ноябрь" },
-              { icon: "🌊", label: "Маршруты", value: "Фетхие · Мармарис · Олюдениз · Кекова" },
-              { icon: "👥", label: "Команда", value: "4–8 человек" },
-              { icon: "💶", label: "Стоимость", value: "от 750 € с человека" },
+              { icon: "⛵", label: T.hero.statSeason, value: T.hero.statSeasonVal },
+              { icon: "🌊", label: T.hero.statRoutes, value: T.hero.statRoutesVal },
+              { icon: "👥", label: T.hero.statTeam, value: T.hero.statTeamVal },
+              { icon: "💶", label: T.hero.statPrice, value: T.hero.statPriceVal },
             ].map((s) => (
               <div key={s.label} className="flex flex-col gap-1 px-4 py-3 rounded-2xl"
                 style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.1)", backdropFilter: "blur(12px)" }}>
@@ -614,15 +635,15 @@ export default function Index() {
 
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-6 animate-fadeInUp delay-400">
             <button onClick={() => setFormOpen(true)} className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full text-base font-semibold btn-teal" style={{ color: "var(--sea-deep)" }}>
-              Подобрать путешествие <Icon name="ArrowRight" size={18} />
+              {T.hero.btnBook} <Icon name="ArrowRight" size={18} />
             </button>
             <a href="#yachts" className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full text-base font-semibold btn-outline-teal">
-              Посмотреть яхты <Icon name="Sailboat" size={18} />
+              {T.hero.btnYachts} <Icon name="Sailboat" size={18} />
             </a>
           </div>
 
           <p className="text-xs animate-fadeInUp delay-500" style={{ color: "rgba(255,255,255,0.35)" }}>
-            На яхте всего 3 каюты — поэтому команда обычно 4–6 человек.
+            {T.hero.note}
           </p>
         </div>
 
@@ -635,12 +656,12 @@ export default function Index() {
       {/* DAY SCHEDULE — сразу после hero */}
       <section className="py-20 relative" style={{ background: "linear-gradient(180deg, #0d1f3c 0%, #112240 100%)" }}>
         <div className="max-w-5xl mx-auto px-6 text-center">
-          <p className="text-xs tracking-widest uppercase mb-3 reveal" style={{ color: "var(--teal)" }}>Жизнь на яхте</p>
+          <p className="text-xs tracking-widest uppercase mb-3 reveal" style={{ color: "var(--teal)" }}>{T.day.label}</p>
           <h2 className="reveal delay-100 mb-4" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: 300, color: "var(--text-primary)" }}>
-            Как проходит день на яхте
+            {T.day.title}
           </h2>
           <p className="text-sm mb-12 reveal delay-200" style={{ color: "var(--text-muted)" }}>
-            95% наших гостей никогда раньше не путешествовали на яхте.
+            {T.day.note}
           </p>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {DAY_SCHEDULE.map((item, i) => (
@@ -733,12 +754,12 @@ export default function Index() {
         <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(38,201,195,0.3), transparent)" }} />
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
-            <p className="text-xs tracking-widest uppercase mb-3 reveal" style={{ color: "var(--teal)" }}>Маршрут</p>
+            <p className="text-xs tracking-widest uppercase mb-3 reveal" style={{ color: "var(--teal)" }}>{T.routes.label}</p>
             <h2 className="reveal delay-100 mb-4" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: 300, color: "var(--text-primary)" }}>
-              Вдоль южного побережья
+              {T.routes.title}
             </h2>
             <p className="reveal delay-200" style={{ color: "var(--text-secondary)" }}>
-              Один из самых красивых регионов Средиземного моря. Старт из Фетхие или Мармарис.
+              {T.routes.subtitle}
             </p>
           </div>
           <div className="mb-12 reveal delay-200">
@@ -803,7 +824,7 @@ export default function Index() {
           </div>
           <div className="mt-6 glass rounded-xl p-4 text-center reveal delay-400">
             <p className="text-sm" style={{ color: "var(--text-muted)" }}>
-              ✦ Маршрут может меняться в зависимости от погоды и состояния моря
+              {T.routes.note}
             </p>
           </div>
         </div>
@@ -815,12 +836,12 @@ export default function Index() {
         <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(38,201,195,0.3), transparent)" }} />
         <div className="relative max-w-7xl mx-auto px-6">
           <div className="text-center mb-16 reveal">
-            <p className="text-xs tracking-widest uppercase mb-3" style={{ color: "var(--teal)" }}>Ваш капитан</p>
+            <p className="text-xs tracking-widest uppercase mb-3" style={{ color: "var(--teal)" }}>{T.captain.label}</p>
             <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: 300, color: "var(--text-primary)" }}>
-              Евгений
+              {T.captain.name}
             </h2>
             <p className="mt-4 text-base" style={{ color: "var(--text-secondary)", maxWidth: "560px", margin: "1rem auto 0" }}>
-              20 лет в море. Более 50 000 пройденных миль. Капитан, который сделает это путешествие незабываемым.
+              {T.captain.subtitle}
             </p>
           </div>
 
@@ -837,7 +858,7 @@ export default function Index() {
                 <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(13,31,60,0.7) 0%, transparent 50%)" }} />
                 <div className="absolute bottom-6 left-6 right-6">
                   <p className="text-lg leading-relaxed" style={{ fontFamily: "'Cormorant Garamond', serif", fontStyle: "italic", color: "rgba(255,255,255,0.95)" }}>
-                    «Главный принцип на борту: уважение к морю, яхте и команде.»
+                    {T.captain.quote}
                   </p>
                 </div>
               </div>
@@ -846,7 +867,7 @@ export default function Index() {
               <div className="glass rounded-2xl p-5">
                 <div className="flex items-center gap-2 mb-3">
                   <span className="text-xl">📋</span>
-                  <h3 className="font-semibold" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.15rem", color: "#fff" }}>Документы и лицензии</h3>
+                  <h3 className="font-semibold" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.15rem", color: "#fff" }}>{T.captain.docs}</h3>
                 </div>
                 <div className="space-y-2">
                   {[
@@ -866,19 +887,19 @@ export default function Index() {
               <div className="glass rounded-2xl p-5">
                 <div className="flex items-center gap-2 mb-2">
                   <span className="text-xl">⚓</span>
-                  <h3 className="font-semibold" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.15rem", color: "#fff" }}>История и опыт</h3>
+                  <h3 className="font-semibold" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.15rem", color: "#fff" }}>{T.captain.history}</h3>
                 </div>
                 <p className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.65)" }}>
-                  Вырос у моря. Первый выход под парусом — в 14 лет. Прошёл все уровни: матрос, шкипер, капитан. 20 лет в море, более 50 000 пройденных миль. Сейчас проводит сезонные экспедиции вдоль турецкого побережья — маршрут, который знает наизусть, каждую бухту и каждый подводный камень.
+                  {T.captain.historyText}
                 </p>
               </div>
               <div className="glass rounded-2xl p-5">
                 <div className="flex items-center gap-2 mb-2">
                   <span className="text-xl">🧘</span>
-                  <h3 className="font-semibold" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.15rem", color: "#fff" }}>Атмосфера на борту</h3>
+                  <h3 className="font-semibold" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.15rem", color: "#fff" }}>{T.captain.atmosphere}</h3>
                 </div>
                 <p className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.65)" }}>
-                  Евгений умеет создавать особую атмосферу — где все чувствуют себя командой. Он не просто везёт из точки А в точку Б — рассказывает истории о местах, учит яхтингу, готовит с вами на гриле и знает, где найти рыбу.
+                  {T.captain.atmosphereText}
                 </p>
               </div>
             </div>
@@ -900,7 +921,7 @@ export default function Index() {
           <div className="grid md:grid-cols-3 gap-6">
             <div className="glass rounded-2xl p-7 reveal delay-100">
               <div className="text-2xl mb-4">🌍</div>
-              <h3 className="font-semibold mb-3" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.2rem", color: "#fff" }}>8 морей за плечами</h3>
+              <h3 className="font-semibold mb-3" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.2rem", color: "#fff" }}>{T.captain.seas}</h3>
               <div className="grid grid-cols-2 gap-2">
                 {["Азовское", "Кашпийское", "Средиземное", "Эгейское", "Ионическое", "Адриатическое", "Мраморное", "Миртойское"].map((sea) => (
                   <div key={sea} className="flex items-center gap-1.5 text-xs py-1.5" style={{ color: "rgba(255,255,255,0.6)", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
@@ -911,21 +932,21 @@ export default function Index() {
             </div>
             <div className="glass rounded-2xl p-7 reveal delay-200">
               <div className="text-2xl mb-4">🎓</div>
-              <h3 className="font-semibold mb-3" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.2rem", color: "#fff" }}>Обучение на борту</h3>
+              <h3 className="font-semibold mb-3" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.2rem", color: "#fff" }}>{T.captain.training}</h3>
               <p className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.65)" }}>
-                Евгений с удовольствием обучает яхтингу прямо в море — как держать парус, читать ветер, встать на якорь. Хочешь научиться — скажи ему об этом в первый день.
+                {T.captain.trainingText}
               </p>
             </div>
             <div className="glass rounded-2xl p-7 reveal delay-300">
               <div className="text-2xl mb-4">🧭</div>
-              <h3 className="font-semibold mb-3" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.2rem", color: "#fff" }}>О морской болезни</h3>
+              <h3 className="font-semibold mb-3" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.2rem", color: "#fff" }}>{T.captain.seasickness}</h3>
               <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,255,255,0.65)" }}>
-                Капитан прокладывает маршрут так, чтобы минимизировать качку: защищённые акватории, правильное время перехода, остановки в бухтах.
+                {T.captain.seasicknessText}
               </p>
               <div className="flex items-center gap-3 rounded-xl px-4 py-3" style={{ background: "rgba(38,201,195,0.08)", border: "1px solid rgba(38,201,195,0.15)" }}>
                 <span style={{ fontSize: "1.4rem" }}>😌</span>
                 <div className="text-xs" style={{ color: "rgba(255,255,255,0.7)" }}>
-                  <strong style={{ color: "#fff" }}>90%</strong> гостей не испытывают дискомфорта
+                  <strong style={{ color: "#fff" }}>90%</strong> {T.captain.seasicknessNote}
                 </div>
               </div>
             </div>
@@ -938,9 +959,9 @@ export default function Index() {
         <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(38,201,195,0.3), transparent)" }} />
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
-            <p className="text-xs tracking-widest uppercase mb-3 reveal" style={{ color: "var(--teal)" }}>Форматы</p>
+            <p className="text-xs tracking-widest uppercase mb-3 reveal" style={{ color: "var(--teal)" }}>{T.yachts.label}</p>
             <h2 className="reveal delay-100" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: 300, color: "var(--text-primary)" }}>
-              Выберите свою яхту
+              {T.yachts.title}
             </h2>
           </div>
 
@@ -957,7 +978,7 @@ export default function Index() {
                 {yacht.highlight && (
                   <div className="absolute top-3 left-1/2 -translate-x-1/2 z-10">
                     <span className="px-4 py-1 rounded-full text-xs font-semibold animate-glow-pulse" style={{ background: "var(--teal)", color: "var(--sea-deep)" }}>
-                      Популярный выбор
+                      {T.yachts.popular}
                     </span>
                   </div>
                 )}
@@ -1000,7 +1021,7 @@ export default function Index() {
                   </div>
                   <button onClick={(e) => { e.stopPropagation(); setSelectedYacht(yacht); }} className={`w-full py-2.5 rounded-full text-sm text-center flex items-center justify-center gap-2 ${yacht.highlight ? "btn-teal" : "btn-outline-teal"}`}
                     style={yacht.highlight ? { color: "var(--sea-deep)" } : {}}>
-                    Подробнее <Icon name="ArrowRight" size={14} />
+                    {T.yachts.details} <Icon name="ArrowRight" size={14} />
                   </button>
                 </div>
               </div>
@@ -1013,12 +1034,12 @@ export default function Index() {
               <div className="flex items-start gap-4 mb-4">
                 <div className="text-3xl">👥</div>
                 <div>
-                  <div className="text-xs tracking-widest uppercase mb-1" style={{ color: "var(--teal)" }}>Специальные условия</div>
-                  <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.4rem", fontWeight: 600, color: "#fff" }}>Компания от 4 человек</h3>
+                  <div className="text-xs tracking-widest uppercase mb-1" style={{ color: "var(--teal)" }}>{T.yachts.groupDiscountLabel}</div>
+                  <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.4rem", fontWeight: 600, color: "#fff" }}>{T.yachts.groupDiscount}</h3>
                 </div>
               </div>
               <p className="text-sm leading-relaxed mb-5" style={{ color: "rgba(255,255,255,0.65)" }}>
-                Приезжаете командой? Занимаете несколько кают — и получаете скидку. Идеально для компаний друзей, девичников и семейных поездок.
+                {T.yachts.groupDiscountText}
               </p>
               <div className="flex items-center gap-4 mb-6 rounded-xl px-5 py-4" style={{ background: "rgba(38,201,195,0.1)", border: "1px solid rgba(38,201,195,0.2)" }}>
                 <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "3rem", fontWeight: 700, color: "var(--teal)", lineHeight: 1 }}>−10%</div>
@@ -1027,7 +1048,7 @@ export default function Index() {
                 </div>
               </div>
               <button onClick={() => setFormOpen(true)} className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm btn-outline-teal">
-                Узнать подробности <Icon name="ArrowRight" size={16} />
+                {T.yachts.groupDiscountBtn} <Icon name="ArrowRight" size={16} />
               </button>
             </div>
 
@@ -1036,12 +1057,12 @@ export default function Index() {
               <div className="flex items-start gap-4 mb-4">
                 <div className="text-3xl">🏆</div>
                 <div>
-                  <div className="text-xs tracking-widest uppercase mb-1" style={{ color: "var(--gold)" }}>Закрытое путешествие</div>
-                  <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.4rem", fontWeight: 600, color: "#fff" }}>Аренда яхты целиком</h3>
+                  <div className="text-xs tracking-widest uppercase mb-1" style={{ color: "var(--gold)" }}>{T.yachts.fullYachtLabel}</div>
+                  <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.4rem", fontWeight: 600, color: "#fff" }}>{T.yachts.fullYacht}</h3>
                 </div>
               </div>
               <p className="text-sm leading-relaxed mb-5" style={{ color: "rgba(255,255,255,0.65)" }}>
-                Только ваша команда и капитан. Никаких попутчиков. Вы сами задаёте ритм: маршрут, стоянки, время отплытия. Девичники, свадьбы, корпоративы, дни рождения.
+                {T.yachts.fullYachtText}
               </p>
               <div className="flex flex-col gap-3 mb-6">
                 {[
@@ -1055,13 +1076,13 @@ export default function Index() {
                       <div className="text-xs" style={{ color: "rgba(255,255,255,0.5)" }}>{y.guests}</div>
                     </div>
                     <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.4rem", fontWeight: 700, color: "var(--gold)" }}>
-                      {y.price} <span className="text-xs font-normal" style={{ color: "rgba(255,255,255,0.5)" }}>/ неделя</span>
+                      {y.price} <span className="text-xs font-normal" style={{ color: "rgba(255,255,255,0.5)" }}>{T.yachts.perWeek}</span>
                     </div>
                   </div>
                 ))}
               </div>
               <button onClick={() => setFormOpen(true)} className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm btn-gold" style={{ color: "var(--sea-deep)" }}>
-                Запросить условия <Icon name="ArrowRight" size={16} />
+                {T.yachts.fullYachtBtn} <Icon name="ArrowRight" size={16} />
               </button>
             </div>
           </div>
@@ -1073,12 +1094,12 @@ export default function Index() {
         <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(38,201,195,0.3), transparent)" }} />
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
-            <p className="text-xs tracking-widest uppercase mb-3 reveal" style={{ color: "var(--teal)" }}>На борту</p>
+            <p className="text-xs tracking-widest uppercase mb-3 reveal" style={{ color: "var(--teal)" }}>{T.accommodation.label}</p>
             <h2 className="reveal delay-100 mb-4" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: 300, color: "var(--text-primary)" }}>
-              Как устроена жизнь на яхте
+              {T.accommodation.title}
             </h2>
             <p className="reveal delay-200" style={{ color: "var(--text-secondary)", maxWidth: "560px", margin: "0 auto" }}>
-              95% наших гостей впервые на яхте. Рассказываем, где спать, есть и мыться — без сюрпризов.
+              {T.accommodation.subtitle}
             </p>
           </div>
 
@@ -1149,9 +1170,9 @@ export default function Index() {
           <div className="text-center mb-12">
             <p className="text-xs tracking-widest uppercase mb-3 reveal" style={{ color: "var(--teal)" }}>Для новичков</p>
             <h2 className="reveal delay-100 mb-3" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(1.8rem, 3vw, 2.5rem)", fontWeight: 300, color: "var(--text-primary)" }}>
-              Словарь яхтсмена
+              {T.glossary.title}
             </h2>
-            <p className="text-sm reveal delay-200" style={{ color: "var(--text-muted)" }}>Чтобы вы понимали, о чём говорит капитан</p>
+            <p className="text-sm reveal delay-200" style={{ color: "var(--text-muted)" }}>{T.glossary.subtitle}</p>
           </div>
           <div className="grid md:grid-cols-2 gap-3 reveal delay-200">
             {YACHT_GLOSSARY.map((item) => (
@@ -1172,9 +1193,9 @@ export default function Index() {
         <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(38,201,195,0.3), transparent)" }} />
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
-            <p className="text-xs tracking-widest uppercase mb-3 reveal" style={{ color: "var(--teal)" }}>Услуги</p>
+            <p className="text-xs tracking-widest uppercase mb-3 reveal" style={{ color: "var(--teal)" }}>{T.services.label}</p>
             <h2 className="reveal delay-100" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: 300, color: "var(--text-primary)" }}>
-              Морские недели
+              {T.services.title}
             </h2>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 mb-16">
@@ -1204,7 +1225,7 @@ export default function Index() {
           {/* Pricing 3 variants */}
           <div className="mb-6">
             <h3 className="text-center font-semibold text-lg mb-8 reveal" style={{ fontFamily: "'Cormorant Garamond', serif", color: "var(--text-primary)", fontSize: "1.6rem" }}>
-              💰 Стоимость участия
+              {T.services.priceTitle}
             </h3>
             <div className="pricing-grid grid md:grid-cols-3 gap-5">
               {/* Bavaria — популярный выбор */}
@@ -1214,12 +1235,12 @@ export default function Index() {
                 onClick={() => { document.getElementById("yachts")?.scrollIntoView({ behavior: "smooth" }); }}
               >
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-10">
-                  <span className="px-4 py-1 rounded-full text-xs font-semibold" style={{ background: "var(--teal)", color: "var(--sea-deep)" }}>Популярный выбор</span>
+                  <span className="px-4 py-1 rounded-full text-xs font-semibold" style={{ background: "var(--teal)", color: "var(--sea-deep)" }}>{T.yachts.popular}</span>
                 </div>
                 <div className="px-6 pt-8 pb-5" style={{ background: "linear-gradient(135deg, rgba(38,201,195,0.14) 0%, rgba(13,32,64,0.9) 100%)" }}>
                   <div className="text-xs tracking-widest uppercase mb-1" style={{ color: "var(--teal)" }}>Bavaria 42 · Комфорт</div>
                   <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "2.4rem", fontWeight: 600, color: "var(--teal)", lineHeight: 1 }}>от 750 €</div>
-                  <div className="text-xs mt-1" style={{ color: "rgba(255,255,255,0.45)" }}>за человека / неделю</div>
+                  <div className="text-xs mt-1" style={{ color: "rgba(255,255,255,0.45)" }}>{T.services.perPerson}</div>
                 </div>
                 <div className="px-6 py-5 flex items-center justify-between" style={{ background: "rgba(13,31,60,0.6)" }}>
                   <div className="text-xs" style={{ color: "rgba(255,255,255,0.4)" }}>3 каюты · до 6 гостей · год 2001</div>
@@ -1236,7 +1257,7 @@ export default function Index() {
                 <div className="px-6 pt-6 pb-5" style={{ background: "rgba(13,32,64,0.8)" }}>
                   <div className="text-xs tracking-widest uppercase mb-1" style={{ color: "var(--teal)" }}>Dufour 455 · Комфорт+</div>
                   <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "2.4rem", fontWeight: 600, color: "#fff", lineHeight: 1 }}>от 880 €</div>
-                  <div className="text-xs mt-1" style={{ color: "rgba(255,255,255,0.45)" }}>за человека / неделю</div>
+                  <div className="text-xs mt-1" style={{ color: "rgba(255,255,255,0.45)" }}>{T.services.perPerson}</div>
                 </div>
                 <div className="px-6 py-5 flex items-center justify-between" style={{ background: "rgba(13,31,60,0.6)" }}>
                   <div className="text-xs" style={{ color: "rgba(255,255,255,0.4)" }}>3 каюты · до 6 гостей · год 2006</div>
@@ -1253,7 +1274,7 @@ export default function Index() {
                 <div className="px-6 pt-6 pb-5" style={{ background: "rgba(13,32,64,0.8)" }}>
                   <div className="text-xs tracking-widest uppercase mb-1" style={{ color: "#a78bfa" }}>Катамаран · Премиум</div>
                   <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "2.4rem", fontWeight: 600, color: "#fff", lineHeight: 1 }}>от 1 200 €</div>
-                  <div className="text-xs mt-1" style={{ color: "rgba(255,255,255,0.45)" }}>за человека / неделю</div>
+                  <div className="text-xs mt-1" style={{ color: "rgba(255,255,255,0.45)" }}>{T.services.perPerson}</div>
                 </div>
                 <div className="px-6 py-5 flex items-center justify-between" style={{ background: "rgba(13,31,60,0.6)" }}>
                   <div className="text-xs" style={{ color: "rgba(255,255,255,0.4)" }}>4 каюты · до 8 гостей · максимальный простор</div>
@@ -1305,13 +1326,13 @@ export default function Index() {
               </div>
               <div className="p-7 flex flex-col justify-center" style={{ background: "rgba(13,32,64,0.7)" }}>
                 <h3 className="font-semibold text-lg mb-3" style={{ fontFamily: "'Cormorant Garamond', serif", color: "var(--text-primary)", fontSize: "1.4rem" }}>
-                  👨‍🍳 Повар на борту
+                  👨‍🍳 {T.accommodation.chef}
                 </h3>
                 <p className="text-sm leading-relaxed mb-4" style={{ color: "var(--text-secondary)" }}>
-                  По желанию — повар на весь маршрут. Готовит прямо на борту: на газу, на гриле, из свежих местных продуктов. Рыба, пойманная утром — уже на столе к обеду.
+                  {T.accommodation.chefText}
                 </p>
                 <div className="flex flex-wrap gap-2 mb-4">
-                  {["Завтраки", "Обеды", "Ужины", "Гриль на борту", "Свежая рыба"].map((meal) => (
+                  {T.accommodation.meals.map((meal) => (
                     <span key={meal} className="px-3 py-1 rounded-full text-xs" style={{ background: "rgba(38,201,195,0.08)", color: "var(--teal)", border: "1px solid rgba(38,201,195,0.15)" }}>
                       {meal}
                     </span>
@@ -1325,15 +1346,15 @@ export default function Index() {
           <div className="mt-6 glass rounded-2xl p-7 reveal delay-300">
             <div className="grid md:grid-cols-3 gap-6 items-center">
               <div className="md:col-span-2">
-                <h3 className="font-semibold mb-2" style={{ color: "var(--text-primary)" }}>🌊 О морской болезни</h3>
+                <h3 className="font-semibold mb-2" style={{ color: "var(--text-primary)" }}>🌊 {T.accommodation.seasicknessTitle}</h3>
                 <p className="text-sm leading-relaxed" style={{ color: "var(--text-secondary)" }}>
-                  Большинство чувствуют себя комфортно уже в первые дни. Капитан выбирает спокойные маршруты, переходы в защищённых акваториях. Большую часть времени вы на палубе или в воде — там укачивание практически не ощущается.
+                  {T.accommodation.seasicknessText}
                 </p>
               </div>
               <div className="glass-light rounded-xl p-5 flex items-center gap-3">
                 <div className="text-3xl">😌</div>
                 <div className="text-sm" style={{ color: "var(--text-secondary)" }}>
-                  <strong style={{ color: "var(--text-primary)" }}>90%</strong> гостей<br />не испытывают<br />дискомфорта
+                  <strong style={{ color: "var(--text-primary)" }}>90%</strong> {T.accommodation.seasicknessNote}
                 </div>
               </div>
             </div>
@@ -1346,9 +1367,9 @@ export default function Index() {
         <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(38,201,195,0.3), transparent)" }} />
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
-            <p className="text-xs tracking-widest uppercase mb-3 reveal" style={{ color: "var(--teal)" }}>Галерея</p>
+            <p className="text-xs tracking-widest uppercase mb-3 reveal" style={{ color: "var(--teal)" }}>{T.gallery.label}</p>
             <h2 className="reveal delay-100" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: 300, color: "var(--text-primary)" }}>
-              Жизнь на воде
+              {T.gallery.title}
             </h2>
           </div>
           {/* Main slider */}
@@ -1409,9 +1430,9 @@ export default function Index() {
         <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(38,201,195,0.3), transparent)" }} />
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
-            <p className="text-xs tracking-widest uppercase mb-3 reveal" style={{ color: "var(--teal)" }}>Отзывы</p>
+            <p className="text-xs tracking-widest uppercase mb-3 reveal" style={{ color: "var(--teal)" }}>{T.reviews.label}</p>
             <h2 className="reveal delay-100" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: 300, color: "var(--text-primary)" }}>
-              Те, кто уже побывал
+              {T.reviews.title}
             </h2>
           </div>
           {(() => {
@@ -1474,12 +1495,12 @@ export default function Index() {
         <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(38,201,195,0.3), transparent)" }} />
         <div className="max-w-5xl mx-auto px-6">
           <div className="text-center mb-16">
-            <p className="text-xs tracking-widest uppercase mb-3 reveal" style={{ color: "var(--teal)" }}>Честно о главном</p>
+            <p className="text-xs tracking-widest uppercase mb-3 reveal" style={{ color: "var(--teal)" }}>{T.whyUs.label}</p>
             <h2 className="reveal delay-100 mb-4" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: 300, color: "var(--text-primary)" }}>
-              Чем мы отличаемся<br />от 90% похожих предложений
+              {T.whyUs.title.split("\n").map((line, i) => <span key={i}>{line}{i === 0 && <br />}</span>)}
             </h2>
             <p className="text-base reveal delay-200" style={{ color: "var(--text-secondary)", maxWidth: "520px", margin: "0 auto" }}>
-              Рынок яхтенных туров большой. Вот почему гости возвращаются снова.
+              {T.whyUs.subtitle}
             </p>
           </div>
 
@@ -1554,10 +1575,10 @@ export default function Index() {
         <div className="relative max-w-3xl mx-auto px-6 text-center">
           <p className="text-xs tracking-widest uppercase mb-4 reveal" style={{ color: "var(--teal)" }}>Ближайшие путешествия</p>
           <h2 className="reveal delay-100 mb-4" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: 300, color: "var(--text-primary)" }}>
-            Места ограничены
+            {T.cta.title}
           </h2>
           <p className="text-base leading-relaxed mb-12 reveal delay-200" style={{ color: "var(--text-secondary)" }}>
-            Каждое путешествие — небольшая группа. Мест немного, и они разбираются задолго до старта.
+            {T.cta.subtitle}
           </p>
 
           <div className="glass rounded-2xl p-10 reveal delay-300" style={{ border: "1px solid rgba(38,201,195,0.2)" }}>
@@ -1565,33 +1586,33 @@ export default function Index() {
               Неделя на яхте — это когда:
             </div>
             <div className="space-y-3 text-left max-w-sm mx-auto mb-8">
-              {["утром вы просыпаетесь в новой бухте", "днём идёте под парусом", "а вечером ужинаете у маленького ресторана у воды"].map((line) => (
+              {[T.cta.note, T.cta.note2, T.cta.note3].map((line) => (
                 <div key={line} className="flex items-start gap-3 text-sm" style={{ color: "var(--text-secondary)" }}>
                   <span style={{ color: "var(--teal)", marginTop: "3px", fontSize: "0.5rem" }}>●</span> {line}
                 </div>
               ))}
             </div>
             <p className="text-sm italic mb-8" style={{ color: "var(--text-muted)" }}>
-              Иногда именно такие недели становятся самыми запоминающимися.
+              {T.cta.closing}
             </p>
 
             {/* Payment terms */}
             <div className="grid grid-cols-2 gap-3 mb-8 text-left">
               <div className="rounded-xl p-4" style={{ background: "rgba(38,201,195,0.06)", border: "1px solid rgba(38,201,195,0.2)" }}>
                 <div className="text-lg mb-1">🔒</div>
-                <div className="text-xs font-semibold mb-1" style={{ color: "var(--teal)" }}>Предоплата при бронировании</div>
-                <div className="text-xs leading-relaxed" style={{ color: "rgba(255,255,255,0.55)" }}>Фиксируете место сейчас — вносите часть суммы</div>
+                <div className="text-xs font-semibold mb-1" style={{ color: "var(--teal)" }}>{T.cta.depositLabel}</div>
+                <div className="text-xs leading-relaxed" style={{ color: "rgba(255,255,255,0.55)" }}>{T.cta.depositText}</div>
               </div>
               <div className="rounded-xl p-4" style={{ background: "rgba(232,184,75,0.06)", border: "1px solid rgba(232,184,75,0.2)" }}>
                 <div className="text-lg mb-1">⛵</div>
-                <div className="text-xs font-semibold mb-1" style={{ color: "var(--gold)" }}>Остаток в день заезда</div>
-                <div className="text-xs leading-relaxed" style={{ color: "rgba(255,255,255,0.55)" }}>Доплачиваете при посадке на яхту в маринe</div>
+                <div className="text-xs font-semibold mb-1" style={{ color: "var(--gold)" }}>{T.cta.remainLabel}</div>
+                <div className="text-xs leading-relaxed" style={{ color: "rgba(255,255,255,0.55)" }}>{T.cta.remainText}</div>
               </div>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button onClick={() => setFormOpen(true)} className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full text-base btn-gold" style={{ color: "var(--sea-deep)" }}>
-                Забронировать <Icon name="ArrowRight" size={18} />
+                {T.cta.bookBtn} <Icon name="ArrowRight" size={18} />
               </button>
             </div>
           </div>
@@ -1603,26 +1624,19 @@ export default function Index() {
         <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(38,201,195,0.3), transparent)" }} />
         <div className="max-w-4xl mx-auto px-6">
           <div className="text-center mb-16">
-            <p className="text-xs tracking-widest uppercase mb-3 reveal" style={{ color: "var(--teal)" }}>Честно</p>
+            <p className="text-xs tracking-widest uppercase mb-3 reveal" style={{ color: "var(--teal)" }}>{T.whoFor.label}</p>
             <h2 className="reveal delay-100" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: 300, color: "var(--text-primary)" }}>
-              Кому подойдёт это путешествие
+              {T.whoFor.title}
             </h2>
           </div>
           <div className="grid md:grid-cols-2 gap-6">
             <div className="rounded-2xl p-8 reveal" style={{ background: "rgba(38,201,195,0.05)", border: "1px solid rgba(38,201,195,0.2)" }}>
               <div className="flex items-center gap-3 mb-6">
                 <span className="text-2xl">✅</span>
-                <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.4rem", fontWeight: 600, color: "#fff" }}>Подойдёт</h3>
+                <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.4rem", fontWeight: 600, color: "#fff" }}>{T.whoFor.fits}</h3>
               </div>
               <div className="space-y-4">
-                {[
-                  "тем, кто устал от массовых курортов",
-                  "кто любит море и природу",
-                  "кто хочет тишины и свободы",
-                  "небольшие компании друзей",
-                  "пары",
-                  "девичники",
-                ].map((item) => (
+                {T.whoFor.fitsList.map((item) => (
                   <div key={item} className="flex items-start gap-3">
                     <span style={{ color: "var(--teal)", marginTop: "2px", flexShrink: 0 }}>✓</span>
                     <span className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.8)" }}>{item}</span>
@@ -1633,14 +1647,10 @@ export default function Index() {
             <div className="rounded-2xl p-8 reveal delay-200" style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.1)" }}>
               <div className="flex items-center gap-3 mb-6">
                 <span className="text-2xl">🚫</span>
-                <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.4rem", fontWeight: 600, color: "#fff" }}>Не подойдёт</h3>
+                <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.4rem", fontWeight: 600, color: "#fff" }}>{T.whoFor.notFits}</h3>
               </div>
               <div className="space-y-4">
-                {[
-                  "тем, кто ждёт пятизвёздочный отель",
-                  "тем, кто не любит море",
-                  "тем, кто ищет шумные вечеринки",
-                ].map((item) => (
+                {T.whoFor.notFitsList.map((item) => (
                   <div key={item} className="flex items-start gap-3">
                     <span style={{ color: "rgba(255,255,255,0.3)", marginTop: "2px", flexShrink: 0 }}>✕</span>
                     <span className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.5)" }}>{item}</span>
@@ -1651,7 +1661,7 @@ export default function Index() {
           </div>
           <div className="text-center mt-10 reveal delay-300">
             <button onClick={() => setFormOpen(true)} className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full text-base font-semibold btn-teal" style={{ color: "var(--sea-deep)" }}>
-              Подобрать путешествие <Icon name="ArrowRight" size={18} />
+              {T.whoFor.btn} <Icon name="ArrowRight" size={18} />
             </button>
           </div>
         </div>
@@ -1662,25 +1672,13 @@ export default function Index() {
         <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(38,201,195,0.3), transparent)" }} />
         <div className="max-w-4xl mx-auto px-6">
           <div className="text-center mb-16">
-            <p className="text-xs tracking-widest uppercase mb-3 reveal" style={{ color: "var(--teal)" }}>FAQ</p>
+            <p className="text-xs tracking-widest uppercase mb-3 reveal" style={{ color: "var(--teal)" }}>{T.faq.label}</p>
             <h2 className="reveal delay-100" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: 300, color: "var(--text-primary)" }}>
-              Частые вопросы
+              {T.faq.title}
             </h2>
           </div>
           <div className="space-y-3">
-            {[
-              { q: "Нужно ли иметь опыт яхтинга?", a: "Нет. Для путешествия не требуется никакого опыта. Капитан управляет яхтой и отвечает за маршрут и безопасность. Если интересно, можно поучаствовать в управлении — попробовать держать курс, работать с парусами и узнать, как устроена жизнь на яхте." },
-              { q: "Сколько человек будет на борту?", a: "Обычно 4–6 человек плюс капитан, на катамаране до 10. Это небольшая команда, поэтому на борту сохраняется спокойная и дружелюбная атмосфера." },
-              { q: "Где мы будем ночевать?", a: "Два варианта: в тихих бухтах на якоре — с чистой водой и звёздным небом, или в маринах небольших прибрежных городов. Чаще всего ночёвки проходят в красивых бухтах или у частных пирсов ресторанов со средиземноморской кухней." },
-              { q: "Как проходит обычный день на яхте?", a: "Утром — завтрак и купание. Днём — переход под парусом и остановки в бухтах. Вечером — новая стоянка и ужин на берегу или на яхте. Каждый день — новая бухта и новые пейзажи." },
-              { q: "Будет ли морская болезнь?", a: "90% наших гостей не испытывают дискомфорта от морской болезни: переходы проходят вдоль берега, яхты устойчивы. На борту есть препараты, и капитан знает много приёмов, чтобы вас не укачало." },
-              { q: "Тесно ли на яхте?", a: "Яхта устроена компактно, но продуманно. На борту есть каюты для сна, кухня, душ и туалеты, просторная палуба и зоны отдыха. Большую часть времени гости проводят на палубе или в море." },
-              { q: "Как организовано питание?", a: "Несколько вариантов: готовить на яхте, закупать продукты вместе или ужинать в ресторанах на берегу. Обычно команда выбирает комфортный для всех вариант." },
-              { q: "Безопасно ли путешествовать на яхте?", a: "Капитан имеет многолетний опыт морских переходов и международные лицензии. На борту есть всё необходимое оборудование безопасности. Маршрут всегда строится с учётом погодных условий." },
-              { q: "Можно ли поехать одному?", a: "Да. Многие гости приезжают по одному и знакомятся уже на борту. Через пару дней команда обычно становится дружной компанией." },
-              { q: "Можно ли арендовать яхту полностью?", a: "Да. Яхту можно забронировать целиком для компании друзей, семьи, девичника или свадебного путешествия." },
-              { q: "Что самое ценное в таком путешествии?", a: "Каждый день начинается в новой бухте. Нет спешки, нет толп туристов, нет привычной суеты. Есть море, ветер и ощущение свободы. Через несколько дней многие замечают, что перестают смотреть в телефон и просто начинают жить моментом." },
-            ].map((item, i) => (
+            {T.faq.items.map((item, i) => (
               <FaqItem key={i} question={item.q} answer={item.a} />
             ))}
           </div>
@@ -1692,15 +1690,15 @@ export default function Index() {
         <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(38,201,195,0.3), transparent)" }} />
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
-            <p className="text-xs tracking-widest uppercase mb-3 reveal" style={{ color: "var(--teal)" }}>Контакты</p>
+            <p className="text-xs tracking-widest uppercase mb-3 reveal" style={{ color: "var(--teal)" }}>{T.contacts.label}</p>
             <h2 className="reveal delay-100" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: 300, color: "var(--text-primary)" }}>
-              Напишите нам
+              {T.contacts.title}
             </h2>
           </div>
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             <div className="reveal">
               <div className="glass rounded-2xl p-8 h-full">
-                <h3 className="font-semibold mb-6" style={{ color: "var(--text-primary)" }}>Связаться с нами</h3>
+                <h3 className="font-semibold mb-6" style={{ color: "var(--text-primary)" }}>{T.contacts.contactUs}</h3>
                 <div className="space-y-3">
                   {[
                     { icon: "MessageCircle", label: "Telegram", value: "@yacht_week_bot", href: "https://t.me/yacht_week_bot" },
@@ -1726,11 +1724,11 @@ export default function Index() {
             </div>
             <div className="reveal delay-200">
               <div className="glass rounded-2xl p-8 h-full">
-                <h3 className="font-semibold mb-6" style={{ color: "var(--text-primary)" }}>Задать вопрос</h3>
+                <h3 className="font-semibold mb-6" style={{ color: "var(--text-primary)" }}>{T.contacts.askQuestion}</h3>
                 <div className="space-y-4">
                   {[
-                    { type: "text", placeholder: "Ваше имя" },
-                    { type: "tel", placeholder: "Телефон или Telegram" },
+                    { type: "text", placeholder: T.contacts.namePlaceholder },
+                    { type: "tel", placeholder: T.contacts.phonePlaceholder },
                   ].map((field) => (
                     <input key={field.placeholder} type={field.type} placeholder={field.placeholder}
                       className="w-full px-4 py-3 rounded-xl text-sm outline-none transition-all"
@@ -1738,13 +1736,13 @@ export default function Index() {
                       onFocus={(e) => (e.target.style.borderColor = "rgba(38,201,195,0.4)")}
                       onBlur={(e) => (e.target.style.borderColor = "rgba(38,201,195,0.12)")} />
                   ))}
-                  <textarea placeholder="Ваш вопрос или пожелания" rows={3}
+                  <textarea placeholder={T.contacts.messagePlaceholder} rows={3}
                     className="w-full px-4 py-3 rounded-xl text-sm outline-none resize-none transition-all"
                     style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(38,201,195,0.12)", color: "var(--text-primary)" }}
                     onFocus={(e) => (e.target.style.borderColor = "rgba(38,201,195,0.4)")}
                     onBlur={(e) => (e.target.style.borderColor = "rgba(38,201,195,0.12)")} />
                   <button className="w-full py-3 rounded-xl text-sm btn-teal" style={{ color: "var(--sea-deep)" }}>
-                    Отправить сообщение
+                    {T.contacts.sendBtn}
                   </button>
                 </div>
               </div>
@@ -1758,10 +1756,10 @@ export default function Index() {
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-2">
             <span style={{ fontSize: "1.2rem" }}>⚓</span>
-            <span style={{ fontFamily: "'Cormorant Garamond', serif", color: "var(--teal)", fontWeight: 600 }}>Яхтинг в Турции</span>
+            <span style={{ fontFamily: "'Cormorant Garamond', serif", color: "var(--teal)", fontWeight: 600 }}>{T.footer.brand}</span>
           </div>
           <div className="flex flex-wrap justify-center gap-6">
-            {NAV_LINKS.map((l) => (
+            {navLinks.map((l) => (
               <a key={l.href} href={l.href} className="text-xs" style={{ color: "var(--text-muted)", transition: "color 0.2s" }}
                 onMouseEnter={(e) => (e.currentTarget.style.color = "var(--teal)")}
                 onMouseLeave={(e) => (e.currentTarget.style.color = "var(--text-muted)")}>
@@ -1769,7 +1767,7 @@ export default function Index() {
               </a>
             ))}
           </div>
-          <p className="text-xs" style={{ color: "var(--text-muted)" }}>Сезон 2026 · Апрель — Ноябрь</p>
+          <p className="text-xs" style={{ color: "var(--text-muted)" }}>© 2026 · {T.footer.rights}</p>
         </div>
       </footer>
 
@@ -1790,7 +1788,7 @@ export default function Index() {
           style={{ color: "var(--sea-deep)" }}
         >
           <Icon name="Calendar" size={16} />
-          Забронировать
+          {T.cta.bookBtn}
         </button>
       </div>
     </div>
