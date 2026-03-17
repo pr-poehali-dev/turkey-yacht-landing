@@ -586,8 +586,8 @@ export default function Index() {
             {[
               { icon: "⛵", label: "Сезон", value: "апрель — ноябрь" },
               { icon: "🌊", label: "Маршруты", value: "Фетхие · Мармарис · Олюдениз · Кекова" },
-              { icon: "👥", label: "Команда", value: "4–6 человек" },
-              { icon: "💶", label: "Стоимость", value: "от 650 € с человека" },
+              { icon: "👥", label: "Команда", value: "4–8 человек" },
+              { icon: "💶", label: "Стоимость", value: "от 750 € с человека" },
             ].map((s) => (
               <div key={s.label} className="flex flex-col gap-1 px-4 py-3 rounded-2xl"
                 style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.1)", backdropFilter: "blur(12px)" }}>
