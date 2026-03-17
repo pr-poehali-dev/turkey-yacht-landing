@@ -224,38 +224,58 @@ const REVIEWS = [
 ];
 
 const GALLERY_ITEMS = [
-  { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/50940829-ee0a-4e20-8ff0-f8fdf1ef4946.jpg", label: "Остров Гемилер — руины" },
-  { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/274be0fa-8c28-4f88-b93c-779ee450e35e.jpg", label: "Отдых в бухте" },
-  { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/8dd63f1a-bc53-476a-aed1-f112df22e980.jpeg", label: "Гемилер с воды" },
-  { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/0b2a898f-e8c3-439c-a974-3d7cf2883c34.jpg", label: "Бухта Бабочек" },
-  { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/cf38f7d5-0f77-4a83-888a-20fcd95c8f7c.jpg", label: "Закат на якоре" },
-  { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/23c69f90-c2f3-4dbe-93d9-3183595fbe5d.jpg", label: "Олюдениз" },
-  { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/46a224ed-0c9e-465f-a97b-20fa3dbcc619.jpg", label: "На палубе" },
-  { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/ab8d6dd3-7af1-4f9e-a417-d06307240426.jpg", label: "Остров Св. Николая" },
-  { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/7d414dc4-051b-4225-b018-da9385f4069d.jpg", label: "Древние руины" },
-  { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/24f432de-4321-4ff7-a666-355f5ec5d770.jpg", label: "Бирюзовое море" },
-  { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/625de156-82ca-46d3-8609-47ac6e59c7f2.jpg", label: "У скал" },
-  { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/77cf7e79-9a8b-45ef-8b23-08b9914ee5fb.jpg", label: "Закат с борта" },
-  { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/a54dd1b8-4eef-4246-8f69-05765ebfb795.jpg", label: "Закат на море" },
-  { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/3c1ab62f-1ef3-4ff8-9d47-99e57b6f1f19.jpg", label: "Фетхие — марина" },
+  { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/50940829-ee0a-4e20-8ff0-f8fdf1ef4946.jpg", label: "Остров Гемилер — руины", pos: "center center" },
+  { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/274be0fa-8c28-4f88-b93c-779ee450e35e.jpg", label: "Отдых в бухте", pos: "center center" },
+  { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/8dd63f1a-bc53-476a-aed1-f112df22e980.jpeg", label: "Гемилер с воды", pos: "center center" },
+  { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/0b2a898f-e8c3-439c-a974-3d7cf2883c34.jpg", label: "Бухта Бабочек", pos: "center center" },
+  { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/cf38f7d5-0f77-4a83-888a-20fcd95c8f7c.jpg", label: "Закат на якоре", pos: "center center" },
+  { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/23c69f90-c2f3-4dbe-93d9-3183595fbe5d.jpg", label: "Олюдениз", pos: "center center" },
+  { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/46a224ed-0c9e-465f-a97b-20fa3dbcc619.jpg", label: "На палубе", pos: "center center" },
+  { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/ab8d6dd3-7af1-4f9e-a417-d06307240426.jpg", label: "Остров Св. Николая", pos: "center center" },
+  { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/7d414dc4-051b-4225-b018-da9385f4069d.jpg", label: "Древние руины", pos: "center center" },
+  { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/24f432de-4321-4ff7-a666-355f5ec5d770.jpg", label: "Бирюзовое море", pos: "center center" },
+  { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/625de156-82ca-46d3-8609-47ac6e59c7f2.jpg", label: "У скал", pos: "center top" },
+  { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/77cf7e79-9a8b-45ef-8b23-08b9914ee5fb.jpg", label: "Закат с борта", pos: "center center" },
+  { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/a54dd1b8-4eef-4246-8f69-05765ebfb795.jpg", label: "Закат на море", pos: "center center" },
+  { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/3c1ab62f-1ef3-4ff8-9d47-99e57b6f1f19.jpg", label: "Фетхие — марина", pos: "center center" },
 ];
 
 function CaptainSlider({ photos }: { photos: { src: string; label: string }[] }) {
+  const [idx, setIdx] = useState(0);
+  const VISIBLE = 3;
+  const canPrev = idx > 0;
+  const canNext = idx + VISIBLE < photos.length;
   return (
     <div className="mb-8 reveal">
-      <div className="flex gap-3 overflow-x-auto pb-3" style={{ scrollbarWidth: "none", WebkitOverflowScrolling: "touch" } as React.CSSProperties}>
-        {photos.map((photo, i) => (
-          <div key={i} className="flex-shrink-0 flex flex-col gap-2" style={{ width: 200 }}>
-            <div className="rounded-2xl overflow-hidden" style={{ border: "1px solid rgba(255,255,255,0.1)", background: "#0a1828", height: 280 }}>
-              <img
-                src={photo.src}
-                alt={photo.label}
-                style={{ width: "100%", height: "100%", objectFit: "contain", display: "block" }}
-              />
+      <div className="relative">
+        <div className="flex gap-3 overflow-hidden">
+          {photos.slice(idx, idx + VISIBLE).map((photo, i) => (
+            <div key={idx + i} className="flex-shrink-0 flex flex-col gap-2" style={{ width: `calc((100% - 24px) / 3)` }}>
+              <div className="rounded-2xl overflow-hidden flex items-center justify-center" style={{ border: "1px solid rgba(255,255,255,0.1)", background: "#0a1828", height: 300 }}>
+                <img
+                  src={photo.src}
+                  alt={photo.label}
+                  style={{ maxWidth: "100%", maxHeight: "300px", objectFit: "contain", display: "block" }}
+                />
+              </div>
+              <p className="text-xs text-center" style={{ color: "rgba(255,255,255,0.45)" }}>{photo.label}</p>
             </div>
-            <p className="text-xs text-center" style={{ color: "rgba(255,255,255,0.45)" }}>{photo.label}</p>
-          </div>
-        ))}
+          ))}
+        </div>
+        {canPrev && (
+          <button onClick={() => setIdx(idx - 1)}
+            className="absolute -left-4 top-[140px] -translate-y-1/2 p-2 rounded-full transition-all hover:scale-110 z-10"
+            style={{ background: "rgba(13,31,60,0.9)", color: "#fff", border: "1px solid rgba(38,201,195,0.3)" }}>
+            <Icon name="ChevronLeft" size={18} />
+          </button>
+        )}
+        {canNext && (
+          <button onClick={() => setIdx(idx + 1)}
+            className="absolute -right-4 top-[140px] -translate-y-1/2 p-2 rounded-full transition-all hover:scale-110 z-10"
+            style={{ background: "rgba(13,31,60,0.9)", color: "#fff", border: "1px solid rgba(38,201,195,0.3)" }}>
+            <Icon name="ChevronRight" size={18} />
+          </button>
+        )}
       </div>
     </div>
   );
@@ -1168,8 +1188,8 @@ export default function Index() {
             <div className="grid md:grid-cols-2">
               <div className="relative overflow-hidden" style={{ minHeight: "260px" }}>
                 <img
-                  src="https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/0697089a-8f76-4f63-87c9-99adadb7cb8f.png"
-                  alt="Повар на яхте"
+                  src="https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/d470a3be-3852-47b8-8d50-a52ab065532b.jpeg"
+                  alt="Ужин на яхте"
                   className="w-full h-full object-cover"
                   style={{ minHeight: "260px" }}
                 />
@@ -1239,6 +1259,7 @@ export default function Index() {
               src={GALLERY_ITEMS[gallerySlide].img}
               alt={GALLERY_ITEMS[gallerySlide].label}
               className="w-full h-full object-cover transition-all duration-500"
+              style={{ objectPosition: GALLERY_ITEMS[gallerySlide].pos }}
             />
             <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(13,31,60,0.7) 0%, transparent 55%)" }} />
             <div className="absolute bottom-6 left-6">
