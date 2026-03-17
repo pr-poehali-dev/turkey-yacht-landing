@@ -152,7 +152,7 @@ const SPECIAL_WEEKS = [
   { icon: "🥾", title: "Яхтинг + Ликийская тропа", desc: "Самая красивая треккинговая тропа мира 2025 года. Высаживаемся в бухте, идём налегке — без рюкзаков. После прогулки отдыхаем на яхте. Доступно всем, включая детей.", img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/7a939002-4344-4d75-a70d-a1f63896b51e.jpg" },
   { icon: "💍", title: "Бракосочетание на яхте", desc: "В морских традициях. Капитан имеет право росписи — церемония прямо на борту, в открытом море.", img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/c255fb15-bc1e-4f13-817d-4314873222cd.jpg" },
   { icon: "🎂", title: "День рождения на яхте", desc: "Для взрослых и детей. Квест на руинах древнего города, пиратская вечеринка, день Нептуна — и всё, на что хватит фантазии. Фотограф и аниматор — по запросу.", img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/d6422ad4-32fe-4c6e-aed1-9a2440a69a7f.jpg" },
-  { icon: "👯‍♀️", title: "Девичники", desc: "Неделя красивых бухт, моря и закатов с подругами. Профессиональная фотосессия — по запросу.", img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/f842a71b-5168-48cb-bcba-ad0ad3e96301.jpg" },
+  { icon: "👯‍♀️", title: "Девичники", desc: "Неделя красивых бухт, моря и закатов с подругами. Профессиональная фотосессия — по запросу.", img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/files/7cd40d88-618f-444a-ae00-67e9bd2e37a3.jpg" },
   { icon: "👥", title: "Компании друзей", desc: "Лучший формат для тех, кто ценит свободу и настоящие приключения.", img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/bd68ae2d-75f0-4144-94f5-13347159898e.jpg" },
   { icon: "🧘", title: "Спокойный яхтинг", desc: "Для тех, кто ищет тишину и море вдали от шумных курортов.", img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/274be0fa-8c28-4f88-b93c-779ee450e35e.jpg" },
 ];
@@ -266,6 +266,14 @@ const GALLERY_ITEMS = [
   { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/77cf7e79-9a8b-45ef-8b23-08b9914ee5fb.jpg", label: "Закат с борта", pos: "center center" },
   { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/a54dd1b8-4eef-4246-8f69-05765ebfb795.jpg", label: "Закат на море", pos: "center center" },
   { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/3c1ab62f-1ef3-4ff8-9d47-99e57b6f1f19.jpg", label: "Фетхие — марина", pos: "center center" },
+  { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/20de6d30-2c27-4ee2-97a8-0821c30bb597.jpg", label: "Морская охота", pos: "center center" },
+  { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/1d80504d-b2c9-4a9b-b603-477b7e628a7d.jpg", label: "Рыбалка", pos: "center center" },
+  { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/c732e4c6-bccd-482e-a03f-6258c8e73768.jpg", label: "Обучение яхтингу", pos: "center center" },
+  { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/7a939002-4344-4d75-a70d-a1f63896b51e.jpg", label: "Ликийская тропа", pos: "center center" },
+  { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/c255fb15-bc1e-4f13-817d-4314873222cd.jpg", label: "Бракосочетание на яхте", pos: "center center" },
+  { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/d6422ad4-32fe-4c6e-aed1-9a2440a69a7f.jpg", label: "День рождения на яхте", pos: "center center" },
+  { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/files/7cd40d88-618f-444a-ae00-67e9bd2e37a3.jpg", label: "Девичник на яхте", pos: "center center" },
+  { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/bd68ae2d-75f0-4144-94f5-13347159898e.jpg", label: "Компания друзей", pos: "center center" },
 ];
 
 function CaptainSlider({ photos }: { photos: { src: string; label: string }[] }) {
@@ -839,8 +847,8 @@ export default function Index() {
                   {[
                     { short: "ГИМС РФ", full: "Права на управление моторными и парусными судами РФ", year: "с 2006 г." },
                     { short: "УЛМ", full: "Удостоверение личности моряка — международный документ профессионального морского статуса", year: "действующий" },
-                    { short: "IYT", full: "International Yacht Training — международные права яхтенного капитана", year: "Skipper" },
-                    { short: "РГО", full: "Русское географическое общество — член, участник экспедиций", year: "член" },
+                    { short: "IYT", full: "International Yacht Training — международные права яхтенного капитана", year: "наёмный сотрудник" },
+                    { short: "РГО", full: "Русское географическое общество — участник экспедиций", year: "участник" },
                   ].map((item) => (
                     <div key={item.short} className="flex gap-2 items-start py-1.5" style={{ borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
                       <span className="flex-shrink-0 px-2 py-0.5 rounded text-xs font-bold" style={{ background: "rgba(38,201,195,0.15)", color: "var(--teal)", minWidth: "48px", textAlign: "center" }}>{item.short}</span>
