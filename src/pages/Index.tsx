@@ -32,7 +32,7 @@ const YACHT_TYPES: YachtDetail[] = [
       { label: "Гости", value: "до 6" },
       { label: "Год", value: "2006" },
     ],
-    price: "≈ 880 €",
+    price: "от 880 €",
     priceNote: "за человека / неделю",
     highlight: false,
     img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/f1d30f88-a388-4bb1-a5d7-17f190ecb504.jpg",
@@ -149,9 +149,10 @@ const SPECIAL_WEEKS = [
   { icon: "🤿", title: "Морская охота и фридайвинг", desc: "Спускаешься на глубину с ружьём — и ужин уже на борту. Кристальная вода, рыба у самых скал." },
   { icon: "🎣", title: "Рыбалка", desc: "Закинуть снасть прямо с кормы — на ходу или на стоянке. Свежий улов сразу на сковороду." },
   { icon: "⛵", title: "Обучение яхтингу", desc: "Встань за штурвал и возьми курс сам. Капитан обучит управлению парусами прямо в море." },
+  { icon: "🥾", title: "Яхтинг + Ликийская тропа", desc: "Самая красивая треккинговая тропа мира 2025 года. Высаживаемся в бухте, идём налегке — без рюкзаков. После прогулки отдыхаем на яхте. Доступно всем, включая детей." },
   { icon: "💍", title: "Бракосочетание на яхте", desc: "В морских традициях. Капитан имеет право росписи — церемония прямо на борту, в открытом море." },
   { icon: "🎂", title: "День рождения на яхте", desc: "Для взрослых и детей. Квест на руинах древнего города, пиратская вечеринка, день Нептуна — и всё, на что хватит фантазии. Фотограф и аниматор — по запросу." },
-  { icon: "👯‍♀️", title: "Девичники", desc: "Неделя красивых бухт, моря и закатов с подругами." },
+  { icon: "👯‍♀️", title: "Девичники", desc: "Неделя красивых бухт, моря и закатов с подругами. Профессиональная фотосессия — по запросу." },
   { icon: "👥", title: "Компании друзей", desc: "Лучший формат для тех, кто ценит свободу и настоящие приключения." },
   { icon: "🧘", title: "Спокойный яхтинг", desc: "Для тех, кто ищет тишину и море вдали от шумных курортов." },
 ];
@@ -1016,75 +1017,42 @@ export default function Index() {
               💰 Стоимость участия
             </h3>
             <div className="pricing-grid grid md:grid-cols-3 gap-5">
-              {/* Classic */}
+              {/* Bavaria */}
               <div className="rounded-2xl overflow-hidden reveal delay-100" style={{ border: "1px solid rgba(38,201,195,0.15)" }}>
                 <div className="px-6 pt-6 pb-5" style={{ background: "rgba(13,32,64,0.8)" }}>
-                  <div className="text-xs tracking-widest uppercase mb-1" style={{ color: "var(--teal)" }}>Classic Yacht</div>
-                  <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "2.4rem", fontWeight: 600, color: "#fff", lineHeight: 1 }}>650 €</div>
+                  <div className="text-xs tracking-widest uppercase mb-1" style={{ color: "var(--teal)" }}>Bavaria 42 · Комфорт</div>
+                  <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "2.4rem", fontWeight: 600, color: "#fff", lineHeight: 1 }}>от 750 €</div>
                   <div className="text-xs mt-1" style={{ color: "rgba(255,255,255,0.45)" }}>за человека / неделю</div>
                 </div>
                 <div className="px-6 py-5" style={{ background: "rgba(13,31,60,0.6)" }}>
-                  <div className="space-y-2 mb-4">
-                    {[
-                      { label: "Верёвочный сбор", val: "400 €" },
-                      { label: "Судовая касса", val: "≈ 250 €" },
-                    ].map((r) => (
-                      <div key={r.label} className="flex justify-between text-sm">
-                        <span style={{ color: "rgba(255,255,255,0.55)" }}>{r.label}</span>
-                        <span style={{ color: "rgba(255,255,255,0.85)", fontWeight: 500 }}>{r.val}</span>
-                      </div>
-                    ))}
-                  </div>
-                  <div className="text-xs" style={{ color: "rgba(255,255,255,0.4)" }}>3 каюты · 4–6 гостей</div>
+                  <div className="text-xs" style={{ color: "rgba(255,255,255,0.4)" }}>3 каюты · до 6 гостей · год 2001</div>
                 </div>
               </div>
 
-              {/* Comfort — highlighted */}
+              {/* Dufour — highlighted */}
               <div className="rounded-2xl overflow-hidden reveal delay-200 relative" style={{ border: "1px solid rgba(38,201,195,0.4)", boxShadow: "0 0 30px rgba(38,201,195,0.12)" }}>
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-10">
                   <span className="px-4 py-1 rounded-full text-xs font-semibold" style={{ background: "var(--teal)", color: "var(--sea-deep)" }}>Популярный</span>
                 </div>
                 <div className="px-6 pt-8 pb-5" style={{ background: "linear-gradient(135deg, rgba(38,201,195,0.14) 0%, rgba(13,32,64,0.9) 100%)" }}>
-                  <div className="text-xs tracking-widest uppercase mb-1" style={{ color: "var(--teal)" }}>Comfort Yacht</div>
-                  <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "2.4rem", fontWeight: 600, color: "var(--teal)", lineHeight: 1 }}>880 €</div>
+                  <div className="text-xs tracking-widest uppercase mb-1" style={{ color: "var(--teal)" }}>Dufour 455 · Комфорт+</div>
+                  <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "2.4rem", fontWeight: 600, color: "var(--teal)", lineHeight: 1 }}>от 880 €</div>
                   <div className="text-xs mt-1" style={{ color: "rgba(255,255,255,0.45)" }}>за человека / неделю</div>
                 </div>
                 <div className="px-6 py-5" style={{ background: "rgba(13,31,60,0.6)" }}>
-                  <div className="space-y-2 mb-4">
-                    {[
-                      { label: "Верёвочный сбор", val: "630 €" },
-                      { label: "Судовая касса", val: "≈ 250 €" },
-                    ].map((r) => (
-                      <div key={r.label} className="flex justify-between text-sm">
-                        <span style={{ color: "rgba(255,255,255,0.55)" }}>{r.label}</span>
-                        <span style={{ color: "rgba(255,255,255,0.85)", fontWeight: 500 }}>{r.val}</span>
-                      </div>
-                    ))}
-                  </div>
-                  <div className="text-xs" style={{ color: "rgba(255,255,255,0.4)" }}>Просторные каюты · больше комфорта</div>
+                  <div className="text-xs" style={{ color: "rgba(255,255,255,0.4)" }}>3 каюты · до 6 гостей · год 2006</div>
                 </div>
               </div>
 
               {/* Catamaran */}
               <div className="rounded-2xl overflow-hidden reveal delay-300" style={{ border: "1px solid rgba(167,139,250,0.2)" }}>
                 <div className="px-6 pt-6 pb-5" style={{ background: "rgba(13,32,64,0.8)" }}>
-                  <div className="text-xs tracking-widest uppercase mb-1" style={{ color: "#a78bfa" }}>Premium Catamaran</div>
-                  <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "2.4rem", fontWeight: 600, color: "#fff", lineHeight: 1 }}>975 €</div>
+                  <div className="text-xs tracking-widest uppercase mb-1" style={{ color: "#a78bfa" }}>Катамаран · Премиум</div>
+                  <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "2.4rem", fontWeight: 600, color: "#fff", lineHeight: 1 }}>от 1 200 €</div>
                   <div className="text-xs mt-1" style={{ color: "rgba(255,255,255,0.45)" }}>за человека / неделю</div>
                 </div>
                 <div className="px-6 py-5" style={{ background: "rgba(13,31,60,0.6)" }}>
-                  <div className="space-y-2 mb-4">
-                    {[
-                      { label: "Верёвочный сбор", val: "725 €" },
-                      { label: "Судовая касса", val: "≈ 250 €" },
-                    ].map((r) => (
-                      <div key={r.label} className="flex justify-between text-sm">
-                        <span style={{ color: "rgba(255,255,255,0.55)" }}>{r.label}</span>
-                        <span style={{ color: "rgba(255,255,255,0.85)", fontWeight: 500 }}>{r.val}</span>
-                      </div>
-                    ))}
-                  </div>
-                  <div className="text-xs" style={{ color: "rgba(255,255,255,0.4)" }}>До 10 гостей · максимальный простор</div>
+                  <div className="text-xs" style={{ color: "rgba(255,255,255,0.4)" }}>4 каюты · до 8 гостей · максимальный простор</div>
                 </div>
               </div>
             </div>
@@ -1489,6 +1457,21 @@ export default function Index() {
         onClose={() => setSelectedYacht(null)}
         onBook={() => { setSelectedYacht(null); setFormOpen(true); }}
       />
+
+      {/* Floating CTA */}
+      <div
+        className="fixed bottom-6 right-6 z-50"
+        style={{ filter: "drop-shadow(0 4px 24px rgba(38,201,195,0.35))" }}
+      >
+        <button
+          onClick={() => setFormOpen(true)}
+          className="flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold btn-teal animate-glow-pulse"
+          style={{ color: "var(--sea-deep)" }}
+        >
+          <Icon name="Calendar" size={16} />
+          Забронировать
+        </button>
+      </div>
     </div>
   );
 }
