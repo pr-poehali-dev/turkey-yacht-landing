@@ -150,7 +150,7 @@ const SPECIAL_WEEKS = [
   { icon: "🎣", title: "Рыбалка", desc: "Закинуть снасть прямо с кормы — на ходу или на стоянке. Свежий улов сразу на сковороду.", img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/1d80504d-b2c9-4a9b-b603-477b7e628a7d.jpg" },
   { icon: "⛵", title: "Обучение яхтингу", desc: "Встань за штурвал и возьми курс сам. Капитан обучит управлению парусами прямо в море.", img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/c732e4c6-bccd-482e-a03f-6258c8e73768.jpg" },
   { icon: "🥾", title: "Яхтинг + Ликийская тропа", desc: "Самая красивая треккинговая тропа мира 2025 года. Высаживаемся в бухте, идём налегке — без рюкзаков. После прогулки отдыхаем на яхте. Доступно всем, включая детей.", img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/7a939002-4344-4d75-a70d-a1f63896b51e.jpg" },
-  { icon: "💍", title: "Бракосочетание на яхте", desc: "В морских традициях. Капитан имеет право росписи — церемония прямо на борту, в открытом море.", img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/f793efad-69d4-42c1-b61e-11dcd2e8a877.jpg" },
+  { icon: "💍", title: "Бракосочетание на яхте", desc: "В морских традициях. Капитан имеет право росписи — церемония прямо на борту, в открытом море.", img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/c255fb15-bc1e-4f13-817d-4314873222cd.jpg" },
   { icon: "🎂", title: "День рождения на яхте", desc: "Для взрослых и детей. Квест на руинах древнего города, пиратская вечеринка, день Нептуна — и всё, на что хватит фантазии. Фотограф и аниматор — по запросу.", img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/d6422ad4-32fe-4c6e-aed1-9a2440a69a7f.jpg" },
   { icon: "👯‍♀️", title: "Девичники", desc: "Неделя красивых бухт, моря и закатов с подругами. Профессиональная фотосессия — по запросу.", img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/f842a71b-5168-48cb-bcba-ad0ad3e96301.jpg" },
   { icon: "👥", title: "Компании друзей", desc: "Лучший формат для тех, кто ценит свободу и настоящие приключения.", img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/bd68ae2d-75f0-4144-94f5-13347159898e.jpg" },
@@ -1034,13 +1034,13 @@ export default function Index() {
                 icon: "🛏",
                 title: "Каюта — ваша личная комната",
                 desc: "Отдельное закрытое пространство для 1–2 человек. Внутри: полноценная двуспальная кровать, бельё и полотенца, деревянная отделка, иллюминатор с видом на воду, освещение и розетки. Закрывается на замок. По ощущениям — уютный гостиничный номер, только над морем.",
-                img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/5378ee11-dd2b-4600-8152-10ae181cd6ef.jpg",
+                img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/1ab7abb5-5f05-4f4f-90b3-9d30bc9399fc.jpeg",
               },
               {
                 icon: "🍽",
                 title: "Кают-компания — общая гостиная",
                 desc: "Салон в центре яхты, где все собираются вместе. Здесь завтракают, ужинают, играют в карты и разговаривают до полуночи. Большой стол, мягкие диваны по бортам, навигационный стол капитана. Кухня (камбуз) — тут же: плита, холодильник, раковина.",
-                img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/713d27dc-ee05-4a7d-8742-6859e7e004ce.jpg",
+                img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/85c2fda3-4078-4543-a87c-af2fde450dca.png",
               },
               {
                 icon: "🚿",
@@ -1052,7 +1052,7 @@ export default function Index() {
                 icon: "⛵",
                 title: "Кокпит — ваша открытая терраса",
                 desc: "Кокпит — это открытая площадка на корме, где проходит большая часть жизни. Завтраки под ветер, закаты с бокалом, ужины у тихих скал. Здесь стоит штурвал, здесь сидит капитан, и здесь вы будете проводить большую часть времени в море.",
-                img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/d6422ad4-32fe-4c6e-aed1-9a2440a69a7f.jpg",
+                img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/94d0fe48-da26-4233-ac06-47e6e806a99c.jpeg",
               },
             ].map((zone, i) => (
               <div key={zone.title} className={`rounded-2xl overflow-hidden reveal delay-${(i + 1) * 100}`} style={{ border: "1px solid rgba(38,201,195,0.12)" }}>
@@ -1118,8 +1118,8 @@ export default function Index() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 mb-16">
             {SPECIAL_WEEKS.map((item, i) => (
               <div key={item.title} className={`rounded-2xl overflow-hidden card-hover reveal delay-${(i % 3 + 1) * 100}`} style={{ border: "1px solid rgba(255,255,255,0.08)", background: "rgba(255,255,255,0.03)" }}>
-                <div className="relative h-40 overflow-hidden">
-                  <img src={item.img} alt={item.title} className="w-full h-full object-cover transition-transform duration-500 hover:scale-105" />
+                <div className="relative h-52 overflow-hidden flex items-center justify-center" style={{ background: "#0a1828" }}>
+                  <img src={item.img} alt={item.title} className="w-full h-full object-cover object-top transition-transform duration-500 hover:scale-105" />
                   <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(13,31,60,0.8) 0%, transparent 55%)" }} />
                   <div className="absolute bottom-3 left-4 flex items-center gap-2">
                     <span className="text-lg">{item.icon}</span>
