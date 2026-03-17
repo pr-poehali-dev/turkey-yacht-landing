@@ -274,6 +274,11 @@ const GALLERY_ITEMS = [
   { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/d6422ad4-32fe-4c6e-aed1-9a2440a69a7f.jpg", label: "День рождения на яхте", pos: "center center" },
   { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/files/7cd40d88-618f-444a-ae00-67e9bd2e37a3.jpg", label: "Девичник на яхте", pos: "center center" },
   { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/bd68ae2d-75f0-4144-94f5-13347159898e.jpg", label: "Компания друзей", pos: "center center" },
+  { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/426ba048-2e84-4067-8733-8d0e4177af04.jpg", label: "Девичник — бухта у скал", pos: "center top" },
+  { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/a698bbe8-fbcb-49a2-a321-afb7ab92f379.jpg", label: "Прогулка по городу", pos: "center center" },
+  { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/2d804142-411c-41fe-9d62-0df22a4ff91a.jpg", label: "Закат на SUP", pos: "center center" },
+  { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/e4feca87-e70b-4001-8ad8-59a50b7fe49b.jpg", label: "День рождения на яхте", pos: "center center" },
+  { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/b4fa9568-be82-4cca-b2de-5a57298e0a7e.jpg", label: "Команда на переходе", pos: "center center" },
 ];
 
 function CaptainSlider({ photos }: { photos: { src: string; label: string }[] }) {
@@ -847,7 +852,7 @@ export default function Index() {
                   {[
                     { short: "ГИМС РФ", full: "Права на управление моторными и парусными судами РФ", year: "с 2006 г." },
                     { short: "УЛМ", full: "Удостоверение личности моряка — международный документ профессионального морского статуса", year: "действующий" },
-                    { short: "IYT", full: "International Yacht Training — международные права яхтенного капитана", year: "наёмный сотрудник" },
+                    { short: "IYT", full: "International Yacht Training — международные права яхтенного капитана", year: "Skipper" },
                     { short: "РГО", full: "Русское географическое общество — участник экспедиций", year: "участник" },
                   ].map((item) => (
                     <div key={item.short} className="flex gap-2 items-start py-1.5" style={{ borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
