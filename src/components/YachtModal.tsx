@@ -13,6 +13,7 @@ export interface YachtDetail {
   detailedSpecs: { label: string; value: string }[];
   price: string;
   priceNote: string;
+  priceExtra?: string;
   highlight: boolean;
   img: string;
   gallery: string[];
@@ -231,6 +232,11 @@ export default function YachtModal({ yacht, onClose, onBook }: YachtModalProps) 
               <div className="text-xs" style={{ color: "var(--text-muted)" }}>
                 {yacht.priceNote}
               </div>
+              {yacht.priceExtra && (
+                <div className="text-xs mt-1" style={{ color: "var(--text-muted)", opacity: 0.75 }}>
+                  {yacht.priceExtra}
+                </div>
+              )}
             </div>
             <button
               onClick={onBook}
