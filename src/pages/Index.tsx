@@ -152,7 +152,7 @@ const SPECIAL_WEEKS = [
   { icon: "🥾", title: "Яхтинг + Ликийская тропа", desc: "Самая красивая треккинговая тропа мира 2025 года. Высаживаемся в бухте, идём налегке — без рюкзаков. После прогулки отдыхаем на яхте. Доступно всем, включая детей.", img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/7a939002-4344-4d75-a70d-a1f63896b51e.jpg" },
   { icon: "💍", title: "Бракосочетание на яхте", desc: "В морских традициях. Капитан имеет право росписи — церемония прямо на борту, в открытом море.", img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/c255fb15-bc1e-4f13-817d-4314873222cd.jpg" },
   { icon: "🎂", title: "День рождения на яхте", desc: "Для взрослых и детей. Квест на руинах древнего города, пиратская вечеринка, день Нептуна — и всё, на что хватит фантазии. Фотограф и аниматор — по запросу.", img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/d6422ad4-32fe-4c6e-aed1-9a2440a69a7f.jpg" },
-  { icon: "👯‍♀️", title: "Девичники", desc: "Неделя красивых бухт, моря и закатов с подругами. Профессиональная фотосессия — по запросу.", img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/f842a71b-5168-48cb-bcba-ad0ad3e96301.jpg" },
+  { icon: "👯‍♀️", title: "Девичники", desc: "Неделя красивых бухт, моря и закатов с подругами. Профессиональная фотосессия — по запросу.", img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/f842a71b-5168-48cb-bcba-ad0ad3e96301.jpg", quote: { text: "Девичник на яхте — это лучшее решение в моей жизни!", author: "Евгения М., Тула, октябрь" } },
   { icon: "👥", title: "Компании друзей", desc: "Лучший формат для тех, кто ценит свободу и настоящие приключения.", img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/bd68ae2d-75f0-4144-94f5-13347159898e.jpg" },
   { icon: "🧘", title: "Спокойный яхтинг", desc: "Для тех, кто ищет тишину и море вдали от шумных курортов.", img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/274be0fa-8c28-4f88-b93c-779ee450e35e.jpg" },
 ];
@@ -185,7 +185,7 @@ const REVIEWS = [
     text: "Провели медовый месяц на яхте. Церемония прямо на борту — что-то невероятное. Команда сделала всё, чтобы этот день запомнился на всю жизнь.",
     stars: 5,
     trip: "Catamaran, сентябрь",
-    img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/f793efad-69d4-42c1-b61e-11dcd2e8a877.jpg",
+    img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/c255fb15-bc1e-4f13-817d-4314873222cd.jpg",
   },
   {
     name: "Дмитрий П.",
@@ -1177,6 +1177,12 @@ export default function Index() {
                 </div>
                 <div className="p-5">
                   <p className="text-sm leading-relaxed" style={{ color: "var(--text-secondary)" }}>{item.desc}</p>
+                  {"quote" in item && item.quote && (
+                    <div className="mt-4 pt-4" style={{ borderTop: "1px solid rgba(255,255,255,0.07)" }}>
+                      <p className="text-xs italic mb-1" style={{ color: "rgba(255,255,255,0.6)" }}>«{item.quote.text}»</p>
+                      <p className="text-xs font-semibold" style={{ color: "var(--teal)" }}>— {item.quote.author}</p>
+                    </div>
+                  )}
                 </div>
               </div>
             ))}
@@ -1300,15 +1306,7 @@ export default function Index() {
                 </div>
               </div>
             </div>
-            {(() => {
-              const dinnerPhotos = [
-                { src: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/6a38c055-5bea-47e3-a34b-6b2158169b02.jpg", label: "Ужин у воды" },
-                { src: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/d470a3be-3852-47b8-8d50-a52ab065532b.jpeg", label: "Свежие блюда на борту" },
-                { src: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/d6422ad4-32fe-4c6e-aed1-9a2440a69a7f.jpg", label: "Компания за столом" },
-                { src: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/94d0fe48-da26-4233-ac06-47e6e806a99c.jpeg", label: "Праздничный стол на катамаране" },
-              ];
-              return <DinnerSlider photos={dinnerPhotos} />;
-            })()}
+
           </div>
 
           <div className="mt-6 glass rounded-2xl p-7 reveal delay-300">
