@@ -111,7 +111,7 @@ const ROUTE_STOPS = [
   { name: "Фетхие / Мармарис", desc: "Старт из одной из красивейших марин Средиземноморья. Набираем провизию, знакомимся с командой.", icon: "⚓", img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/files/e0b1280c-9f05-4527-aa0d-1a900f0ff9e0.jpg" },
   { name: "Олюдениз", desc: "Знаменитая бирюзовая лагуна с белым песком — одно из красивейших мест Турции.", icon: "🏖", img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/files/ab80fa8c-e10a-4261-a773-70389cfd5cb0.jpg" },
   { name: "Бухта Бабочек", desc: "Уединённая бухта, доступная только с моря. Снорклинг и ныряние у скал.", icon: "🦋", img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/files/b3fa61df-77bd-45d0-9c41-58eb93962faf.jpg" },
-  { name: "Остров Гемилер", desc: "Руины византийских церквей прямо у воды. Якорная стоянка среди скал и оливков — можно исследовать пешком.", icon: "🏛", img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/files/fe6f1d55-c4ae-42d0-9bee-e4f5c33388b7.jpg" },
+  { name: "Остров Гемилер", desc: "Руины византийских церквей на скалах прямо у воды. Якорная стоянка у острова — высаживаемся и идём пешком среди древних камней. Один из самых впечатляющих моментов маршрута.", icon: "🏛", img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/8dd63f1a-bc53-476a-aed1-f112df22e980.jpeg" },
   { name: "Дикие бухты", desc: "Тихие стоянки вдали от туристов. Морская охота, фридайвинг, закаты у воды.", icon: "🌊", img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/files/b4399b74-8a91-4f26-97bd-66882dfe61b6.jpg" },
   { name: "Каш / Калкан", desc: "Живописные рыбацкие городки с террасными ресторанами и ночной жизнью.", icon: "🏘", img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/files/712f8940-a329-4ab8-85ac-9a5e109b00e6.jpg" },
   { name: "Кекова", desc: "Затопленный античный город Симена — история прямо под водой, видна без маски.", icon: "🏺", img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/files/bf2476da-c70e-4ee3-b660-a427e3062b84.jpg" },
@@ -224,17 +224,20 @@ const REVIEWS = [
 ];
 
 const GALLERY_ITEMS = [
-  { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/0b2a898f-e8c3-439c-a974-3d7cf2883c34.jpg", label: "Бухта Бабочек", tall: true },
-  { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/cf38f7d5-0f77-4a83-888a-20fcd95c8f7c.jpg", label: "Закат на якоре", tall: false },
-  { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/23c69f90-c2f3-4dbe-93d9-3183595fbe5d.jpg", label: "Олюдениз", tall: false },
-  { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/46a224ed-0c9e-465f-a97b-20fa3dbcc619.jpg", label: "На палубе", tall: false },
-  { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/ab8d6dd3-7af1-4f9e-a417-d06307240426.jpg", label: "Остров Св. Николая", tall: false },
-  { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/7d414dc4-051b-4225-b018-da9385f4069d.jpg", label: "Древние руины", tall: true },
-  { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/24f432de-4321-4ff7-a666-355f5ec5d770.jpg", label: "Бирюзовое море", tall: false },
-  { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/625de156-82ca-46d3-8609-47ac6e59c7f2.jpg", label: "У скал", tall: false },
-  { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/77cf7e79-9a8b-45ef-8b23-08b9914ee5fb.jpg", label: "Закат с борта", tall: false },
-  { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/a54dd1b8-4eef-4246-8f69-05765ebfb795.jpg", label: "Закат на море", tall: false },
-  { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/3c1ab62f-1ef3-4ff8-9d47-99e57b6f1f19.jpg", label: "Фетхие — марина", tall: false },
+  { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/50940829-ee0a-4e20-8ff0-f8fdf1ef4946.jpg", label: "Остров Гемилер — руины" },
+  { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/274be0fa-8c28-4f88-b93c-779ee450e35e.jpg", label: "Отдых в бухте" },
+  { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/8dd63f1a-bc53-476a-aed1-f112df22e980.jpeg", label: "Гемилер с воды" },
+  { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/0b2a898f-e8c3-439c-a974-3d7cf2883c34.jpg", label: "Бухта Бабочек" },
+  { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/cf38f7d5-0f77-4a83-888a-20fcd95c8f7c.jpg", label: "Закат на якоре" },
+  { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/23c69f90-c2f3-4dbe-93d9-3183595fbe5d.jpg", label: "Олюдениз" },
+  { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/46a224ed-0c9e-465f-a97b-20fa3dbcc619.jpg", label: "На палубе" },
+  { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/ab8d6dd3-7af1-4f9e-a417-d06307240426.jpg", label: "Остров Св. Николая" },
+  { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/7d414dc4-051b-4225-b018-da9385f4069d.jpg", label: "Древние руины" },
+  { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/24f432de-4321-4ff7-a666-355f5ec5d770.jpg", label: "Бирюзовое море" },
+  { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/625de156-82ca-46d3-8609-47ac6e59c7f2.jpg", label: "У скал" },
+  { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/77cf7e79-9a8b-45ef-8b23-08b9914ee5fb.jpg", label: "Закат с борта" },
+  { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/a54dd1b8-4eef-4246-8f69-05765ebfb795.jpg", label: "Закат на море" },
+  { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/3c1ab62f-1ef3-4ff8-9d47-99e57b6f1f19.jpg", label: "Фетхие — марина" },
 ];
 
 function FaqItem({ question, answer }: { question: string; answer: string }) {
@@ -270,6 +273,7 @@ export default function Index() {
   const [sending, setSending] = useState(false);
   const [selectedYacht, setSelectedYacht] = useState<YachtDetail | null>(null);
   const [routeSlide, setRouteSlide] = useState(0);
+  const [gallerySlide, setGallerySlide] = useState(0);
   const formRef = useRef<HTMLFormElement>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -1051,42 +1055,57 @@ export default function Index() {
               💰 Стоимость участия
             </h3>
             <div className="pricing-grid grid md:grid-cols-3 gap-5">
-              {/* Bavaria */}
-              <div className="rounded-2xl overflow-hidden reveal delay-100" style={{ border: "1px solid rgba(38,201,195,0.15)" }}>
-                <div className="px-6 pt-6 pb-5" style={{ background: "rgba(13,32,64,0.8)" }}>
+              {/* Bavaria — популярный выбор */}
+              <div
+                className="rounded-2xl overflow-hidden reveal delay-100 relative cursor-pointer transition-transform hover:-translate-y-1"
+                style={{ border: "1px solid rgba(38,201,195,0.4)", boxShadow: "0 0 30px rgba(38,201,195,0.12)" }}
+                onClick={() => { document.getElementById("yachts")?.scrollIntoView({ behavior: "smooth" }); }}
+              >
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-10">
+                  <span className="px-4 py-1 rounded-full text-xs font-semibold" style={{ background: "var(--teal)", color: "var(--sea-deep)" }}>Популярный выбор</span>
+                </div>
+                <div className="px-6 pt-8 pb-5" style={{ background: "linear-gradient(135deg, rgba(38,201,195,0.14) 0%, rgba(13,32,64,0.9) 100%)" }}>
                   <div className="text-xs tracking-widest uppercase mb-1" style={{ color: "var(--teal)" }}>Bavaria 42 · Комфорт</div>
-                  <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "2.4rem", fontWeight: 600, color: "#fff", lineHeight: 1 }}>от 750 €</div>
+                  <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "2.4rem", fontWeight: 600, color: "var(--teal)", lineHeight: 1 }}>от 750 €</div>
                   <div className="text-xs mt-1" style={{ color: "rgba(255,255,255,0.45)" }}>за человека / неделю</div>
                 </div>
-                <div className="px-6 py-5" style={{ background: "rgba(13,31,60,0.6)" }}>
+                <div className="px-6 py-5 flex items-center justify-between" style={{ background: "rgba(13,31,60,0.6)" }}>
                   <div className="text-xs" style={{ color: "rgba(255,255,255,0.4)" }}>3 каюты · до 6 гостей · год 2001</div>
+                  <span style={{ color: "var(--teal)" }}><Icon name="ArrowRight" size={14} /></span>
                 </div>
               </div>
 
-              {/* Dufour — highlighted */}
-              <div className="rounded-2xl overflow-hidden reveal delay-200 relative" style={{ border: "1px solid rgba(38,201,195,0.4)", boxShadow: "0 0 30px rgba(38,201,195,0.12)" }}>
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-10">
-                  <span className="px-4 py-1 rounded-full text-xs font-semibold" style={{ background: "var(--teal)", color: "var(--sea-deep)" }}>Популярный</span>
-                </div>
-                <div className="px-6 pt-8 pb-5" style={{ background: "linear-gradient(135deg, rgba(38,201,195,0.14) 0%, rgba(13,32,64,0.9) 100%)" }}>
+              {/* Dufour */}
+              <div
+                className="rounded-2xl overflow-hidden reveal delay-200 cursor-pointer transition-transform hover:-translate-y-1"
+                style={{ border: "1px solid rgba(38,201,195,0.15)" }}
+                onClick={() => { document.getElementById("yachts")?.scrollIntoView({ behavior: "smooth" }); }}
+              >
+                <div className="px-6 pt-6 pb-5" style={{ background: "rgba(13,32,64,0.8)" }}>
                   <div className="text-xs tracking-widest uppercase mb-1" style={{ color: "var(--teal)" }}>Dufour 455 · Комфорт+</div>
-                  <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "2.4rem", fontWeight: 600, color: "var(--teal)", lineHeight: 1 }}>от 880 €</div>
+                  <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "2.4rem", fontWeight: 600, color: "#fff", lineHeight: 1 }}>от 880 €</div>
                   <div className="text-xs mt-1" style={{ color: "rgba(255,255,255,0.45)" }}>за человека / неделю</div>
                 </div>
-                <div className="px-6 py-5" style={{ background: "rgba(13,31,60,0.6)" }}>
+                <div className="px-6 py-5 flex items-center justify-between" style={{ background: "rgba(13,31,60,0.6)" }}>
                   <div className="text-xs" style={{ color: "rgba(255,255,255,0.4)" }}>3 каюты · до 6 гостей · год 2006</div>
+                  <span style={{ color: "var(--teal)" }}><Icon name="ArrowRight" size={14} /></span>
                 </div>
               </div>
 
               {/* Catamaran */}
-              <div className="rounded-2xl overflow-hidden reveal delay-300" style={{ border: "1px solid rgba(167,139,250,0.2)" }}>
+              <div
+                className="rounded-2xl overflow-hidden reveal delay-300 cursor-pointer transition-transform hover:-translate-y-1"
+                style={{ border: "1px solid rgba(167,139,250,0.2)" }}
+                onClick={() => { document.getElementById("yachts")?.scrollIntoView({ behavior: "smooth" }); }}
+              >
                 <div className="px-6 pt-6 pb-5" style={{ background: "rgba(13,32,64,0.8)" }}>
                   <div className="text-xs tracking-widest uppercase mb-1" style={{ color: "#a78bfa" }}>Катамаран · Премиум</div>
                   <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "2.4rem", fontWeight: 600, color: "#fff", lineHeight: 1 }}>от 1 200 €</div>
                   <div className="text-xs mt-1" style={{ color: "rgba(255,255,255,0.45)" }}>за человека / неделю</div>
                 </div>
-                <div className="px-6 py-5" style={{ background: "rgba(13,31,60,0.6)" }}>
+                <div className="px-6 py-5 flex items-center justify-between" style={{ background: "rgba(13,31,60,0.6)" }}>
                   <div className="text-xs" style={{ color: "rgba(255,255,255,0.4)" }}>4 каюты · до 8 гостей · максимальный простор</div>
+                  <span style={{ color: "#a78bfa" }}><Icon name="ArrowRight" size={14} /></span>
                 </div>
               </div>
             </div>
@@ -1125,8 +1144,8 @@ export default function Index() {
             <div className="grid md:grid-cols-2">
               <div className="relative overflow-hidden" style={{ minHeight: "260px" }}>
                 <img
-                  src="https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/0175bc42-6685-41f2-9ac1-0b260cc2fdd7.jpg"
-                  alt="Гриль на яхте"
+                  src="https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/0697089a-8f76-4f63-87c9-99adadb7cb8f.png"
+                  alt="Повар на яхте"
                   className="w-full h-full object-cover"
                   style={{ minHeight: "260px" }}
                 />
@@ -1190,17 +1209,50 @@ export default function Index() {
               Жизнь на воде
             </h2>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+          {/* Main slider */}
+          <div className="relative rounded-3xl overflow-hidden mb-4 reveal" style={{ height: "clamp(320px, 55vw, 600px)", border: "1px solid rgba(38,201,195,0.15)" }}>
+            <img
+              src={GALLERY_ITEMS[gallerySlide].img}
+              alt={GALLERY_ITEMS[gallerySlide].label}
+              className="w-full h-full object-cover transition-all duration-500"
+            />
+            <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(13,31,60,0.7) 0%, transparent 55%)" }} />
+            <div className="absolute bottom-6 left-6">
+              <span className="text-base font-medium" style={{ color: "rgba(255,255,255,0.9)", fontFamily: "'Cormorant Garamond', serif", fontSize: "1.2rem" }}>
+                {GALLERY_ITEMS[gallerySlide].label}
+              </span>
+              <div className="text-xs mt-1" style={{ color: "rgba(255,255,255,0.4)" }}>{gallerySlide + 1} / {GALLERY_ITEMS.length}</div>
+            </div>
+            <button
+              onClick={() => setGallerySlide((p) => (p - 1 + GALLERY_ITEMS.length) % GALLERY_ITEMS.length)}
+              className="absolute left-4 top-1/2 -translate-y-1/2 p-3 rounded-full transition-all hover:scale-110"
+              style={{ background: "rgba(0,0,0,0.5)", color: "#fff", backdropFilter: "blur(8px)" }}
+            >
+              <Icon name="ChevronLeft" size={22} />
+            </button>
+            <button
+              onClick={() => setGallerySlide((p) => (p + 1) % GALLERY_ITEMS.length)}
+              className="absolute right-4 top-1/2 -translate-y-1/2 p-3 rounded-full transition-all hover:scale-110"
+              style={{ background: "rgba(0,0,0,0.5)", color: "#fff", backdropFilter: "blur(8px)" }}
+            >
+              <Icon name="ChevronRight" size={22} />
+            </button>
+          </div>
+          {/* Thumbnails */}
+          <div className="flex gap-2 overflow-x-auto pb-2" style={{ scrollbarWidth: "none" }}>
             {GALLERY_ITEMS.map((item, i) => (
-              <div key={item.label}
-                className={`relative rounded-2xl overflow-hidden card-hover reveal delay-${(i % 3 + 1) * 100}`}
-                style={{ minHeight: item.tall ? "360px" : "220px" }}>
-                <img src={item.img} alt={item.label} className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 hover:scale-105" />
-                <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(13,31,60,0.7) 0%, transparent 50%)" }} />
-                <div className="absolute bottom-0 left-0 right-0 p-4">
-                  <span className="text-sm font-medium" style={{ color: "rgba(255,255,255,0.85)" }}>{item.label}</span>
-                </div>
-              </div>
+              <button
+                key={item.label}
+                onClick={() => setGallerySlide(i)}
+                className="flex-shrink-0 rounded-xl overflow-hidden transition-all"
+                style={{
+                  width: 80, height: 60,
+                  border: i === gallerySlide ? "2px solid var(--teal)" : "2px solid transparent",
+                  opacity: i === gallerySlide ? 1 : 0.55,
+                }}
+              >
+                <img src={item.img} alt={item.label} className="w-full h-full object-cover" />
+              </button>
             ))}
           </div>
         </div>
@@ -1300,9 +1352,6 @@ export default function Index() {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button onClick={() => setFormOpen(true)} className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full text-base btn-teal" style={{ color: "var(--sea-deep)" }}>
-                Посмотреть календарь <Icon name="Calendar" size={18} />
-              </button>
               <button onClick={() => setFormOpen(true)} className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full text-base btn-gold" style={{ color: "var(--sea-deep)" }}>
                 Забронировать <Icon name="ArrowRight" size={18} />
               </button>
