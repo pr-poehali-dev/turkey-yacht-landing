@@ -240,6 +240,42 @@ const GALLERY_ITEMS = [
   { img: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/3c1ab62f-1ef3-4ff8-9d47-99e57b6f1f19.jpg", label: "Фетхие — марина" },
 ];
 
+function CaptainSlider({ photos }: { photos: { src: string; label: string }[] }) {
+  const [idx, setIdx] = useState(0);
+  return (
+    <div className="mb-8 rounded-2xl overflow-hidden reveal" style={{ border: "1px solid rgba(255,255,255,0.1)" }}>
+      <div className="relative" style={{ height: "340px" }}>
+        <img
+          src={photos[idx].src}
+          alt={photos[idx].label}
+          className="w-full h-full object-cover transition-all duration-500"
+          style={{ objectPosition: "center top" }}
+        />
+        <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(13,31,60,0.65) 0%, transparent 55%)" }} />
+        <div className="absolute bottom-4 left-5 text-sm font-medium" style={{ color: "rgba(255,255,255,0.8)", fontFamily: "'Cormorant Garamond', serif", fontSize: "1rem" }}>
+          {photos[idx].label}
+        </div>
+        <div className="absolute bottom-4 right-5 flex gap-2">
+          {photos.map((_, i) => (
+            <button key={i} onClick={() => setIdx(i)} className="rounded-full transition-all"
+              style={{ width: i === idx ? 18 : 6, height: 6, background: i === idx ? "var(--teal)" : "rgba(255,255,255,0.35)" }} />
+          ))}
+        </div>
+        <button onClick={() => setIdx((p) => (p - 1 + photos.length) % photos.length)}
+          className="absolute left-3 top-1/2 -translate-y-1/2 p-2 rounded-full transition-all hover:scale-110"
+          style={{ background: "rgba(0,0,0,0.45)", color: "#fff", backdropFilter: "blur(6px)" }}>
+          <Icon name="ChevronLeft" size={18} />
+        </button>
+        <button onClick={() => setIdx((p) => (p + 1) % photos.length)}
+          className="absolute right-3 top-1/2 -translate-y-1/2 p-2 rounded-full transition-all hover:scale-110"
+          style={{ background: "rgba(0,0,0,0.45)", color: "#fff", backdropFilter: "blur(6px)" }}>
+          <Icon name="ChevronRight" size={18} />
+        </button>
+      </div>
+    </div>
+  );
+}
+
 function FaqItem({ question, answer }: { question: string; answer: string }) {
   const [open, setOpen] = useState(false);
   return (
@@ -767,15 +803,18 @@ export default function Index() {
             </div>
           </div>
 
-          {/* Sail photo */}
-          <div className="mb-8 rounded-2xl overflow-hidden reveal" style={{ border: "1px solid rgba(255,255,255,0.1)" }}>
-            <img
-              src="https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/52624ebb-a4af-4413-b88b-86496a8ff531.jpg"
-              alt="Парус на фоне неба"
-              className="w-full object-cover"
-              style={{ maxHeight: "340px", objectPosition: "center" }}
-            />
-          </div>
+          {/* Captain photo slider */}
+          {(() => {
+            const captainPhotos = [
+              { src: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/c732e4c6-bccd-482e-a03f-6258c8e73768.jpg", label: "На борту" },
+              { src: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/86e49378-e4d7-4223-aa88-faad78565aef.jpg", label: "У штурвала" },
+              { src: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/f842a71b-5168-48cb-bcba-ad0ad3e96301.jpg", label: "С командой в марине" },
+              { src: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/1d80504d-b2c9-4a9b-b603-477b7e628a7d.jpg", label: "Улов" },
+              { src: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/0f8f5b85-1cf6-42e0-9ed9-651f1a7e4ad7.jpg", label: "В марине" },
+              { src: "https://cdn.poehali.dev/projects/281b68c9-e4d3-42d4-bf37-8d9d27e5e4e9/bucket/52624ebb-a4af-4413-b88b-86496a8ff531.jpg", label: "Парус" },
+            ];
+            return <CaptainSlider photos={captainPhotos} />;
+          })()}
 
           <div className="grid md:grid-cols-3 gap-6">
             <div className="glass rounded-2xl p-7 reveal delay-100">
@@ -1319,7 +1358,7 @@ export default function Index() {
             Места ограничены
           </h2>
           <p className="text-base leading-relaxed mb-12 reveal delay-200" style={{ color: "var(--text-secondary)" }}>
-            На яхте всего 3 каюты, поэтому места обычно заканчиваются заранее.
+            Каждое путешествие — небольшая группа. Мест немного, и они разбираются задолго до старта.
           </p>
 
           <div className="glass rounded-2xl p-10 reveal delay-300" style={{ border: "1px solid rgba(38,201,195,0.2)" }}>
