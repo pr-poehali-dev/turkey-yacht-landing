@@ -2,6 +2,7 @@
 import os
 import secrets
 import smtplib
+import logging
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
@@ -40,14 +41,16 @@ def send_email(to_email: str, subject: str, html_body: str, text_body: str) -> b
             server.login(smtp_user, smtp_password)
             server.sendmail(smtp_from, to_email, msg.as_string())
         return True
-    except (smtplib.SMTPException, OSError):
+    except Exception as e:
+        logging.error(f"SMTP_SSL error: {type(e).__name__}: {e}")
         try:
             with smtplib.SMTP(smtp_host, smtp_port, timeout=10) as server:
                 server.starttls()
                 server.login(smtp_user, smtp_password)
                 server.sendmail(smtp_from, to_email, msg.as_string())
             return True
-        except (smtplib.SMTPException, OSError):
+        except Exception as e2:
+            logging.error(f"SMTP STARTTLS error: {type(e2).__name__}: {e2}")
             return False
 
 
