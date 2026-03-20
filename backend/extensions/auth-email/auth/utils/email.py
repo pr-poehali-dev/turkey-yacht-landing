@@ -36,13 +36,19 @@ def send_email(to_email: str, subject: str, html_body: str, text_body: str) -> b
     msg.attach(MIMEText(html_body, 'html', 'utf-8'))
 
     try:
-        with smtplib.SMTP(smtp_host, smtp_port, timeout=10) as server:
-            server.starttls()
+        with smtplib.SMTP_SSL(smtp_host, 465, timeout=10) as server:
             server.login(smtp_user, smtp_password)
             server.sendmail(smtp_from, to_email, msg.as_string())
         return True
     except (smtplib.SMTPException, OSError):
-        return False
+        try:
+            with smtplib.SMTP(smtp_host, smtp_port, timeout=10) as server:
+                server.starttls()
+                server.login(smtp_user, smtp_password)
+                server.sendmail(smtp_from, to_email, msg.as_string())
+            return True
+        except (smtplib.SMTPException, OSError):
+            return False
 
 
 def send_verification_code(to_email: str, code: str) -> bool:
