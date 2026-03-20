@@ -3,8 +3,13 @@ import Icon from "@/components/ui/icon";
 import { toast } from "sonner";
 import YachtModal, { type YachtDetail } from "@/components/YachtModal";
 import { t, type Lang } from "@/i18n";
+import { useAuth } from "@/components/extensions/auth-email/useAuth";
+import LoginForm from "@/components/extensions/auth-email/LoginForm";
+import RegisterForm from "@/components/extensions/auth-email/RegisterForm";
+import UserProfile from "@/components/extensions/auth-email/UserProfile";
 
 const SUBMIT_URL = "https://functions.poehali.dev/ca2e2601-1e74-49e6-85d5-12e9ca935f4a";
+const AUTH_URL = "https://functions.poehali.dev/a23e80c5-2ca7-4b6c-90ce-a0164864c69d";
 
 
 const YACHT_TYPES: YachtDetail[] = [
@@ -389,6 +394,19 @@ export default function Index() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [navOpaque, setNavOpaque] = useState(false);
   const [formOpen, setFormOpen] = useState(false);
+  const [authOpen, setAuthOpen] = useState(false);
+  const [authMode, setAuthMode] = useState<"login" | "register">("login");
+
+  const auth = useAuth({
+    apiUrls: {
+      login: `${AUTH_URL}?action=login`,
+      register: `${AUTH_URL}?action=register`,
+      verifyEmail: `${AUTH_URL}?action=verify-email`,
+      refresh: `${AUTH_URL}?action=refresh`,
+      logout: `${AUTH_URL}?action=logout`,
+      resetPassword: `${AUTH_URL}?action=reset-password`,
+    },
+  });
   const [sending, setSending] = useState(false);
   const [selectedYacht, setSelectedYacht] = useState<YachtDetail | null>(null);
   const [routeSlide, setRouteSlide] = useState(0);
@@ -542,6 +560,24 @@ export default function Index() {
             >
               {lang === "ru" ? "EN" : "RU"}
             </button>
+            {auth.isAuthenticated && auth.user ? (
+              <button
+                onClick={() => setAuthOpen(true)}
+                className="flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold transition-all"
+                style={{ background: "rgba(38,201,195,0.12)", color: "var(--teal)", border: "1px solid rgba(38,201,195,0.3)" }}
+              >
+                <Icon name="User" size={14} />
+                {auth.user.name || auth.user.email.split("@")[0]}
+              </button>
+            ) : (
+              <button
+                onClick={() => { setAuthMode("login"); setAuthOpen(true); }}
+                className="px-3 py-1.5 rounded-full text-xs font-semibold transition-all"
+                style={{ background: "rgba(38,201,195,0.12)", color: "var(--teal)", border: "1px solid rgba(38,201,195,0.3)" }}
+              >
+                {lang === "ru" ? "Войти" : "Sign in"}
+              </button>
+            )}
           </div>
           <div className="flex items-center gap-3 md:hidden">
             <button
@@ -567,6 +603,41 @@ export default function Index() {
           </div>
         )}
       </nav>
+
+      {/* AUTH MODAL */}
+      {authOpen && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4" style={{ background: "rgba(13,31,60,0.85)", backdropFilter: "blur(8px)" }}>
+          <div className="relative w-full max-w-md">
+            <button
+              onClick={() => setAuthOpen(false)}
+              className="absolute -top-3 -right-3 z-10 w-8 h-8 rounded-full flex items-center justify-center"
+              style={{ background: "rgba(38,201,195,0.15)", color: "var(--teal)", border: "1px solid rgba(38,201,195,0.3)" }}
+            >
+              <Icon name="X" size={16} />
+            </button>
+            {auth.isAuthenticated && auth.user ? (
+              <UserProfile user={auth.user} onLogout={async () => { await auth.logout(); setAuthOpen(false); }} />
+            ) : authMode === "login" ? (
+              <LoginForm
+                onLogin={async (p) => { const ok = await auth.login(p); if (ok) setAuthOpen(false); return ok; }}
+                onRegisterClick={() => setAuthMode("register")}
+                isLoading={auth.isLoading}
+                error={auth.error}
+              />
+            ) : (
+              <RegisterForm
+                onRegister={auth.register}
+                onVerifyEmail={auth.verifyEmail}
+                onLogin={async (p) => { const ok = await auth.login(p); if (ok) setAuthOpen(false); return ok; }}
+                onLoginClick={() => setAuthMode("login")}
+                isLoading={auth.isLoading}
+                error={auth.error}
+                onSuccess={() => setAuthOpen(false)}
+              />
+            )}
+          </div>
+        </div>
+      )}
 
       {/* HERO */}
       <section id="hero" className="relative min-h-screen flex flex-col justify-center overflow-hidden">
