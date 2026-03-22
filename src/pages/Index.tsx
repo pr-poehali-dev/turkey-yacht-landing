@@ -994,7 +994,7 @@ export default function Index() {
               <div className="text-2xl mb-4">🌍</div>
               <h3 className="font-semibold mb-3" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.2rem", color: "#fff" }}>{T.captain.seas}</h3>
               <div className="grid grid-cols-2 gap-2">
-                {["Азовское", "Кашпийское", "Средиземное", "Эгейское", "Ионическое", "Адриатическое", "Мраморное", "Миртойское"].map((sea) => (
+                {["Азовское", "Каспийское", "Средиземное", "Эгейское", "Ионическое", "Адриатическое", "Мраморное", "Миртойское"].map((sea) => (
                   <div key={sea} className="flex items-center gap-1.5 text-xs py-1.5" style={{ color: "rgba(255,255,255,0.6)", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
                     <span style={{ color: "var(--teal)", fontSize: "0.4rem" }}>●</span> {sea}
                   </div>
